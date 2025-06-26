@@ -245,12 +245,12 @@ function Home() {
                     <ul className="space-y-2 text-zinc-400">
                       <li>
                         <a
-                          href="https://www.figma.com/@wittyu"
+                          href="https://www.behance.com/@wittyu"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 group"
                         >
-                          Figma
+                          Behance
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="w-[18px] h-[18px] transform transition-transform duration-0 group-hover:animate-spin-once"
