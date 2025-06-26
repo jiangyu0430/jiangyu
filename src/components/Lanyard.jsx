@@ -18,7 +18,7 @@ import {
 } from '@react-three/rapier'
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 
-import cardGLB from '../assets/lanyard/card.glb'
+import cardGLB from '../assets/lanyard/Card.glb'
 import lanyard from '../assets/lanyard/lanyard.png'
 
 import * as THREE from 'three'
