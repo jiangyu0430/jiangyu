@@ -110,7 +110,7 @@ export default function About() {
               <div className="grid grid-cols-3 gap-2 bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>Designer at XYZ Company</p>
-                <p className="text-right">Designer at XYZ Company</p>
+                <p className="text-right">2025/03-now</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
