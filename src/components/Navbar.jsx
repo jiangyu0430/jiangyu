@@ -139,7 +139,7 @@ export default function Navbar() {
                       className="absolute top-full mt-2 right-0 w-[200px] bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-400 shadow-lg rounded-md overflow-hidden z-50"
                     >
                       <img
-                        src="/images/QRcode.png"
+                        src="images/QRcode.png"
                         alt="popover"
                         className="w-full h-auto"
                       />

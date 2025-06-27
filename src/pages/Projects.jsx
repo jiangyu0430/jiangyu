@@ -68,7 +68,12 @@ export default function Projects() {
             {projects
               .filter((p) => !activeType || p.type === activeType)
               .map((project, index) => (
-                <FadeInWhenVisible key={index} delay={0.3 + index * 0.05} once>
+                <FadeInWhenVisible
+                  key={index}
+                  delay={0.2}
+                  once
+                  threshold={0.02} // 这里设置阈值，0.01表示元素只要1%进入视口就触发动画
+                >
                   <ProjectCard
                     slug={project.slug}
                     onClick={() => openModal(project.slug)}

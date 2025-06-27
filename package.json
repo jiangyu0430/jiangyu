@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "predeploy": "VITE_DEPLOY_TARGET=github vite build && cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist",
-    "deploy:all": "git add . && git commit -m \"auto update\" && git push origin main && npm run deploy"
+    "deploy:all": "sh -c 'read -p \"Commit message: \" msg && git add . && git commit -m \"$msg\" && git push origin main && npm run deploy'"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

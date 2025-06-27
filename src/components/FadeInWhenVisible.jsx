@@ -5,6 +5,7 @@ const FadeInWhenVisible = ({
   delay = 0,
   y = 80,
   once = true, // 默认只执行一次动画
+  threshold = 0.1, // 新增支持传入触发阈值，默认0.1
 }) => {
   return (
     <motion.div
@@ -12,7 +13,7 @@ const FadeInWhenVisible = ({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut', delay }}
-      viewport={{ once, amount: 0.1 }} // amount 触发阈值，元素进入10%可见时触发动画
+      viewport={{ once, amount: threshold }} // 使用传入的threshold值
     >
       {children}
     </motion.div>
