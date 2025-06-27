@@ -113,7 +113,7 @@ export default function About() {
                 <p className="text-right">2025/03-now</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
-                <p className="font-medium">Present</p>
+                <p className="font-medium">XSKY</p>
                 <p>Designer at XYZ Company</p>
                 <p className="text-right">2023/04-2024-12</p>
               </div>
