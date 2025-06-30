@@ -124,7 +124,7 @@ const ProjectDetail = ({
       className={
         fullscreen
           ? 'min-h-screen bg-white dark:bg-neutral-900 overflow-auto'
-          : 'fixed inset-0 z-[9999] bg-zinc-900 backdrop-blur-sm flex justify-center items-center'
+          : 'fixed inset-0 z-[9999] bg-[#121214] backdrop-blur-sm flex justify-center items-center'
       }
     >
       {loading && !fullscreen ? (
