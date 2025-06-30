@@ -1,5 +1,6 @@
+const plugin = require('tailwindcss/plugin')
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,md,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -55,22 +56,17 @@ export default {
         },
       },
     },
-    //Marquee
-    animation: {
-      marquee: 'marquee var(--duration) linear infinite',
-      'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-    },
-    keyframes: {
-      marquee: {
-        from: { transform: 'translateX(0)' },
-        to: { transform: 'translateX(calc(-100% - var(--gap)))' },
-      },
-      'marquee-vertical': {
-        from: { transform: 'translateY(0)' },
-        to: { transform: 'translateY(calc(-100% - var(--gap)))' },
-      },
-    },
   },
   darkMode: 'class',
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.prose-dark': {
+          '@apply prose prose-invert': {},
+        },
+      })
+    }),
+  ],
 }

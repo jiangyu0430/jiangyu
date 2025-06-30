@@ -1,12 +1,13 @@
 const blogs = [
   {
-    slug: 'MyFirstPersonalWebsite',
-    title: 'MyFirstPersonalWebsite',
+    slug: 'my-first-personal-website',
+    title: '我的第一个个人网站',
     description:
-      'An introduction to React Hooks and hJS code for better performance JS code for better performance ow to use them effectively in your projects.',
+      '记录我和 ChatGPT 一起完成个人网站搭建的全过程，适合有一定前端基础的朋友参考。',
     date: '2024-04-10',
     image:
       'https://cdn.dribbble.com/userupload/11212092/file/original-454bb68503451a83392b00bef064d789.jpg?resize=1504x1128&vertical=center',
+    contentFile: 'my-first-personal-website.md',
   },
   {
     slug: 'css-grid-vs-flexbox',

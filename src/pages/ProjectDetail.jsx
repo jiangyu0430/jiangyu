@@ -124,7 +124,7 @@ const ProjectDetail = ({
       className={
         fullscreen
           ? 'min-h-screen bg-white dark:bg-neutral-900 overflow-auto'
-          : 'fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex justify-center items-center'
+          : 'fixed inset-0 z-[9999] bg-zinc-900 backdrop-blur-sm flex justify-center items-center'
       }
     >
       {loading && !fullscreen ? (
@@ -135,7 +135,7 @@ const ProjectDetail = ({
       ) : (
         !fullscreen && (
           <div
-            className="relative mx-auto bg-black text-gray-100 px-4 max-w-[1440px] w-full h-screen flex flex-col"
+            className="relative mx-auto bg-black text-gray-100 px-6 max-w-[1440px] w-full h-screen flex flex-col"
             data-lenis-prevent
             onClick={(e) => e.stopPropagation()}
           >
@@ -197,12 +197,39 @@ const ProjectDetail = ({
               ref={modalScrollRef}
               className="overflow-y-auto flex-1 scrollbar-hide"
             >
-              <article className="prose dark:prose-invert max-w-none">
-                <ReactMarkdown>{content}</ReactMarkdown>
-              </article>
+              {(() => {
+                const isBlog = blogs.some((b) => b.slug === slug)
+                return (
+                  <article
+                    className={
+                      isBlog
+                        ? 'prose max-w-[800px] mx-auto prose-invert'
+                        : 'prose max-w-none prose-invert'
+                    }
+                  >
+                    <ReactMarkdown
+                      components={{
+                        img: ({ node, ...props }) => (
+                          <img
+                            {...props}
+                            style={{
+                              maxWidth: '100%',
+                              height: 'auto',
+                              display: 'block',
+                              margin: '1rem auto',
+                            }}
+                          />
+                        ),
+                      }}
+                    >
+                      {content}
+                    </ReactMarkdown>
+                  </article>
+                )
+              })()}
 
               {/* 其他作品推荐模块 */}
-              <div className="my-12">
+              <div className="my-20">
                 <h2 className="text-2xl font-semibold mb-4 text-white">
                   other works
                 </h2>
