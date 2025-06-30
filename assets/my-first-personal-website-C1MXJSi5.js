@@ -10,6 +10,8 @@ const n=`在这个被 AI 改变的时代，**构建个人网站已不再是开�
 
 相比把内容分散在多个平台（如 Behance、知乎、B 站），**个人网站意味着我可以控制一切：设计、结构、节奏，甚至每一段文字的位置和颜色**。这是我真正拥有的地方。
 
+![测试图片tencent]（https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes%2Fimage1.jpg）
+
 ## 🧱 技术选型：React、Tailwind、Vite，一个都不少
 
 虽然我不是程序员，但过去多少接触过前端界面，知道一些 HTML、CSS，甚至能读懂部分 React 语法。在 ChatGPT 的建议下，我选择了：
