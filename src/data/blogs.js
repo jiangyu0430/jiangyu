@@ -1,7 +1,7 @@
 const blogs = [
   {
-    slug: 'understanding-react-hooks',
-    title: 'Understanding React Hooks',
+    slug: 'MyFirstPersonalWebsite',
+    title: 'MyFirstPersonalWebsite',
     description:
       'An introduction to React Hooks and hJS code for better performance JS code for better performance ow to use them effectively in your projects.',
     date: '2024-04-10',
