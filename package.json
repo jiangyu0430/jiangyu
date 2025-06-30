@@ -2,14 +2,14 @@
   "name": "jy-react-site",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://jiangyu0430.github.io/jiangyu",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "VITE_DEPLOY_TARGET=github vite build && cp dist/index.html dist/404.html",
+    "predeploy": "vite build && cp dist/index.html dist/404.html && cp CNAME dist/CNAME",
     "deploy": "gh-pages -d dist",
     "deploy:all": "sh -c 'read -p \"Commit message: \" msg && git add . && git commit -m \"$msg\" && git push origin main && npm run predeploy && npm run deploy'"
   },
