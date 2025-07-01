@@ -1,7 +1,7 @@
 const blogs = [
   {
     slug: 'my-first-personal-website',
-    title: '我的第一个个人网站',
+    title: '我的第一个网站',
     description:
       '记录我和 ChatGPT 一起完成个人网站搭建的全过程，适合有一定前端基础的朋友参考。',
     date: '2024-04-10',

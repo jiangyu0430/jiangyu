@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import projects from '../data/projects'
 import blogs from '../data/blogs'
 import { ScrollProgress } from '../components/ScrollProgress'
+import LazyImage from '../components/LazyImage'
 
 const markdownFiles = import.meta.glob('../data/content/*.md', { as: 'raw' })
 
@@ -210,7 +211,7 @@ const ProjectDetail = ({
                     <ReactMarkdown
                       components={{
                         img: ({ node, ...props }) => (
-                          <img
+                          <LazyImage
                             {...props}
                             style={{
                               maxWidth: '100%',

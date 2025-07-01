@@ -4,8 +4,11 @@ import Lanyard from '../components/Lanyard'
 import FadeInWhenVisible from '../components/FadeInWhenVisible'
 import Stack from '../components/Stack.jsx'
 import { PlaceholdersAndVanishInput } from '../components/PlaceholdersAndVanishInput'
+import LazyImage from '../components/LazyImage'
 
 export default function About() {
+  const tagClass =
+    'px-2 py-1 rounded-[4px] dark:bg-zinc-700 bg-zinc-100 text-zinc-800 dark:text-zinc-100 text-sm whitespace-nowrap'
   const [showAllTestimonials, setShowAllTestimonials] = useState(false)
   const lanyardRef = useRef(null)
   const [showLanyard, setShowLanyard] = useState(false)
@@ -50,12 +53,21 @@ export default function About() {
             </p>
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
-            <p className="text-zinc-800 dark:text-zinc-300 text-justify leading-relaxed">
+            <p className="text-zinc-800 dark:text-zinc-300 mb-4 text-justify leading-relaxed">
               I believe that great design goes beyond aesthetics—it solves
               problems, simplifies complexity, and delivers meaningful
               experiences. From concept to final execution, I ensure every
               project is strategically crafted to leave a lasting impact
             </p>
+          </FadeInWhenVisible>{' '}
+          <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
+            <ul className="inline-flex flex-row gap-2 opacity-90">
+              <li className={tagClass}>To B</li>
+              <li className={tagClass}>设计系统</li>
+              <li className={tagClass}>用户体验</li>
+              <li className={tagClass}>三维建模</li>
+              <li className={tagClass}>动效设计</li>
+            </ul>
           </FadeInWhenVisible>
         </div>
         <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
@@ -94,7 +106,7 @@ export default function About() {
           <div>
             <FadeInWhenVisible delay={0.4} y={50} amount={0.2} triggerOnce>
               <h2 className="text-4xl font-semibold text-center md:text-left">
-                Work experiences
+                Experiences
               </h2>
             </FadeInWhenVisible>
           </div>
@@ -109,18 +121,23 @@ export default function About() {
             >
               <div className="grid grid-cols-3 gap-2 bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
-                <p>Designer at XYZ Company</p>
+                <p>Product designer</p>
                 <p className="text-right">2025/03-now</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">XSKY</p>
-                <p>Designer at XYZ Company</p>
+                <p>Product designer</p>
                 <p className="text-right">2023/04-2024-12</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
-                <p>Designer at XYZ Company</p>
+                <p>UI Designer</p>
                 <p className="text-right">2020/03-2023-03</p>
+              </div>
+              <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
+                <p className="font-medium">Present</p>
+                <p>Digital Media Technology</p>
+                <p className="text-right">2016/09-2020-06</p>
               </div>
             </div>
           </FadeInWhenVisible>
@@ -143,7 +160,7 @@ export default function About() {
               <div className="flex flex-col justify-center gap-5 self-center">
                 <div className="space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800">
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=2"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -165,7 +182,7 @@ export default function About() {
                   } md:block space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800`}
                 >
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=3"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -187,7 +204,7 @@ export default function About() {
               <div className="flex flex-col gap-5">
                 <div className="space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800">
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=4"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -208,7 +225,7 @@ export default function About() {
                   } md:block space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800`}
                 >
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=5"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -231,7 +248,7 @@ export default function About() {
                   } md:block space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800`}
                 >
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=6"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -251,7 +268,7 @@ export default function About() {
               <div className="flex flex-col justify-center gap-5 self-center">
                 <div className="space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800">
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=7"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
@@ -274,7 +291,7 @@ export default function About() {
                   } md:block space-y-4 rounded-lg p-6 bg-zinc-100 dark:bg-zinc-800`}
                 >
                   <div className="flex items-center gap-4">
-                    <img
+                    <LazyImage
                       src="https://i.pravatar.cc/100?img=8"
                       alt="avatar"
                       className="w-12 h-12 rounded-full"

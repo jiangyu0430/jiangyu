@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { XIcon } from 'lucide-react'
+import LazyImage from './LazyImage'
 
 const animationVariants = {
   'from-center': {
@@ -142,7 +143,7 @@ export function HeroImageDialog({
             </motion.button>
 
             <div className="relative inline-block overflow-hidden rounded-lg">
-              <img
+              <LazyImage
                 src={imageSrc}
                 alt={thumbnailAlt}
                 className="w-full object-contain"

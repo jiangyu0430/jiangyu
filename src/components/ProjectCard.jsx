@@ -1,3 +1,4 @@
+import LazyImage from './LazyImage'
 //项目集作品卡片
 import { InteractiveHoverButton } from './InteractiveHoverButton'
 import projects from '../data/projects'
@@ -43,7 +44,7 @@ export function ProjectCard({
         onClick={onClick}
         className="block w-full aspect-video overflow-hidden group cursor-pointer"
       >
-        <img
+        <LazyImage
           src={finalImage}
           alt={finalTitle}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

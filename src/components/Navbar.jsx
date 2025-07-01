@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import LazyImage from './LazyImage'
 import { Link, useLocation, useMatch } from 'react-router-dom'
 import {
   motion,
@@ -38,9 +39,9 @@ export default function Navbar() {
 
   // navItems now contains isActive field
   const navItems = [
-    { to: '/projects', label: 'Portfolio', isActive: !!matchProjects },
-    { to: '/notes', label: 'Notes', isActive: !!matchNotes },
-    { to: '/about', label: 'About me', isActive: !!matchAbout },
+    { to: '/projects', label: '项目集', isActive: !!matchProjects },
+    { to: '/notes', label: '随手记', isActive: !!matchNotes },
+    { to: '/about', label: '关于我', isActive: !!matchAbout },
   ]
 
   return (
@@ -102,7 +103,7 @@ export default function Navbar() {
                   to={item.to}
                   className={`relative px-4 py-2 transition rounded-lg ${
                     item.isActive
-                      ? 'bg-gray-100 dark:bg-zinc-200/20 text-black dark:text-white font-semibold'
+                      ? 'bg-gray-100 dark:bg-zinc-200/20 text-black dark:text-white font-medium'
                       : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-200/20'
                   }`}
                 >
@@ -138,7 +139,7 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full mt-2 right-0 w-[200px] bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-400 shadow-lg rounded-md overflow-hidden z-50"
                     >
-                      <img
+                      <LazyImage
                         src="images/QRcode.png"
                         alt="popover"
                         className="w-full h-auto"

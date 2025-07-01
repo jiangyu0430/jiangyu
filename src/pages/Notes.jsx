@@ -26,7 +26,7 @@ export default function Notes() {
         </h1>
       </FadeInWhenVisible>
 
-      <FadeInWhenVisible delay={0.2} y={40} once>
+      <FadeInWhenVisible delay={0.2} y={60} once>
         <div className="columns-2 md:columns-3" style={{ columnGap: '16px' }}>
           {notesItems.map((item, idx) => (
             <div

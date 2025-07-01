@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import blogs from '../data/blogs'
+import LazyImage from './LazyImage'
 
 export function BlogSnippet({
   slug,
@@ -40,7 +41,7 @@ export function BlogSnippet({
             : 'w-24 h-16 rounded-md flex-shrink-0'
         }`}
       >
-        <img
+        <LazyImage
           src={finalImage}
           alt={finalTitle}
           className="object-cover transition-transform duration-300 ease-out hover:scale-105 w-full h-full"

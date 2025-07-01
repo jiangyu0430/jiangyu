@@ -1,6 +1,7 @@
 //首页作品卡片
 import React from 'react'
 import projects from '../data/projects'
+import LazyImage from './LazyImage'
 
 const WorkCard = ({ slug, image, title, subtitle, onClick }) => {
   const project = slug ? projects.find((p) => p.slug === slug) : {}
@@ -23,7 +24,7 @@ const WorkCard = ({ slug, image, title, subtitle, onClick }) => {
       }}
     >
       {/* 背景图片 */}
-      <img
+      <LazyImage
         src={finalImage}
         alt={finalTitle}
         className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"

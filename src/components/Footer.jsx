@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import HulyIcon from '../assets/Huly Icon.svg'
+import LazyImage from './LazyImage'
 
 const Footer = () => {
   // 平滑滚动到顶部
@@ -17,7 +18,7 @@ const Footer = () => {
 
         {/* 中间图标 */}
         <div className="flex justify-center">
-          <img
+          <LazyImage
             src={HulyIcon}
             alt="Huly Icon"
             className="w-20 h-20 object-contain"

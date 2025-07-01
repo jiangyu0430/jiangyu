@@ -1,7 +1,9 @@
+import LazyImage from './LazyImage'
+
 export function NotesImage({ imageSrc, alt, onClick, className }) {
   return (
     <div className={`overflow-hidden rounded-xl ${className || ''}`}>
-      <img
+      <LazyImage
         src={
           typeof imageSrc === 'string'
             ? imageSrc

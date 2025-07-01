@@ -1,6 +1,7 @@
 //我的页面图片
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useState } from 'react'
+import LazyImage from './LazyImage'
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
   const x = useMotionValue(0)
@@ -113,7 +114,7 @@ export default function Stack({
                 height: cardDimensions.height,
               }}
             >
-              <img
+              <LazyImage
                 src={card.img}
                 alt={`card-${card.id}`}
                 className="w-full h-full object-cover pointer-events-none"
