@@ -14,17 +14,5 @@ export default defineConfig({
       Animations: path.resolve(__dirname, 'src/components'),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'vendor_react'
-            if (id.includes('three')) return 'vendor_three'
-            return 'vendor'
-          }
-        },
-      },
-    },
-  },
+  build: {},
 })
