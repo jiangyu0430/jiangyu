@@ -67,7 +67,7 @@ export default function About() {
               <li className={tagClass}>用户体验</li>
               <li className={tagClass}>三维建模</li>
               <li className={tagClass}>动效设计</li>{' '}
-              <li className={tagClass}>更多22…</li>
+              <li className={tagClass}>更多32…</li>
             </ul>
           </FadeInWhenVisible>
         </div>
