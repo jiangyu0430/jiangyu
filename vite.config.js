@@ -4,7 +4,7 @@ import path from 'path'
 const isGithub = process.env.VITE_DEPLOY_TARGET === 'github'
 
 export default defineConfig({
-  base: '/',
+  base: './',
   plugins: [react()],
   assetsInclude: ['**/*.glb', '**/*.md'], // ✅ 添加对 .md 的支持
   resolve: {
