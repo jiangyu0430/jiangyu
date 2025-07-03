@@ -97,7 +97,7 @@ function Home() {
 
           <FadeInWhenVisible delay={0.2} y={50} amount={0.1}>
             <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-xl">
-              Turning complexity into simple, delightful design outcomes.
+              - 将复杂化繁为简，转化为清晰而愉悦的设计成果
             </p>
           </FadeInWhenVisible>
         </div>
@@ -107,12 +107,12 @@ function Home() {
       <section className="py-20 bg-white dark:bg-black text-black dark:text-white">
         <div className="max-w-[1280px] mx-auto px-4 space-y-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">Featured Works</h2>
+            <h2 className="text-4xl font-semibold">代表作品</h2>
             <InteractiveHoverButton
               href="/Projects"
               className="hidden sm:inline-flex"
             >
-              View All
+              查看全部
             </InteractiveHoverButton>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-8 gap-4">
@@ -146,7 +146,7 @@ function Home() {
           </div>
           <div className="mt-6 flex justify-center sm:hidden">
             <InteractiveHoverButton href="/Projects">
-              View All
+              查看全部
             </InteractiveHoverButton>
           </div>
         </div>
@@ -165,13 +165,13 @@ function Home() {
       <section className="py-20 bg-black text-white text-center">
         <div className="max-w-[1280px] mx-auto px-4 space-y-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">Blog Summary</h2>
+            <h2 className="text-4xl font-semibold">最近写下</h2>
             <InteractiveHoverButton
               href="/Projects"
               fixedTheme
               className="hidden sm:inline-flex"
             >
-              View All
+              查看全部
             </InteractiveHoverButton>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -198,12 +198,12 @@ function Home() {
       <section className="py-20 bg-white dark:bg-black text-black dark:text-white">
         <div className="max-w-[1280px] mx-auto px-4 space-y-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">Handwritten notes</h2>
+            <h2 className="text-4xl font-semibold">生活片段</h2>
             <InteractiveHoverButton
               href="/Notes"
               className="hidden sm:inline-flex"
             >
-              View All
+              查看全部
             </InteractiveHoverButton>
           </div>
           <div
@@ -241,7 +241,7 @@ function Home() {
                 <section className="flex sm:flex-row gap-24 sm:gap-40">
                   {/* Follow me */}
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">Follow me</h4>
+                    <h4 className="text-lg font-semibold">跟随</h4>
                     <ul className="space-y-2 text-zinc-400">
                       <li>
                         <a
@@ -284,7 +284,7 @@ function Home() {
 
                   {/* Current */}
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">Current</h4>
+                    <h4 className="text-lg font-semibold">位置</h4>
                     <ul className="space-y-2 text-zinc-400">
                       <li>Shenzhen, China</li>
                       <li>
@@ -302,13 +302,11 @@ function Home() {
 
               <FadeInWhenVisible delay={0.3} y={80} amount={0.6} triggerOnce>
                 <div className="space-y-3">
-                  <p className="text-white text-lg font-medium">
-                    Quick message
-                  </p>
+                  <p className="text-white text-lg font-medium">联系我</p>
                   <PlaceholdersAndVanishInput
                     placeholders={[
-                      'Your message here...',
-                      'Feel free to ask anything...',
+                      '请在这里写下你的想法 …',
+                      '想收到回复？记得留下联系方式～',
                     ]}
                     onChange={(e) => console.log(e.target.value)}
                     onSubmit={(e) => {

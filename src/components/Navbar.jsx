@@ -129,7 +129,7 @@ export default function Navbar() {
                 onMouseEnter={() => setIsPopoverOpen(true)}
                 onMouseLeave={() => setIsPopoverOpen(false)}
               >
-                <RainbowButton>🔥 Contact me</RainbowButton>
+                <RainbowButton>🔥 联系我</RainbowButton>
                 <AnimatePresence>
                   {isPopoverOpen && (
                     <motion.div

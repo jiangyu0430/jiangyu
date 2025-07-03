@@ -20,6 +20,7 @@ const ProjectDetail = ({
   const slug = propSlug || params.slug
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
+  const [isFullScreenWidth, setIsFullScreenWidth] = useState(false)
   const project =
     projects.find((p) => p.slug === slug) || blogs.find((b) => b.slug === slug)
   const modalScrollRef = useRef(null)
@@ -136,12 +137,16 @@ const ProjectDetail = ({
       ) : (
         !fullscreen && (
           <div
-            className="relative mx-auto bg-black text-gray-100 px-6 max-w-[1440px] w-full h-screen flex flex-col"
+            className="relative mx-auto bg-black text-gray-100 w-full h-screen flex flex-col px-6 transition-[max-width] duration-300 ease-in-out"
+            style={{
+              maxWidth: isFullScreenWidth ? '100vw' : '1440px',
+            }}
             data-lenis-prevent
             onClick={(e) => e.stopPropagation()}
           >
             {/* 标题区 */}
-            <div className="sticky top-0 z-50  flex items-center justify-between py-4">
+            <div className="sticky top-0 z-50 flex items-center justify-between py-4">
+              {/* 左侧标题 */}
               <div>
                 <h1 className="text-2xl font-bold">{project.title}</h1>
                 <div className="text-sm text-gray-400 flex space-x-3 mt-1">
@@ -154,13 +159,49 @@ const ProjectDetail = ({
                   <span className="text-gray-400">{project.date}</span>
                 </div>
               </div>
-              <div className="flex items-center">
+
+              {/* 右侧按钮组 */}
+              <div className="flex items-center space-x-2">
+                {/* 全屏切换按钮，仅 project 显示 */}
+                {(() => {
+                  const isBlog = blogs.some((b) => b.slug === slug)
+                  return !isBlog ? (
+                    <button
+                      className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
+                      onClick={() => setIsFullScreenWidth((v) => !v)}
+                      title={isFullScreenWidth ? '恢复原始宽度' : '全屏'}
+                    >
+                      {isFullScreenWidth ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path d="M18 7H22V9H16V3H18V7ZM8 9H2V7H6V3H8V9ZM18 17V21H16V15H22V17H18ZM8 15V21H6V17H2V15H8Z"></path>
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path d="M8 3V5H4V9H2V3H8ZM2 21V15H4V19H8V21H2ZM22 21H16V19H20V15H22V21ZM22 9H20V5H16V3H22V9Z"></path>
+                        </svg>
+                      )}
+                    </button>
+                  ) : null
+                })()}
+
+                {/* 刷新按钮 */}
                 <button
-                  className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded mr-2"
+                  className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
                   onClick={() => {
                     setLoading(true)
                     loadContent()
                   }}
+                  title="刷新"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -171,18 +212,22 @@ const ProjectDetail = ({
                     <path d="M5.46257 4.43262C7.21556 2.91688 9.5007 2 12 2C17.5228 2 22 6.47715 22 12C22 14.1361 21.3302 16.1158 20.1892 17.7406L17 12H20C20 7.58172 16.4183 4 12 4C9.84982 4 7.89777 4.84827 6.46023 6.22842L5.46257 4.43262ZM18.5374 19.5674C16.7844 21.0831 14.4993 22 12 22C6.47715 22 2 17.5228 2 12C2 9.86386 2.66979 7.88416 3.8108 6.25944L7 12H4C4 16.4183 7.58172 20 12 20C14.1502 20 16.1022 19.1517 17.5398 17.7716L18.5374 19.5674Z" />
                   </svg>
                 </button>
+
+                {/* 关闭按钮 */}
                 <button
                   className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
                   onClick={() => {
                     if (onClose) onClose()
                   }}
+                  title="关闭"
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
                     viewBox="0 0 24 24"
-                    className="w-5 h-5 fill-current text-white"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z" />
+                    <path d="M10.7712 12L4 5.2288L5.2288 4L12 10.7711L18.7712 4L20 5.2288L13.2288 12L20 18.7711L18.7712 20L12 13.2288L5.2288 20L4 18.7711L10.7712 12Z" />
                   </svg>
                 </button>
               </div>
@@ -204,7 +249,7 @@ const ProjectDetail = ({
                   <article
                     className={
                       isBlog
-                        ? 'prose max-w-[800px] mx-auto prose-invert'
+                        ? 'prose max-w-[800px] mx-auto prose-invert prose-img:mx-0 prose-img:w-full'
                         : 'prose max-w-none prose-invert'
                     }
                   >
@@ -217,7 +262,9 @@ const ProjectDetail = ({
                               maxWidth: '100%',
                               height: 'auto',
                               display: 'block',
-                              margin: '1rem auto',
+                              margin: '0rem auto',
+                              willChange: 'transform',
+                              backfaceVisibility: 'hidden',
                             }}
                           />
                         ),

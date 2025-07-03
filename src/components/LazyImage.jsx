@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 
+const defaultPlaceholder = (
+  <div className="w-full aspect-[16/9] bg-zinc-100 rounded" />
+)
+
 export default function LazyImage({
   src,
   alt = '',
   className = '',
-  placeholder = null,
+  placeholder = defaultPlaceholder,
   fallbackSrc = null,
   ...rest
 }) {

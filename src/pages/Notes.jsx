@@ -22,7 +22,7 @@ export default function Notes() {
     <div className="max-w-screen-xl mx-auto px-4 py-12">
       <FadeInWhenVisible delay={0.1} once>
         <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-10">
-          Notes
+          生活片段
         </h1>
       </FadeInWhenVisible>
 

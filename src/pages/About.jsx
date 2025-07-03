@@ -36,7 +36,7 @@ export default function About() {
         <div className="w-full md:w-[60%]">
           <FadeInWhenVisible delay={0.1} y={50} amount={0.2} triggerOnce>
             <h2 className="text-5xl font-bold mb-10 text-center md:text-left">
-              About
+              我是谁
             </h2>
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.2} y={50} amount={0.2} triggerOnce>
@@ -63,11 +63,10 @@ export default function About() {
           <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
             <ul className="inline-flex flex-row gap-2 opacity-90">
               <li className={tagClass}>To B</li>
-              <li className={tagClass}>设计系统</li>
               <li className={tagClass}>用户体验</li>
+              <li className={tagClass}>设计系统</li>
               <li className={tagClass}>三维建模</li>
               <li className={tagClass}>动效设计</li>{' '}
-              <li className={tagClass}>更多32…</li>
             </ul>
           </FadeInWhenVisible>
         </div>
@@ -102,12 +101,12 @@ export default function About() {
       </section>
 
       {/* 工作经历区 */}
-      <section className="w-full bg-black text-white">
+      <section className="w-full bg-white dark:bg-black text-black dark:text-white">
         <div className="max-w-[1280px] mx-auto px-4 py-20 space-y-12">
           <div>
             <FadeInWhenVisible delay={0.4} y={50} amount={0.2} triggerOnce>
               <h2 className="text-4xl font-semibold text-center md:text-left">
-                Experiences
+                做过的事
               </h2>
             </FadeInWhenVisible>
           </div>
@@ -120,25 +119,20 @@ export default function About() {
                 width: '100%',
               }}
             >
-              <div className="grid grid-cols-3 gap-2 bg-zinc-800 px-8 py-4 rounded-lg">
+              <div className="grid grid-cols-3 gap-2 bg-zinc-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>Product designer</p>
                 <p className="text-right">2025/03-now</p>
               </div>
-              <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
+              <div className="grid grid-cols-3 gap-2 bg-zinc-50 dark:bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">XSKY</p>
                 <p>Product designer</p>
                 <p className="text-right">2023/04-2024-12</p>
               </div>
-              <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
+              <div className="grid grid-cols-3 gap-2 bg-zinc-50 dark:bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>UI Designer</p>
                 <p className="text-right">2020/03-2023-03</p>
-              </div>
-              <div className="grid grid-cols-3 gap-2 bg-zinc-900 px-8 py-4 rounded-lg">
-                <p className="font-medium">Present</p>
-                <p>Digital Media Technology</p>
-                <p className="text-right">2016/09-2020-06</p>
               </div>
             </div>
           </FadeInWhenVisible>
@@ -151,7 +145,7 @@ export default function About() {
           <div>
             <FadeInWhenVisible delay={0.1} y={50} amount={0.2} triggerOnce>
               <h2 className="text-4xl font-semibold text-center md:text-left">
-                Testimonials
+                伙伴印象
               </h2>
             </FadeInWhenVisible>
           </div>
@@ -172,9 +166,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Ava keeps projects on track and communication flowingAva
-                    keeps projects on track and communication flowing. She’s a
-                    reliable anchor in fast-moving teams.
+                    项目卡住时，Jiangyu
+                    总能用快速原型帮我们理清思路。那些看似简单的低保真原型，其实藏着他对信息架构的用心。正因如此，我们会议效率提升了一半以上。
                   </p>
                 </div>
                 <div
@@ -194,10 +187,9 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Jerome anticipates tech debt before it happens. His calm
-                    technical leadership is Ava keeps projects on track and
-                    communication flowingAva keeps projects on track and
-                    communication flowing unmatched.
+                    Jiangyu
+                    领导的设计系统彻底改变了我们的工作流程。他不仅搭建了完整的组件库和文档，还针对团队痛点做了两件关键事：为每个组件补充‘使用场景’和‘常见错误’示例，并定期收集开发反馈优化规范。如今设计稿一致性超过
+                    90%，连产品经理都能快速用基础组件搭原型。这种提升团队效率的能力，远比单兵作战更有价值。
                   </p>
                 </div>
               </div>
@@ -216,8 +208,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Nina’s visual work consistently exceeds expectations —
-                    beautiful, accessible,.
+                    Jiangyu
+                    的设计文档条理清晰，标注细致，甚至能提前预判开发会遇到的问题。看似基本功，但这份细致在协作中帮我们节省了大量沟通时间。
                   </p>
                 </div>
                 <div
@@ -239,8 +231,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Mark’s microinteraction work made the product feel magical
-                    without being overwhelming.
+                    Jiangyu
+                    的设计风格简洁克制，从不为了创新而创新。他关注的是让用户顺畅完成任务，而非追求花哨视觉。这种以解决问题为核心的思路，让产品体验更稳健可靠。
                   </p>
                 </div>
                 <div
@@ -260,8 +252,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Irene gets to user insights faste anyone I’ve seen. Her
-                    intuition is sharp and backed by data.
+                    Jiangyu
+                    不爱高调发声，但他的扎实功底和认真负责让每位合作伙伴都乐于再次推荐他。靠谱，或许就是对设计师最好的评价。
                   </p>
                 </div>
               </div>
@@ -280,10 +272,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    Daria translated abstract ideas into Ava keeps projects on
-                    track and communication flowing Ava keeps projects on track
-                    and communication flowing a cohesive and stunning brand
-                    identity.
+                    和 Jiangyu
+                    合作，最让我印象深刻的是他的倾听力。他不急着反驳，而是先理解背后的想法，再调整设计。正是这份开放，让团队协作高效顺畅。
                   </p>
                 </div>
                 <div
@@ -305,7 +295,8 @@ export default function About() {
                     </div>
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
-                    如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。如果这是一堆中文，试验一下对齐方式。
+                    和 Jiangyu
+                    合作总有惊喜——他对用户痛点洞察精准，设计方案兼顾商业目标和用户体验。跨团队合作时，他的沟通专业且高效，是少数能赢得开发团队认可的设计师。
                   </p>
                 </div>
               </div>
@@ -356,7 +347,7 @@ export default function About() {
                 <section className="flex sm:flex-row gap-24 sm:gap-40">
                   {/* Follow me */}
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">Follow me</h4>
+                    <h4 className="text-lg font-semibold">跟随</h4>
                     <ul className="space-y-2 text-zinc-400">
                       <li>
                         <a
@@ -399,7 +390,7 @@ export default function About() {
 
                   {/* Current */}
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">Current</h4>
+                    <h4 className="text-lg font-semibold">位置</h4>
                     <ul className="space-y-2 text-zinc-400">
                       <li>Shenzhen, China</li>
                       <li>
@@ -417,13 +408,11 @@ export default function About() {
 
               <FadeInWhenVisible delay={0.3} y={80} amount={0.6} triggerOnce>
                 <div className="space-y-3">
-                  <p className="text-white text-lg font-medium">
-                    Quick message
-                  </p>
+                  <p className="text-white text-lg font-medium">联系我</p>
                   <PlaceholdersAndVanishInput
                     placeholders={[
-                      'Your message here...',
-                      'Feel free to ask anything...',
+                      '请在这里写下你的想法 …',
+                      '想收到回复？记得留下联系方式～',
                     ]}
                     onChange={(e) => console.log(e.target.value)}
                     onSubmit={(e) => {

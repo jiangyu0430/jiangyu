@@ -41,7 +41,7 @@ export default function Projects() {
         <div className="w-full lg:basis-[72%] order-1">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
-              My Portfolio
+              项目选辑
             </h2>
           </FadeInWhenVisible>
 
@@ -90,7 +90,7 @@ export default function Projects() {
           variants={containerVariants}
         >
           <h3 className="text-xl font-semibold text-black dark:text-white mb-6">
-            Recommended Blogs
+            最近写下
           </h3>
 
           <div className="space-y-4">
