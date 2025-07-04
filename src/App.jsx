@@ -16,6 +16,7 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Notes from './pages/Notes'
 import About from './pages/About'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const lenisRef = useRef(null)
@@ -74,6 +75,7 @@ function App() {
       <ScrollProgress className="top-16 z-60" />
       <Navbar />
       <div className="relative z-20 flex flex-1 flex-col">
+        <ScrollToTop />
         <main
           className={`flex-grow ${
             location.pathname === '/'
