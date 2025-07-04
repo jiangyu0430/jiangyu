@@ -8,6 +8,15 @@ export default function Notes() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState(null)
 
+  useEffect(() => {
+    document.body.style.overflow = ''
+    document.documentElement.style.overflow = ''
+
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'))
+    })
+  }, [])
+
   const openDialog = (img) => {
     setCurrentImage(img)
     setIsOpen(true)
