@@ -12,7 +12,10 @@ export default function Notes() {
     document.body.style.overflow = ''
     document.documentElement.style.overflow = ''
 
+    window.scrollTo(0, 0)
+
     requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('scroll'))
       window.dispatchEvent(new Event('resize'))
     })
   }, [])
