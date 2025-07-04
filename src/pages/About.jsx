@@ -334,7 +334,7 @@ export default function About() {
             )}
           </div>
           {/* 右侧文字，占 2/5，高度移动端自适应，网页端撑满父容器，内边距优化 */}
-          <div className="w-full sm:w-2/5 min-h-[280px] sm:h-full flex flex-col sm:px-0 overflow-auto items-center justify-center">
+          <div className="w-full sm:w-2/5 min-h-[280px] sm:h-full flex flex-col sm:px-0 overflow-visible items-center justify-center">
             <FadeInWhenVisible delay={0.1} y={80} amount={0.6} triggerOnce>
               <p className="w-full text-6xl leading-tight font-bold">
                 <span className="text-zinc-500">Design,</span> is thinking made
