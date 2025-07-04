@@ -26,6 +26,16 @@ const ProjectDetail = ({
   const modalScrollRef = useRef(null)
   const navigate = useNavigate()
 
+  const lazyImageStyle = {
+    maxWidth: '100%',
+    height: 'auto',
+    display: 'block',
+    margin: '0rem auto',
+    transform: 'translateZ(0)',
+    willChange: 'transform',
+    backfaceVisibility: 'hidden',
+  }
+
   useEffect(() => {
     if (!fullscreen) {
       document.body.style.overflow = 'hidden'
@@ -121,12 +131,24 @@ const ProjectDetail = ({
     return null
   }
 
+  // 计数器闭包，确保每次渲染时索引自增
+  let imgIndex = 0
+
+  const ImageWithId = (props) => {
+    const currentIndex = imgIndex++
+    return (
+      <section id={`img-${currentIndex}`} style={{ contain: 'layout' }}>
+        <LazyImage {...props} style={lazyImageStyle} />
+      </section>
+    )
+  }
+
   return ReactDOM.createPortal(
     <div
       className={
         fullscreen
           ? 'min-h-screen bg-white dark:bg-neutral-900 overflow-auto'
-          : 'fixed inset-0 z-[9999] bg-[#121214] backdrop-blur-sm flex justify-center items-center'
+          : 'fixed inset-0 z-[9999] bg-black backdrop-blur-sm flex justify-center items-center'
       }
     >
       {loading && !fullscreen ? (
@@ -140,6 +162,7 @@ const ProjectDetail = ({
             className="relative mx-auto bg-black text-gray-100 w-full h-screen flex flex-col px-6 transition-[max-width] duration-300 ease-in-out"
             style={{
               maxWidth: isFullScreenWidth ? '100vw' : '1440px',
+              transition: 'all 0.3s ease',
             }}
             data-lenis-prevent
             onClick={(e) => e.stopPropagation()}
@@ -235,7 +258,7 @@ const ProjectDetail = ({
 
             <ScrollProgress
               target={modalScrollRef}
-              className="mt-22 z-[9999] h-[2px]"
+              className="fixed top-[88px] left-0 right-0 z-[9999] "
             />
 
             {/* 内容区，滚动区域 */}
@@ -255,19 +278,24 @@ const ProjectDetail = ({
                   >
                     <ReactMarkdown
                       components={{
-                        img: ({ node, ...props }) => (
-                          <LazyImage
-                            {...props}
-                            style={{
-                              maxWidth: '100%',
-                              height: 'auto',
-                              display: 'block',
-                              margin: '0rem auto',
-                              willChange: 'transform',
-                              backfaceVisibility: 'hidden',
-                            }}
-                          />
-                        ),
+                        img: (props) =>
+                          isBlog ? (
+                            <LazyImage {...props} style={lazyImageStyle} />
+                          ) : (
+                            <ImageWithId {...props} />
+                          ),
+                        p: ({ node, children }) => {
+                          // 博客类型下，如果<p>只包含单个<img>，则去掉<p>包裹
+                          const isOnlyImage =
+                            node.children &&
+                            node.children.length === 1 &&
+                            node.children[0].type === 'element' &&
+                            node.children[0].tagName === 'img'
+                          if (isBlog && isOnlyImage) {
+                            return <>{children}</>
+                          }
+                          return <p>{children}</p>
+                        },
                       }}
                     >
                       {content}

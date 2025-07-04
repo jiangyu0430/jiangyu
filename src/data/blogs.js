@@ -10,13 +10,14 @@ const blogs = [
     contentFile: 'my-first-personal-website.md',
   },
   {
-    slug: 'css-grid-vs-flexbox',
+    slug: 'design-system',
     title: 'CSS Grid vs Flexbox',
     description:
       'Comparing CSS Grid and Flexbox for JS code for better performance JS code for better performance JS code for better performance responsive layouts and when to use each.',
     date: '2024-03-22',
     image:
       'https://cdn.dribbble.com/userupload/41824000/file/original-e30c9ae78d0f837c9617bd638e04312c.jpg?resize=800x600&vertical=center',
+    contentFile: 'design-system.md',
   },
   {
     slug: 'javascript-performance-tips',

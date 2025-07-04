@@ -97,7 +97,7 @@ export function HeroImageDialog({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onOverlayClick}
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
         >
           <motion.div
             {...selectedAnimation}
@@ -142,7 +142,7 @@ export function HeroImageDialog({
               <XIcon className="w-5 h-5" />
             </motion.button>
 
-            <div className="relative inline-block overflow-hidden rounded-lg">
+            <div className="relative inline-block overflow-hidden rounded-lg  bg-background">
               <LazyImage
                 src={imageSrc}
                 alt={thumbnailAlt}

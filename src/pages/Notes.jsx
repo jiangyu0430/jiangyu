@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FadeInWhenVisible from '../components/FadeInWhenVisible'
 import { HeroImageDialog } from '../components/HeroImageDialog'
 import { NotesImage } from '../components/NotesImage'
 import { notesItems } from '../data/notes' // 只保留这一个导入
 
 export default function Notes() {
+  useEffect(() => {
+    // 清除来自其他页面可能残留的滚动锁定
+    document.body.style.overflow = ''
+    document.documentElement.style.overflow = ''
+  }, [])
+
   const [isOpen, setIsOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState(null)
 

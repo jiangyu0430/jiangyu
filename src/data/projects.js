@@ -1,6 +1,6 @@
 const projects = [
   {
-    slug: 'design-system',
+    slug: '1',
     title: 'UX UI Design - Finance app 🔥',
     date: '2024-03',
     type: 'Design system',
@@ -8,7 +8,7 @@ const projects = [
     image:
       'https://cdn.dribbble.com/userupload/15705820/file/original-cc393b14992148da1bcc771aae926228.jpeg?resize=2048x1536&vertical=center',
     tags: ['Design system', 'Finance app', 'UI/UX'],
-    contentFile: 'design-system.md',
+    contentFile: '1.md',
   },
   {
     slug: 'brand-website',

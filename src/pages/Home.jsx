@@ -119,7 +119,7 @@ function Home() {
             {(() => {
               // 只显示这四个特定项目（请替换为实际slug）
               const featuredSlugs = [
-                'design-system',
+                '1',
                 'brand-website',
                 'mobile-app',
                 'ecommerce-platform',
