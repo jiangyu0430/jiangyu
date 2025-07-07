@@ -1,21 +1,15 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, lazy, Suspense } from 'react'
 import { ScrollProgress } from './components/ScrollProgress'
 import Lenis from '@studio-freight/lenis'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import {
-  useLocation,
-  Routes,
-  Route,
-  useNavigate,
-  matchPath,
-} from 'react-router-dom'
-import ProjectDetail from './pages/ProjectDetail'
-import NotFoundPage from './components/NotFoundPage'
-import Home from './pages/Home'
-import Projects from './pages/Projects'
-import Notes from './pages/Notes'
-import About from './pages/About'
+import { useLocation, Routes, Route, useNavigate } from 'react-router-dom'
+const Home = lazy(() => import('./pages/Home'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Notes = lazy(() => import('./pages/Notes'))
+const About = lazy(() => import('./pages/About'))
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'))
+const NotFoundPage = lazy(() => import('./components/NotFoundPage'))
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -83,17 +77,25 @@ function App() {
               : 'flex items-center justify-center'
           }`}
         >
-          <Routes location={backgroundLocation || location}>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/notes" element={<Notes />} />
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/project/:slug"
-              element={<ProjectDetail onClose={handleCloseModal} />}
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <Suspense
+            fallback={
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 dark:bg-black backdrop-blur">
+                <div className="loader" />
+              </div>
+            }
+          >
+            <Routes location={backgroundLocation || location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/notes" element={<Notes />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/project/:slug"
+                element={<ProjectDetail onClose={handleCloseModal} />}
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>

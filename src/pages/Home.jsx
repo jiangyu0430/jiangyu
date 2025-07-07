@@ -8,7 +8,8 @@ import { InteractiveHoverButton } from '../components/InteractiveHoverButton'
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { PlaceholdersAndVanishInput } from '../components/PlaceholdersAndVanishInput'
-import ProjectDetail from './ProjectDetail'
+import { lazy, Suspense } from 'react'
+const ProjectDetail = lazy(() => import('./ProjectDetail'))
 import projects from '../data/projects'
 import RotatingText from '../components/RotatingText'
 import Particles from '../components/Particles'
@@ -154,11 +155,13 @@ function Home() {
 
       {/* 弹窗 */}
       {modalOpen && selectedProjectSlug && (
-        <ProjectDetail
-          slug={selectedProjectSlug}
-          fullscreen={false}
-          onClose={closeModal}
-        />
+        <Suspense fallback={<div>加载中...</div>}>
+          <ProjectDetail
+            slug={selectedProjectSlug}
+            fullscreen={false}
+            onClose={closeModal}
+          />
+        </Suspense>
       )}
 
       {/* Blog Summary */}
