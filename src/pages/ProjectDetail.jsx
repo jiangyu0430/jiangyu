@@ -1,3 +1,4 @@
+const loadedSlugCache = new Set()
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
@@ -21,10 +22,13 @@ const ProjectDetail = ({
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
   const [isFullScreenWidth, setIsFullScreenWidth] = useState(false)
+  const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
   const project =
     projects.find((p) => p.slug === slug) || blogs.find((b) => b.slug === slug)
   const modalScrollRef = useRef(null)
   const navigate = useNavigate()
+
+  const isBlog = blogs.some((b) => b.slug === slug)
 
   const lazyImageStyle = {
     maxWidth: '100%',
@@ -121,11 +125,23 @@ const ProjectDetail = ({
     const res = await importer()
     setContent(res)
     setLoading(false)
+    loadedSlugCache.add(slug)
   }
 
   useEffect(() => {
     loadContent()
   }, [project, navigate])
+
+  useEffect(() => {
+    if (loadedSlugCache.has(slug)) {
+      setMinimumDelayPassed(true)
+    } else {
+      const timer = setTimeout(() => {
+        setMinimumDelayPassed(true)
+      }, 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [slug])
 
   if (!fullscreen && !project && !loading) {
     return null
@@ -138,7 +154,11 @@ const ProjectDetail = ({
     const currentIndex = imgIndex++
     return (
       <section id={`img-${currentIndex}`} style={{ contain: 'layout' }}>
-        <LazyImage {...props} style={lazyImageStyle} />
+        <LazyImage
+          {...props}
+          style={lazyImageStyle}
+          loading={currentIndex < 2 ? 'eager' : 'lazy'}
+        />
       </section>
     )
   }
@@ -151,7 +171,7 @@ const ProjectDetail = ({
           : 'fixed inset-0 z-[9999] bg-black overflow-y-auto'
       }
     >
-      {loading && !fullscreen ? (
+      {!isBlog && (loading || !minimumDelayPassed) && !fullscreen ? (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="loader mb-4"></div>
           <div className="text-white text-lg">Loading...</div>

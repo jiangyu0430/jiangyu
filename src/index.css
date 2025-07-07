@@ -101,7 +101,7 @@ body,
   );
   -webkit-mask: radial-gradient(transparent 55%, black 56%);
   mask: radial-gradient(transparent 55%, black 56%);
-  animation: spin 0.9s linear infinite;
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {
