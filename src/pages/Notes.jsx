@@ -49,7 +49,7 @@ export default function Notes() {
                 <NotesImage
                   imageSrc={item.image}
                   onClick={() => openDialog(item.image)}
-                  aspectRatio={3 / 4}
+                  aspectRatio={3 / 4.5}
                 />
               </div>
             ))}
