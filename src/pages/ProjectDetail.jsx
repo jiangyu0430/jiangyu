@@ -171,7 +171,7 @@ const ProjectDetail = ({
           : 'fixed inset-0 z-[9999] bg-black overflow-y-auto'
       }
     >
-      {!isBlog && (loading || !minimumDelayPassed) && !fullscreen ? (
+      {(loading || (!isBlog && !minimumDelayPassed)) && !fullscreen ? (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="loader mb-4"></div>
           <div className="text-white text-lg">Loading...</div>
