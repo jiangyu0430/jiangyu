@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import FadeInWhenVisible from '../components/FadeInWhenVisible'
 import { HeroImageDialog } from '../components/HeroImageDialog'
 import { NotesImage } from '../components/NotesImage'
@@ -13,15 +13,10 @@ const breakpointColumnsObj = {
 export default function Notes() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState(null)
-  const scrollRef = useRef(null)
 
   useEffect(() => {
     document.body.style.overflow = ''
     document.documentElement.style.overflow = ''
-
-    requestAnimationFrame(() => {
-      window.dispatchEvent(new Event('resize'))
-    })
   }, [])
 
   const openDialog = (img) => {
@@ -35,7 +30,7 @@ export default function Notes() {
   }
 
   return (
-    <div ref={scrollRef} className="min-h-screen w-full">
+    <div className="min-h-screen w-full">
       <div className="max-w-screen-xl mx-auto px-4 py-12">
         <FadeInWhenVisible delay={0.1} once>
           <div className="max-[1280px] text-5xl font-bold text-gray-900 dark:text-white mb-10">
@@ -50,15 +45,13 @@ export default function Notes() {
             columnClassName="pl-4"
           >
             {notesItems.map((item, idx) => (
-              <FadeInWhenVisible key={idx} delay={0 + idx * 0.04} y={30}>
-                <div className="mb-4 break-inside-avoid">
-                  <NotesImage
-                    imageSrc={item.image}
-                    onClick={() => openDialog(item.image)}
-                    aspectRatio={3 / 4}
-                  />
-                </div>
-              </FadeInWhenVisible>
+              <div key={idx} className="mb-4 break-inside-avoid">
+                <NotesImage
+                  imageSrc={item.image}
+                  onClick={() => openDialog(item.image)}
+                  aspectRatio={3 / 4}
+                />
+              </div>
             ))}
           </Masonry>
         </FadeInWhenVisible>

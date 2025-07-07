@@ -2,7 +2,11 @@ import LazyImage from './LazyImage'
 
 export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
   return (
-    <div className={`overflow-hidden rounded-xl ${className || ''}`}>
+    <div
+      className={`notes-image overflow-hidden rounded-xl cursor-pointer ${
+        className || ''
+      }`}
+    >
       <LazyImage
         src={
           typeof imageSrc === 'string'
@@ -10,11 +14,10 @@ export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
             : imageSrc?.src || imageSrc?.default
         }
         alt={alt || 'Image thumbnail'}
-        className="block cursor-pointer select-none transition-transform duration-300 ease-in-out hover:scale-110"
-        onClick={onClick}
         loading="lazy"
-        draggable={false}
         aspectRatio={aspectRatio}
+        onClick={onClick}
+        className="block transition-transform duration-300 ease-in-out hover:scale-110"
       />
     </div>
   )
