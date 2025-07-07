@@ -54,9 +54,7 @@ export default function LazyImage({
 
   const dynamicPlaceholder = (
     <div
-      className={`w-full bg-zinc-200 rounded ${
-        aspectRatio ? '' : 'aspect-[16/9]'
-      }`}
+      className="w-full bg-zinc-200 rounded aspect-[16/9]"
       style={aspectRatio ? { aspectRatio } : {}}
     />
   )

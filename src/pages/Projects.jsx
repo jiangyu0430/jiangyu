@@ -41,7 +41,7 @@ export default function Projects() {
         <div className="w-full lg:basis-[72%] order-1">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
-              项目选辑
+              项目精选
             </h2>
           </FadeInWhenVisible>
 

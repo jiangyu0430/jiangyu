@@ -6,7 +6,15 @@ const isGithub = process.env.VITE_DEPLOY_TARGET === 'github'
 
 export default defineConfig({
   base: './',
-  plugins: [react(), viteCompression()],
+  plugins: [
+    react(),
+    viteCompression({
+      verbose: true,
+      threshold: 10240,
+      algorithm: 'brotliCompress',
+      ext: '.br',
+    }),
+  ],
   assetsInclude: ['**/*.glb', '**/*.md'], // ✅ 添加对 .md 的支持
   resolve: {
     alias: {
@@ -14,5 +22,19 @@ export default defineConfig({
       Animations: path.resolve(__dirname, 'src/components'),
     },
   },
-  build: {},
+  build: {
+    target: 'esnext',
+    reportCompressedSize: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'vendor-react'
+            return 'vendor'
+          }
+        },
+      },
+    },
+  },
 })

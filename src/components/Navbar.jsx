@@ -103,8 +103,8 @@ export default function Navbar() {
                   to={item.to}
                   className={`relative px-4 py-2 transition rounded-lg ${
                     item.isActive
-                      ? 'bg-gray-100 dark:bg-zinc-200/20 text-black dark:text-white font-medium'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-200/20'
+                      ? 'bg-gray-100 dark:bg-zinc-700/80 text-black dark:text-white font-medium'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800'
                   }`}
                 >
                   <span className="relative z-10">{item.label}</span>

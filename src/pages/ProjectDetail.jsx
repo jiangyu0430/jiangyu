@@ -307,7 +307,7 @@ const ProjectDetail = ({
               {/* 其他作品推荐模块 */}
               <div className="my-20">
                 <h2 className="text-2xl font-semibold mb-4 text-white">
-                  other works
+                  其他作品
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {projects

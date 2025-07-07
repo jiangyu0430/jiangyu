@@ -107,7 +107,7 @@ function Home() {
       <section className="py-20 bg-white dark:bg-black text-black dark:text-white">
         <div className="max-w-[1280px] mx-auto px-4 space-y-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">代表作品</h2>
+            <h2 className="text-4xl font-semibold">项目精选</h2>
             <InteractiveHoverButton
               href="/Projects"
               className="hidden sm:inline-flex"
