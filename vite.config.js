@@ -28,13 +28,7 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (/node_modules\/react(\/|\\)/.test(id)) return 'vendor-react'
-            if (/node_modules\/react-dom(\/|\\)/.test(id)) return 'vendor-react'
-            return 'vendor'
-          }
-        },
+        // no manualChunks
       },
     },
   },
