@@ -71,7 +71,7 @@ export default function About() {
           </FadeInWhenVisible>
         </div>
         <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
-          <div className="w-full md:w-[40%] flex px-6 justify-center md:justify-start">
+          <div className="w-full md:w-[40%] flex md:justify-center justify-start px-4">
             <Stack
               randomRotation={true}
               sensitivity={150}

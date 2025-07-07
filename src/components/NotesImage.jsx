@@ -1,6 +1,6 @@
 import LazyImage from './LazyImage'
 
-export function NotesImage({ imageSrc, alt, onClick, className }) {
+export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
   return (
     <div className={`overflow-hidden rounded-xl ${className || ''}`}>
       <LazyImage
@@ -14,6 +14,7 @@ export function NotesImage({ imageSrc, alt, onClick, className }) {
         onClick={onClick}
         loading="lazy"
         draggable={false}
+        aspectRatio={aspectRatio}
       />
     </div>
   )

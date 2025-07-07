@@ -23,7 +23,7 @@ export function ProjectCard({
   const finalTags = tags ?? fallback?.tags ?? []
 
   return (
-    <div className="bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800 rounded-xl">
+    <div className="bg-slate-50 dark:bg-zinc-900/60 border border-slate-100 dark:border-zinc-800 rounded-xl">
       {/* 上部分 */}
       <div className="py-6 px-6 space-y-2">
         <div className="flex flex-wrap gap-1 text-[12px]">

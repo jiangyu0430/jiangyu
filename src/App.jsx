@@ -54,7 +54,7 @@ function App() {
         lenisRef.current.scrollTo(0, { immediate: true })
         lenisRef.current.resize()
       }
-    }, 50)
+    }, 100)
 
     return () => clearTimeout(timeout)
   }, [location.pathname])
@@ -70,7 +70,7 @@ function App() {
   return (
     <div
       data-lenis
-      className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-gray-900 dark:bg-gray-950 dark:text-white font-sans"
+      className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-gray-900 dark:bg-black dark:text-white font-sans"
     >
       <ScrollProgress className="top-16 z-60" />
       <Navbar />

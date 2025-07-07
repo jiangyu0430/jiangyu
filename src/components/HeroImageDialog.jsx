@@ -97,7 +97,7 @@ export function HeroImageDialog({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onOverlayClick}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center"
         >
           <motion.div
             {...selectedAnimation}

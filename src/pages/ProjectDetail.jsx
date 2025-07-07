@@ -148,7 +148,7 @@ const ProjectDetail = ({
       className={
         fullscreen
           ? 'min-h-screen bg-white dark:bg-neutral-900 overflow-auto'
-          : 'fixed inset-0 z-[9999] bg-black backdrop-blur-sm flex justify-center items-center'
+          : 'fixed inset-0 z-[9999] bg-black overflow-y-auto'
       }
     >
       {loading && !fullscreen ? (
@@ -159,7 +159,7 @@ const ProjectDetail = ({
       ) : (
         !fullscreen && (
           <div
-            className="relative mx-auto bg-black text-gray-100 w-full h-screen flex flex-col px-6 transition-[max-width] duration-300 ease-in-out"
+            className="relative mx-auto bg-black text-gray-100 w-full h-screen flex flex-col px-4 transition-[max-width] duration-300 ease-in-out"
             style={{
               maxWidth: isFullScreenWidth ? '100vw' : '1440px',
               transition: 'all 0.3s ease',

@@ -73,17 +73,19 @@ function Home() {
         </div>
         <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4">
           <FadeInWhenVisible delay={0} y={50} amount={0.1}>
-            <h1 className="text-8xl font-bold mb-8 text-left">
+            <h1 className="sm:text-8xl text-[68px] font-bold mb-8 text-left">
               Hi, I’m Jiang Yu
             </h1>
           </FadeInWhenVisible>
 
           <FadeInWhenVisible delay={0.1} y={50} amount={0.1}>
             <div className="flex items-center gap-4 text-left mb-4 flex-wrap">
-              <span className="text-7xl font-bold">Make better</span>
+              <span className="sm:text-7xl text-5xl font-bold">
+                Make better
+              </span>
               <RotatingText
                 texts={['Products', 'Realities', 'Experiences']}
-                mainClassName="inline-flex w-auto px-6 text-7xl font-bold bg-[#5227FF] text-white overflow-hidden py-1 justify-center rounded-lg"
+                mainClassName="inline-flex w-auto px-6 sm:text-7xl text-5xl font-bold bg-[#5227FF] text-white overflow-hidden py-1 justify-center rounded-lg"
                 staggerFrom="last"
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}

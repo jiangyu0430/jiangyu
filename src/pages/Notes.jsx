@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import FadeInWhenVisible from '../components/FadeInWhenVisible'
 import { HeroImageDialog } from '../components/HeroImageDialog'
 import { NotesImage } from '../components/NotesImage'
-import { notesItems } from '../data/notes' // 只保留这一个导入
+import { notesItems } from '../data/notes'
+import Masonry from 'react-masonry-css'
+
+const breakpointColumnsObj = {
+  default: 3,
+  640: 2,
+}
 
 export default function Notes() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,39 +35,40 @@ export default function Notes() {
   }
 
   return (
-    <div ref={scrollRef} className="overflow-y-auto min-h-screen">
+    <div ref={scrollRef} className="min-h-screen w-full">
       <div className="max-w-screen-xl mx-auto px-4 py-12">
         <FadeInWhenVisible delay={0.1} once>
-          <div className="w-[1280px] text-5xl font-bold text-gray-900 dark:text-white mb-10">
+          <div className="max-[1280px] text-5xl font-bold text-gray-900 dark:text-white mb-10">
             生活片段
           </div>
         </FadeInWhenVisible>
 
         <FadeInWhenVisible delay={0.2} y={60} once>
-          <div className="columns-2 md:columns-3" style={{ columnGap: '16px' }}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="flex -ml-4"
+            columnClassName="pl-4"
+          >
             {notesItems.map((item, idx) => (
-              <div
-                key={idx}
-                style={{ marginBottom: '16px' }}
-                className="break-inside-avoid"
-              >
-                <NotesImage
-                  key={idx}
-                  imageSrc={item.image}
-                  onClick={() => openDialog(item.image)}
-                />
-              </div>
+              <FadeInWhenVisible key={idx} delay={0 + idx * 0.04} y={30}>
+                <div className="mb-4 break-inside-avoid">
+                  <NotesImage
+                    imageSrc={item.image}
+                    onClick={() => openDialog(item.image)}
+                    aspectRatio={3 / 4}
+                  />
+                </div>
+              </FadeInWhenVisible>
             ))}
-          </div>
+          </Masonry>
         </FadeInWhenVisible>
-
-        <HeroImageDialog
-          imageSrc={currentImage}
-          thumbnailSrc={currentImage}
-          isOpen={isOpen}
-          onClose={closeDialog}
-        />
       </div>
+      <HeroImageDialog
+        imageSrc={currentImage}
+        thumbnailSrc={currentImage}
+        isOpen={isOpen}
+        onClose={closeDialog}
+      />
     </div>
   )
 }
