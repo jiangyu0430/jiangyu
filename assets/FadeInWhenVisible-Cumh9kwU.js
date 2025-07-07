@@ -1,1 +1,0 @@
-import{j as s,m as n}from"./index-KMV390xj.js";const m=({children:i,delay:t=0,y:e=80,once:a=!0,threshold:o=.1})=>s.jsx(n.div,{className:"relative",initial:{opacity:0,y:e},whileInView:{opacity:1,y:0},transition:{duration:.8,ease:"easeOut",delay:t},viewport:{once:a,amount:o},children:i});export{m as F};
