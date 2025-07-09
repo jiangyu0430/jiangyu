@@ -8,7 +8,6 @@ const projects = [
     image:
       'https://cdn.dribbble.com/userupload/15705820/file/original-cc393b14992148da1bcc771aae926228.jpeg?resize=2048x1536&vertical=center',
     tags: ['Design system', 'Finance app', 'UI/UX'],
-    contentFile: '1.md',
   },
   {
     slug: 'brand-website',
@@ -20,10 +19,9 @@ const projects = [
     image:
       'https://cdn.dribbble.com/userupload/43356644/file/original-a0bb2679aac0ab5e6e964e60ed940a85.jpg?resize=2048x1536&vertical=center',
     tags: ['Branding', 'Accessibility', 'Responsive'],
-    contentFile: 'brand-website.md',
   },
   {
-    slug: 'mobile-app',
+    slug: 'tabbar-motion',
     title: 'Mobile App UX Improvement',
     date: '2023-12',
     type: 'Mobile design',
@@ -32,7 +30,6 @@ const projects = [
     image:
       'https://cdn.dribbble.com/userupload/43637841/file/original-4bfcab9de572ebef9ebdfed75a78fd56.jpg?resize=2048x1536&vertical=center',
     tags: ['Mobile', 'UX', 'Engagement'],
-    contentFile: 'mobile-app.md',
   },
   {
     slug: 'ecommerce-platform',

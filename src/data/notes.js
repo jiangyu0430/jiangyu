@@ -1,42 +1,37 @@
 // src/data/notes.js
-import image1 from '../assets/image/notes/image1.jpg'
-import image2 from '../assets/image/notes/image2.jpg'
-import image3 from '../assets/image/notes/image3.jpg'
-import image4 from '../assets/image/notes/image4.jpg'
-import image5 from '../assets/image/notes/image5.jpg'
-import image6 from '../assets/image/notes/image6.jpg'
-import image7 from '../assets/image/notes/image7.jpg'
-import image8 from '../assets/image/notes/image8.jpg'
-import image9 from '../assets/image/notes/image9.jpg'
-import image10 from '../assets/image/notes/image10.jpg'
-import image11 from '../assets/image/notes/image11.jpg'
-import image12 from '../assets/image/notes/image12.jpg'
-import image13 from '../assets/image/notes/image13.jpg'
-import image14 from '../assets/image/notes/image14.jpg'
-import image15 from '../assets/image/notes/image15.jpg'
-import image16 from '../assets/image/notes/image16.jpg'
-import image17 from '../assets/image/notes/image17.jpg'
 
-export const notesImages = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-  image11,
-  image12,
-  image13,
-  image14,
-  image15,
-  image16,
-  image17,
+const BASE_URL =
+  'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/'
+
+// 手动维护文件名数组，支持任意命名和后缀
+const fileNames = [
+  'image1.jpg',
+  'image2.jpg',
+  'image3.jpg',
+  'image4.jpg',
+  'image5.jpg',
+  'image6.jpg',
+  'image7.jpg',
+  'image8.jpg',
+  'image9.jpg',
+  'image10.jpg',
+  'image11.jpg',
+  'image12.jpg',
+  'image13.jpg',
+  'image14.jpg',
+  'image15.jpg',
+  'image16.jpg',
+  'image17.jpg',
+  'image18.jpg',
+  'image19.jpg',
+  'image20.jpg',
+  'OriginalVideo.mp4',
 ]
 
+// 生成完整的文件链接数组
+export const notesImages = fileNames.map((name) => `${BASE_URL}${name}`)
+
+// 可选：生成带文本的数组（你之前用到的）
 export const notesItems = notesImages.map((img, i) => ({
   image: img,
   text: `Note ${i + 1}`,

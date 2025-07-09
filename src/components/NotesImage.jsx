@@ -3,7 +3,7 @@ import LazyImage from './LazyImage'
 export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
   return (
     <div
-      className={`notes-image overflow-hidden rounded-xl cursor-pointer ${
+      className={`notes-image overflow-hidden rounded-sm cursor-pointer ${
         className || ''
       }`}
     >

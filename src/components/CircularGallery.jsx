@@ -1,5 +1,6 @@
 //首页图片画廊
 import { useRef, useEffect } from 'react'
+import { notesImages } from '../data/notes.js'
 import { Renderer, Camera, Transform, Plane, Mesh, Program, Texture } from 'ogl'
 
 function debounce(func, wait) {
@@ -373,7 +374,6 @@ class App {
 }
 
 export default function CircularGallery({
-  items,
   bend = 3,
   textColor = '#ffffff',
   borderRadius = 0.05,
@@ -382,7 +382,7 @@ export default function CircularGallery({
   const containerRef = useRef(null)
   useEffect(() => {
     const app = new App(containerRef.current, {
-      items,
+      items: notesImages,
       bend,
       textColor,
       borderRadius,
@@ -391,7 +391,7 @@ export default function CircularGallery({
     return () => {
       app.destroy()
     }
-  }, [items, bend, textColor, borderRadius, font])
+  }, [bend, textColor, borderRadius, font])
   return (
     <div
       className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"

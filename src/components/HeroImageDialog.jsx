@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from 'react'
+import React, { useEffect, useCallback, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { XIcon } from 'lucide-react'
@@ -89,6 +89,28 @@ export function HeroImageDialog({
     }
   }, [isOpen, onClose])
 
+  // Detect mobile or desktop by window width < 768
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768
+    }
+    return false
+  })
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener('resize', handleResize)
+    // Initial check in case window size changed before mount
+    handleResize()
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const imgStyle = isMobile
+    ? { width: 'calc(100vw - 40px)', height: 'auto', maxHeight: '100%' }
+    : { height: 'calc(100vh - 80px)', width: 'auto', maxWidth: '100%' }
+
   return ReactDOM.createPortal(
     <AnimatePresence mode="wait">
       {isOpen && (
@@ -142,12 +164,12 @@ export function HeroImageDialog({
               <XIcon className="w-5 h-5" />
             </motion.button>
 
-            <div className="relative inline-block overflow-hidden rounded-lg  bg-background">
+            <div className="relative inline-block overflow-hidden rounded-sm  bg-background">
               <LazyImage
                 src={imageSrc}
                 alt={thumbnailAlt}
-                className="w-full object-contain"
-                style={{ maxHeight: 'calc(100vh - 80px)', height: 'auto' }}
+                className="object-contain"
+                style={imgStyle}
               />
             </div>
           </motion.div>

@@ -124,7 +124,7 @@ function Home() {
               const featuredSlugs = [
                 '1',
                 'brand-website',
-                'mobile-app',
+                'tabbar-motion',
                 'ecommerce-platform',
               ]
               // 保持原有布局：第1和第4卡片col-span-3，其余col-span-5

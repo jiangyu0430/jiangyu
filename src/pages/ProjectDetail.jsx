@@ -1,3 +1,4 @@
+import { PROJECT_IMAGE_MAP } from '../data/content/projectImages'
 const loadedSlugCache = new Set()
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
@@ -39,6 +40,10 @@ const ProjectDetail = ({
     willChange: 'transform',
     backfaceVisibility: 'hidden',
   }
+
+  const smartSizes = isFullScreenWidth
+    ? '100vw'
+    : '(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px'
 
   useEffect(() => {
     if (!fullscreen) {
@@ -116,6 +121,14 @@ const ProjectDetail = ({
   // 提取 loadContent 到 useEffect 之外
   const loadContent = async () => {
     if (!project) return
+
+    // 如果是图集项目，不加载 .md 文件
+    if (PROJECT_IMAGE_MAP[slug]) {
+      setLoading(false)
+      loadedSlugCache.add(slug)
+      return
+    }
+
     const filePath = `../data/content/${project.contentFile}`
     const importer = markdownFiles[filePath]
     if (!importer) {
@@ -296,30 +309,80 @@ const ProjectDetail = ({
                         : 'prose max-w-none prose-invert'
                     }
                   >
-                    <ReactMarkdown
-                      components={{
-                        img: (props) =>
-                          isBlog ? (
-                            <LazyImage {...props} style={lazyImageStyle} />
-                          ) : (
-                            <ImageWithId {...props} />
-                          ),
-                        p: ({ node, children }) => {
-                          // 博客类型下，如果<p>只包含单个<img>，则去掉<p>包裹
-                          const isOnlyImage =
-                            node.children &&
-                            node.children.length === 1 &&
-                            node.children[0].type === 'element' &&
-                            node.children[0].tagName === 'img'
-                          if (isBlog && isOnlyImage) {
-                            return <>{children}</>
-                          }
-                          return <p>{children}</p>
-                        },
-                      }}
-                    >
-                      {content}
-                    </ReactMarkdown>
+                    {PROJECT_IMAGE_MAP[slug] ? (
+                      PROJECT_IMAGE_MAP[slug].images.map((img, i) => {
+                        const fullUrl = `${PROJECT_IMAGE_MAP[slug].baseUrl}${img}`
+                        const ext = img.split('.').pop().toLowerCase()
+                        const isGif = ext === 'gif'
+                        const isVideo = ext === 'mp4'
+                        return (
+                          <section
+                            key={i}
+                            id={`img-${i}`}
+                            style={{ contain: 'layout' }}
+                          >
+                            {isGif ? (
+                              <img
+                                src={fullUrl}
+                                alt={`image-${i + 1}`}
+                                className="w-full h-auto"
+                                loading={i < 2 ? 'eager' : 'lazy'}
+                                style={lazyImageStyle}
+                              />
+                            ) : isVideo ? (
+                              <video
+                                src={fullUrl}
+                                className="w-full h-auto"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                style={lazyImageStyle}
+                              />
+                            ) : (
+                              <LazyImage
+                                src={`${fullUrl}-1440.webp`}
+                                srcSet={`
+            ${fullUrl}-600.webp 600w,
+            ${fullUrl}-1440.webp 1440w,
+            ${fullUrl}-1920.webp 1920w,
+            ${fullUrl}-2880.webp 2880w
+          `}
+                                sizes={smartSizes}
+                                alt={`image-${i + 1}`}
+                                style={lazyImageStyle}
+                                loading={i < 2 ? 'eager' : 'lazy'}
+                              />
+                            )}
+                          </section>
+                        )
+                      })
+                    ) : (
+                      <ReactMarkdown
+                        components={{
+                          img: (props) =>
+                            isBlog ? (
+                              <LazyImage {...props} style={lazyImageStyle} />
+                            ) : (
+                              <ImageWithId {...props} />
+                            ),
+                          p: ({ node, children }) => {
+                            // 博客类型下，如果<p>只包含单个<img>，则去掉<p>包裹
+                            const isOnlyImage =
+                              node.children &&
+                              node.children.length === 1 &&
+                              node.children[0].type === 'element' &&
+                              node.children[0].tagName === 'img'
+                            if (isBlog && isOnlyImage) {
+                              return <>{children}</>
+                            }
+                            return <p>{children}</p>
+                          },
+                        }}
+                      >
+                        {content}
+                      </ReactMarkdown>
+                    )}
                   </article>
                 )
               })()}
