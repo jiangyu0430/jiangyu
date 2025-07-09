@@ -24,6 +24,7 @@ const ProjectDetail = ({
   const [loading, setLoading] = useState(true)
   const [isFullScreenWidth, setIsFullScreenWidth] = useState(false)
   const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
   const project =
     projects.find((p) => p.slug === slug) || blogs.find((b) => b.slug === slug)
   const modalScrollRef = useRef(null)
@@ -44,6 +45,23 @@ const ProjectDetail = ({
   const smartSizes = isFullScreenWidth
     ? '100vw'
     : '(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px'
+
+  useEffect(() => {
+    const html = document.documentElement
+    const checkDark = () => {
+      return html.classList.contains('dark')
+    }
+
+    setIsDarkMode(checkDark())
+
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(checkDark())
+    })
+
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     if (!fullscreen) {
@@ -181,7 +199,9 @@ const ProjectDetail = ({
       className={
         fullscreen
           ? 'min-h-screen bg-white dark:bg-neutral-900 overflow-auto'
-          : 'fixed inset-0 z-[9999] bg-black overflow-y-auto'
+          : `fixed inset-0 z-[9999] overflow-y-auto ${
+              isDarkMode ? 'bg-black text-zinc-100' : 'bg-white text-zinc-900'
+            }`
       }
     >
       {(loading || (!isBlog && !minimumDelayPassed)) && !fullscreen ? (
@@ -192,7 +212,9 @@ const ProjectDetail = ({
       ) : (
         !fullscreen && (
           <div
-            className="relative mx-auto bg-black text-gray-100 w-full h-screen flex flex-col px-4 transition-[max-width] duration-300 ease-in-out"
+            className={`relative mx-auto w-full h-screen flex flex-col px-4 transition-[max-width] duration-300 ease-in-out ${
+              isDarkMode ? 'bg-black text-zinc-100' : 'bg-white text-zinc-900'
+            }`}
             style={{
               maxWidth: isFullScreenWidth ? '100vw' : '1440px',
               transition: 'all 0.3s ease',
@@ -205,14 +227,16 @@ const ProjectDetail = ({
               {/* 左侧标题 */}
               <div>
                 <h1 className="text-2xl font-bold">{project.title}</h1>
-                <div className="text-sm text-gray-400 flex space-x-3 mt-1">
+                <div className="text-sm text-zinc-400 flex space-x-3 mt-1">
                   {project.type && (
-                    <span className="text-indigo-400">{project.type}</span>
+                    <span className="text-indigo-500 dark:text-indigo-400">
+                      {project.type}
+                    </span>
                   )}
                   {project.type && project.date && (
-                    <span className="text-gray-400">|</span>
+                    <span className="text-zinc-400">|</span>
                   )}
-                  <span className="text-gray-400">{project.date}</span>
+                  <span className="text-zinc-400">{project.date}</span>
                 </div>
               </div>
 
@@ -223,7 +247,11 @@ const ProjectDetail = ({
                   const isBlog = blogs.some((b) => b.slug === slug)
                   return !isBlog ? (
                     <button
-                      className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
+                      className={`p-2 rounded ${
+                        isDarkMode
+                          ? 'bg-white/20 hover:bg-white/30 text-white'
+                          : 'bg-zinc-200 hover:bg-zinc-300 text-zinc-600 hover:text-zinc-800'
+                      }`}
                       onClick={() => setIsFullScreenWidth((v) => !v)}
                       title={isFullScreenWidth ? '恢复原始宽度' : '全屏'}
                     >
@@ -252,7 +280,11 @@ const ProjectDetail = ({
 
                 {/* 刷新按钮 */}
                 <button
-                  className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
+                  className={`p-2 rounded ${
+                    isDarkMode
+                      ? 'bg-white/20 hover:bg-white/30 text-white'
+                      : 'bg-zinc-200 hover:bg-zinc-300 text-zinc-600 hover:text-zinc-800'
+                  }`}
                   onClick={() => {
                     setLoading(true)
                     loadContent()
@@ -271,7 +303,11 @@ const ProjectDetail = ({
 
                 {/* 关闭按钮 */}
                 <button
-                  className="p-2 bg-black bg-white/20 hover:bg-white/30 text-white rounded"
+                  className={`p-2 rounded ${
+                    isDarkMode
+                      ? 'bg-white/20 hover:bg-white/30 text-white'
+                      : 'bg-zinc-200 hover:bg-zinc-300 text-zinc-600 hover:text-zinc-800'
+                  }`}
                   onClick={() => {
                     if (onClose) onClose()
                   }}
@@ -303,11 +339,11 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={
+                    className={`prose mx-auto ${
                       isBlog
-                        ? 'prose max-w-[800px] mx-auto prose-invert prose-img:mx-0 prose-img:w-full'
-                        : 'prose max-w-none prose-invert'
-                    }
+                        ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
+                        : 'max-w-none'
+                    } ${isDarkMode ? 'prose-invert' : ''}`}
                   >
                     {PROJECT_IMAGE_MAP[slug] ? (
                       PROJECT_IMAGE_MAP[slug].images.map((img, i) => {
@@ -389,7 +425,11 @@ const ProjectDetail = ({
 
               {/* 其他作品推荐模块 */}
               <div className="my-20">
-                <h2 className="text-2xl font-semibold mb-4 text-white">
+                <h2
+                  className={`text-2xl font-semibold mb-4 ${
+                    isDarkMode ? 'text-white' : 'text-black'
+                  }`}
+                >
                   其他作品
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -413,7 +453,7 @@ const ProjectDetail = ({
                           <h3 className="text-white text-lg font-semibold">
                             {item.title}
                           </h3>
-                          <p className="text-gray-300 text-sm mt-1 line-clamp-2">
+                          <p className="text-zinc-300 text-sm mt-1 1ine-clamp-2">
                             {item.description}
                           </p>
                         </div>

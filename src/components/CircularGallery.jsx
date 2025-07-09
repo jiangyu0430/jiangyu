@@ -382,7 +382,13 @@ export default function CircularGallery({
   const containerRef = useRef(null)
   useEffect(() => {
     const app = new App(containerRef.current, {
-      items: notesImages,
+      items: notesImages.filter((item) => {
+        const src =
+          typeof item === 'object' && item !== null && 'image' in item
+            ? item.image
+            : item
+        return /\.(jpe?g|png|webp|gif)$/i.test(src)
+      }),
       bend,
       textColor,
       borderRadius,

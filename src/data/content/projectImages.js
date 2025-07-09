@@ -28,7 +28,25 @@ export const networkRevisionImages = [
 // tabbarMotion 项目的图片文件名列表
 export const tabbarMotionImages = [
   '1.gif',
-  'OriginalVideo.mp4',
+  '2.gif',
+  '3.gif',
+  '4.gif',
+  '5.gif',
+  '6.gif',
+  '7.gif',
+  '8.gif',
+  '9.gif',
+  '10.gif',
+  '11.gif',
+  '12.gif',
+  '13.gif',
+  '14.gif',
+  '15.gif',
+  '16.gif',
+  '17.gif',
+  '18.gif',
+  '19.gif',
+  '20.gif',
   // 继续添加图片文件名
 ]
 
