@@ -36,9 +36,9 @@ export default function Projects() {
   }
 
   return (
-    <div className="py-12 px-4 max-w-[1280px] mx-auto text-left space-y-14">
+    <div className="py-12 px-4 w-full max-w-[1280px] mx-auto text-left">
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="w-full lg:basis-[72%] order-1">
+        <div className="w-full lg:w-[72%] order-1 lg:order-1 space-y-14">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
               项目精选
@@ -84,7 +84,7 @@ export default function Projects() {
         </div>
 
         <motion.aside
-          className="w-full lg:basis-[28%] order-2 px-0 lg:px-6"
+          className="w-full lg:w-[28%] order-2 lg:order-2"
           initial="hiddenRight"
           animate="visibleRight"
           variants={containerVariants}

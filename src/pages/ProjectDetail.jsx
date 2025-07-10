@@ -10,7 +10,10 @@ import blogs from '../data/blogs'
 import { ScrollProgress } from '../components/ScrollProgress'
 import LazyImage from '../components/LazyImage'
 
-const markdownFiles = import.meta.glob('../data/content/*.md', { as: 'raw' })
+const markdownFiles = import.meta.glob('../data/content/*.md', {
+  query: '?raw',
+  import: 'default',
+})
 
 const ProjectDetail = ({
   fullscreen = false,

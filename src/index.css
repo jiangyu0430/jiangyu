@@ -46,7 +46,7 @@ body {
   transition-timing-function: ease;
 }
 body {
-  cursor: url('../public/cursor-black.png'), auto;
+  cursor: url('/cursor-black.png'), auto;
 }
 body {
   background-color: white;
