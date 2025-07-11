@@ -12,9 +12,6 @@ export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
     >
       <LazyImage
         src={srcBase}
-        srcSet={`
-          ${srcBase} 1x
-        `}
         alt={alt || 'Image thumbnail'}
         loading="lazy"
         aspectRatio={aspectRatio}

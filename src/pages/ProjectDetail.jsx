@@ -359,6 +359,7 @@ const ProjectDetail = ({
                             key={i}
                             id={`img-${i}`}
                             style={{ contain: 'layout' }}
+                            className={PROJECT_IMAGE_MAP[slug].spacing || ''}
                           >
                             {isGif ? (
                               <img

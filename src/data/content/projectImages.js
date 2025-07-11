@@ -92,5 +92,6 @@ export const PROJECT_IMAGE_MAP = {
   'tabbar-motion': {
     baseUrl: COS_BASE_URLS.tabbarMotion,
     images: tabbarMotionImages,
+    spacing: 'mb-10',
   },
 }
