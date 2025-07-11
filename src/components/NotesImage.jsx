@@ -1,6 +1,9 @@
 import LazyImage from './LazyImage'
 
 export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
+  // 直接使用传入路径作为基础，不拆后缀
+  const srcBase = imageSrc
+
   return (
     <div
       className={`notes-image overflow-hidden rounded-sm cursor-pointer ${
@@ -8,11 +11,10 @@ export function NotesImage({ imageSrc, alt, onClick, className, aspectRatio }) {
       }`}
     >
       <LazyImage
-        src={
-          typeof imageSrc === 'string'
-            ? imageSrc
-            : imageSrc?.src || imageSrc?.default
-        }
+        src={srcBase}
+        srcSet={`
+          ${srcBase} 1x
+        `}
         alt={alt || 'Image thumbnail'}
         loading="lazy"
         aspectRatio={aspectRatio}

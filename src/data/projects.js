@@ -1,6 +1,6 @@
 const projects = [
   {
-    slug: '1',
+    slug: 'networkRevision',
     title: 'UX UI Design - Finance app 🔥',
     date: '2024-03',
     type: 'Design system',
@@ -10,7 +10,7 @@ const projects = [
     tags: ['Design system', 'Finance app', 'UI/UX'],
   },
   {
-    slug: 'brand-website',
+    slug: 'designSystem',
     title: 'Brand Website Redesign',
     date: '2024-01',
     type: 'Website',

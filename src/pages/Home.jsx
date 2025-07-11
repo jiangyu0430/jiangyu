@@ -122,8 +122,8 @@ function Home() {
             {(() => {
               // 只显示这四个特定项目（请替换为实际slug）
               const featuredSlugs = [
-                '1',
-                'brand-website',
+                'networkRevision',
+                'designSystem',
                 'tabbar-motion',
                 'ecommerce-platform',
               ]

@@ -65,7 +65,7 @@ export default function Navbar() {
         <div className="relative">
           {/* 半透明模糊层 */}
           {visible && (
-            <div className="absolute inset-0 backdrop-blur-lg pointer-events-none" />
+            <div className="absolute inset-0 backdrop-blur-xl pointer-events-none" />
           )}
           {/* 导航内容 */}
           <div className="mx-auto max-w-7xl flex justify-between px-4 items-center py-3 dark:bg-transparent dark:text-white relative">
@@ -139,8 +139,8 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full mt-2 right-0 w-[200px] bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-400 shadow-lg rounded-md overflow-hidden z-50"
                     >
-                      <LazyImage
-                        src="images/QRcode.png"
+                      <img
+                        src="QRCode.svg"
                         alt="popover"
                         className="w-full h-auto"
                       />

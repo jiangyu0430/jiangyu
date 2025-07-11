@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import FadeInWhenVisible from '../components/FadeInWhenVisible'
 import { HeroImageDialog } from '../components/HeroImageDialog'
 import { HeroVideoDialog } from '../components/HeroVideoDialog'
@@ -34,8 +34,14 @@ export default function Notes() {
 
   const openDialog = (src) => {
     const isVideo = src.endsWith('.mp4')
-    setCurrentSrc(src)
-    setDialogType(isVideo ? 'video' : 'image')
+    const isGif = src.endsWith('.gif')
+    const isStaticJpg = src.endsWith('.jpg')
+
+    const fullSrc = isStaticJpg ? src.replace('.jpg', '-full.jpg') : src
+    const type = isVideo || isGif ? 'video' : 'image'
+
+    setCurrentSrc(fullSrc)
+    setDialogType(type)
     setIsOpen(true)
   }
 
@@ -43,6 +49,37 @@ export default function Notes() {
     setIsOpen(false)
     setCurrentSrc(null)
     setDialogType('')
+  }
+
+  const renderNoteItem = (src, i) => {
+    const isVideo = src.endsWith('.mp4')
+    const isGif = src.endsWith('.gif')
+
+    return (
+      <div
+        key={i}
+        className="mb-4 break-inside-avoid cursor-pointer"
+        onClick={() => openDialog(src)}
+      >
+        {isVideo ? (
+          <video
+            src={src}
+            className="w-full rounded"
+            preload="metadata"
+            muted
+            playsInline
+            onMouseEnter={(e) => e.currentTarget.play()}
+            onMouseLeave={(e) => {
+              e.currentTarget.pause()
+              e.currentTarget.currentTime = 0
+            }}
+            style={{ objectFit: 'contain' }}
+          />
+        ) : (
+          <NotesImage imageSrc={src} aspectRatio={3 / 4.5} />
+        )}
+      </div>
+    )
   }
 
   return (
@@ -97,34 +134,7 @@ export default function Notes() {
             className="flex -ml-4"
             columnClassName="pl-4"
           >
-            {notesImages.map((src, i) => {
-              const isVideo = src.endsWith('.mp4')
-              return (
-                <div
-                  key={i}
-                  className="mb-4 break-inside-avoid cursor-pointer"
-                  onClick={() => openDialog(src)}
-                >
-                  {isVideo ? (
-                    <video
-                      src={src}
-                      className="w-full rounded"
-                      preload="metadata"
-                      muted
-                      playsInline
-                      onMouseEnter={(e) => e.currentTarget.play()}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.pause()
-                        e.currentTarget.currentTime = 0
-                      }}
-                      style={{ objectFit: 'contain' }}
-                    />
-                  ) : (
-                    <NotesImage imageSrc={src} aspectRatio={3 / 4.5} />
-                  )}
-                </div>
-              )
-            })}
+            {notesImages.map(renderNoteItem)}
           </Masonry>
         </FadeInWhenVisible>
       </div>

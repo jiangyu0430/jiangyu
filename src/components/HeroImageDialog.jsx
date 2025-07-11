@@ -49,6 +49,7 @@ export function HeroImageDialog({
   isOpen,
   onClose,
 }) {
+  const [isImageError, setIsImageError] = useState(false)
   const selectedAnimation = animationVariants[animationStyle]
 
   const debouncedClose = useDebouncedCallback(() => {
@@ -164,13 +165,27 @@ export function HeroImageDialog({
               <XIcon className="w-5 h-5" />
             </motion.button>
 
-            <div className="relative inline-block overflow-hidden rounded-sm  bg-background">
-              <LazyImage
+            <div className="relative inline-block overflow-hidden rounded-sm bg-background">
+              <img
                 src={imageSrc}
                 alt={thumbnailAlt}
                 className="object-contain"
-                style={imgStyle}
+                style={
+                  isImageError
+                    ? {
+                        width: '400px',
+                        height: '600px',
+                        backgroundColor: '#27272a',
+                      }
+                    : imgStyle
+                }
+                onError={() => setIsImageError(true)}
               />
+              {isImageError && (
+                <div className="absolute inset-0 flex items-center justify-center text-white text-sm">
+                  图片加载失败
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

@@ -14,6 +14,19 @@ export const designSystemImages = [
   'part2-01',
   'part2-02',
   'part2-03',
+  'part2-04',
+  'part2-05',
+  'part2-06',
+  'part2-07',
+  'part2-08',
+  'part2-09',
+  'part2-10',
+  'part2-11',
+  'part2-12',
+  'part2-13',
+  'part2-14',
+  'part2-15',
+  'part2-16',
   // 依次添加所有图片文件名
 ]
 
@@ -22,6 +35,21 @@ export const networkRevisionImages = [
   'part1-01',
   'part1-02',
   'part1-03',
+  'part1-04',
+  'part1-05',
+  'part1-06',
+  'part1-07',
+  'part1-08',
+  'part1-09',
+  'part1-10',
+  'part1-11',
+  'part1-12',
+  'part1-13',
+  'part1-14',
+  'part1-15',
+  'part1-16',
+  'part1-17',
+  'part1-18',
   // 继续添加图片文件名
 ]
 
@@ -53,11 +81,11 @@ export const tabbarMotionImages = [
 // 你可以继续为其他项目添加类似结构的数组和基础路径
 
 export const PROJECT_IMAGE_MAP = {
-  1: {
+  designSystem: {
     baseUrl: COS_BASE_URLS.designSystem,
     images: designSystemImages,
   },
-  'brand-website': {
+  networkRevision: {
     baseUrl: COS_BASE_URLS.networkRevision,
     images: networkRevisionImages,
   },
