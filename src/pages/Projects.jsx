@@ -17,7 +17,7 @@ export default function Projects() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const allTypes = ['All', ...Array.from(new Set(projects.map((p) => p.type)))]
+  const allTypes = ['全部', ...Array.from(new Set(projects.map((p) => p.type)))]
 
   // 右侧动画variants不变
   const containerVariants = {
@@ -38,7 +38,7 @@ export default function Projects() {
   return (
     <div className="py-12 px-4 w-full max-w-[1280px] mx-auto text-left">
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="w-full lg:w-[72%] order-1 lg:order-1 space-y-14">
+        <div className="w-full lg:w-[72%] order-1 lg:order-1">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
               项目精选
@@ -50,10 +50,10 @@ export default function Projects() {
               {allTypes.map((type) => (
                 <button
                   key={type}
-                  onClick={() => setActiveType(type === 'All' ? null : type)}
-                  className={`px-4 py-2 rounded-full border text-sm transition ${
+                  onClick={() => setActiveType(type === '全部' ? null : type)}
+                  className={`px-5 py-2 rounded-full border text-sm transition ${
                     activeType === type ||
-                    (type === 'All' && activeType === null)
+                    (type === '全部' && activeType === null)
                       ? 'bg-neutral-900 font-medium border-white/60 text-white '
                       : 'border-zinc-300 text-zinc-600 hover:border-zinc-500 dark:border-neutral-600 dark:text-zinc-300 dark:hover:border-zinc-400'
                   }`}
@@ -97,7 +97,12 @@ export default function Projects() {
             {blogs.map((blog, index) => (
               <Fragment key={blog.slug}>
                 {index > 0 && (
-                  <hr className="border-t border-zinc-200 dark:border-neutral-700" />
+                  <motion.hr
+                    className="border-t border-zinc-200 dark:border-neutral-700"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+                  />
                 )}
                 <motion.div
                   initial={{ opacity: 0, x: 40 }}

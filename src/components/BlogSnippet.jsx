@@ -64,7 +64,7 @@ export function BlogSnippet({
           className={`${
             isVertical
               ? 'text-lg font-semibold mt-2 line-clamp-2'
-              : 'text-base font-semibold mt-1 truncate'
+              : 'text-base font-medium mt-1 truncate'
           }`}
         >
           {finalTitle}

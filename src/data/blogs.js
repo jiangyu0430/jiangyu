@@ -1,10 +1,10 @@
 const blogs = [
   {
     slug: 'my-first-personal-website',
-    title: '我的第一个网站',
+    title: '关于为什么会有这个网站',
     description:
       '记录我和 ChatGPT 一起完成个人网站搭建的全过程，适合有一定前端基础的朋友参考。',
-    date: '2024-04-10',
+    date: '2024-12-10',
     image:
       'https://cdn.dribbble.com/userupload/11212092/file/original-454bb68503451a83392b00bef064d789.jpg?resize=1504x1128&vertical=center',
     contentFile: 'my-first-personal-website.md',
@@ -14,7 +14,7 @@ const blogs = [
     title: '聊聊设计体系（上）',
     description:
       'Comparing CSS Grid and Flexbox for JS code for better performance JS code for better performance JS code for better performance responsive layouts and when to use each.',
-    date: '2024-03-22',
+    date: '2024-12-28',
     image:
       'https://cdn.dribbble.com/userupload/41824000/file/original-e30c9ae78d0f837c9617bd638e04312c.jpg?resize=800x600&vertical=center',
     contentFile: 'design-system1.md',
@@ -24,19 +24,30 @@ const blogs = [
     title: '聊聊设计体系（下）',
     description:
       'Optimize your JS code for better performance JS code for better performance JS code for better performance aJS code for better performance JS code for better performance JS code for better performance nd faster load times.',
-    date: '2024-02-15',
+    date: '2025-02-16',
     image:
       'https://cdn.dribbble.com/userupload/42568677/file/original-3b40e840edc0cc9223484ba539051590.png?resize=1504x1128&vertical=center',
     contentFile: 'design-system2.md',
   },
   {
-    slug: 'javascript-perf2ormance-tips',
-    title: 'JavaScript Per23formance Tips',
+    slug: 'figma-component-library',
+    title: 'Figma 搭建组件库的一些思考',
     description:
       'Optimize your232132 JS code for better performance and faster load times.',
-    date: '2024-02-15',
+    date: '2025-03-02',
     image:
       'https://cdn.dribbble.com/userupload/43827531/file/original-b6d0c4d918e4b4d2c403c59358b0731b.jpg?resize=2048x1536&vertical=center',
+    contentFile: 'figma-component-library.md',
+  },
+  {
+    slug: 'product-lifecycle',
+    title: '产品的生命周期',
+    description:
+      'Optimize your232132 JS code for better performance and faster load times.',
+    date: '2025-05-27',
+    image:
+      'https://cdn.dribbble.com/userupload/43827531/file/original-b6d0c4d918e4b4d2c403c59358b0731b.jpg?resize=2048x1536&vertical=center',
+    contentFile: 'product-lifecycle.md',
   },
 ]
 

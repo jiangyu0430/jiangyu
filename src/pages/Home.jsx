@@ -233,7 +233,7 @@ function Home() {
             )}
           </div>
           {/* 右侧文字，占 2/5，高度移动端自适应，网页端撑满父容器，内边距优化 */}
-          <div className="w-full sm:w-2/5 min-h-[280px] sm:h-full flex flex-col sm:px-0 overflow-visible items-center justify-center">
+          <div className="w-full sm:w-2/5 min-h-[620px] sm:h-full flex flex-col sm:px-0 overflow-visible items-center justify-center">
             <FadeInWhenVisible delay={0.1} y={80} amount={0.6} triggerOnce>
               <p className="w-full text-6xl font-poppins leading-tight font-bold">
                 <span className="text-zinc-500">Design,</span> is thinking made
@@ -241,7 +241,7 @@ function Home() {
               </p>
             </FadeInWhenVisible>
 
-            <div className="space-y-16 py-16 w-full">
+            <div className="space-y-16 pt-16 w-full">
               <FadeInWhenVisible delay={0.2} y={80} amount={0.6} triggerOnce>
                 <section className="flex sm:flex-row gap-24 sm:gap-40">
                   {/* Follow me */}

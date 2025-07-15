@@ -15,6 +15,9 @@ export default function Notes() {
     return saved ? Number(saved) : 4
   })
 
+  // 新增图片显示数量状态
+  const [visibleCount, setVisibleCount] = useState(20)
+
   const breakpointColumnsObj = useMemo(
     () => ({
       default: columnCount,
@@ -31,6 +34,24 @@ export default function Notes() {
   useEffect(() => {
     localStorage.setItem('notesColumnCount', columnCount)
   }, [columnCount])
+
+  // 新增滚动加载函数
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight
+      const fullHeight = document.documentElement.scrollHeight
+
+      if (scrollTop + windowHeight >= fullHeight - 100) {
+        // 滚动接近底部，加载更多
+        setVisibleCount((prev) => Math.min(prev + 20, notesImages.length))
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const openDialog = (src) => {
     const isVideo = src.endsWith('.mp4')
@@ -134,7 +155,7 @@ export default function Notes() {
             className="flex -ml-4"
             columnClassName="pl-4"
           >
-            {notesImages.map(renderNoteItem)}
+            {notesImages.slice(0, visibleCount).map(renderNoteItem)}
           </Masonry>
         </FadeInWhenVisible>
       </div>

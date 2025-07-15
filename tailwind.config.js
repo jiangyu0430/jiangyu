@@ -42,6 +42,24 @@ export default {
           '100%': { 'background-position': '200%' },
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            blockquote: {
+              fontStyle: 'normal',
+              fontWeight: 'normal',
+              borderLeftWidth: '2px',
+              borderLeftColor: '#ddd', // 你也可以自定义颜色，比如 Tailwind 的 gray-400
+              paddingLeft: '1rem',
+              color: '#52525C',
+              marginTop: '1rem',
+              marginBottom: '1rem',
+            },
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:last-of-type::after': { content: 'none' },
+          },
+        },
+      },
     },
     animation: {
       ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',

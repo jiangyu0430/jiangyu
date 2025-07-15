@@ -353,7 +353,7 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 mx-auto ${
+                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 mx-auto text-justify ${
                       isBlog
                         ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
                         : 'max-w-none'
@@ -448,7 +448,7 @@ const ProjectDetail = ({
                   其他作品
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {projects
+                  {(isBlog ? blogs : projects)
                     .filter((p) => p.slug !== slug)
                     .slice(0, 3)
                     .map((item) => (
