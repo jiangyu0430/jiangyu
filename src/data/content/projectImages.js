@@ -84,14 +84,16 @@ export const PROJECT_IMAGE_MAP = {
   designSystem: {
     baseUrl: COS_BASE_URLS.designSystem,
     images: designSystemImages,
+    spacing: 'mb-2',
   },
   networkRevision: {
     baseUrl: COS_BASE_URLS.networkRevision,
     images: networkRevisionImages,
+    spacing: 'mb-2',
   },
   'tabbar-motion': {
     baseUrl: COS_BASE_URLS.tabbarMotion,
     images: tabbarMotionImages,
-    spacing: 'mb-10',
+    spacing: 'mb-6',
   },
 }

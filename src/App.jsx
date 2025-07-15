@@ -1,15 +1,9 @@
 import { useEffect, useRef, useCallback } from 'react'
 import { ScrollProgress } from './components/ScrollProgress'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis' // 新版 lenis 包名
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import {
-  useLocation,
-  Routes,
-  Route,
-  useNavigate,
-  matchPath,
-} from 'react-router-dom'
+import { useLocation, Routes, Route, useNavigate } from 'react-router-dom'
 import ProjectDetail from './pages/ProjectDetail'
 import NotFoundPage from './components/NotFoundPage'
 import Home from './pages/Home'
@@ -26,39 +20,48 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    // 初始化 Lenis 实例，参数可根据需求调整
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smooth: true,
+      // 你可以额外加 autoResize: true，但默认即是 true
+      autoResize: true,
     })
 
+    // 挂载全局，方便调试
     window.lenis = lenis
     lenisRef.current = lenis
 
-    const raf = (time) => {
+    // 手动 requestAnimationFrame 轮询
+    function raf(time) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
 
     requestAnimationFrame(raf)
 
+    // 组件卸载时销毁实例
     return () => {
       lenis.destroy()
       lenisRef.current = null
+      delete window.lenis
     }
   }, [])
 
+  // 路由切换后，重置滚动位置，调用 resize
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (lenisRef.current) {
         lenisRef.current.scrollTo(0, { immediate: true })
         lenisRef.current.resize()
       }
-    }, 100)
+    }, 100) // 延迟调用，保证页面 DOM 完成渲染
 
     return () => clearTimeout(timeout)
   }, [location.pathname])
 
+  // 弹窗关闭逻辑保持不变
   const handleCloseModal = useCallback(() => {
     if (window.history.length > 2) {
       navigate(-1)

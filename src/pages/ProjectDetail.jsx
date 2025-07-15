@@ -3,7 +3,7 @@ const loadedSlugCache = new Set()
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 import ReactMarkdown from 'react-markdown'
 import projects from '../data/projects'
 import blogs from '../data/blogs'
@@ -289,8 +289,19 @@ const ProjectDetail = ({
                       : 'bg-zinc-200 hover:bg-zinc-300 text-zinc-600 hover:text-zinc-800'
                   }`}
                   onClick={() => {
-                    setLoading(true)
-                    loadContent()
+                    if (!isBlog) {
+                      // project 类型刷新
+                      setContent('')
+                      setLoading(true)
+                      loadContent()
+                      if (modalScrollRef.current) {
+                        modalScrollRef.current.scrollTop = 0
+                      }
+                    } else {
+                      // blog 类型刷新，保持原逻辑
+                      setLoading(true)
+                      loadContent()
+                    }
                   }}
                   title="刷新"
                 >
@@ -342,7 +353,7 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={`prose mx-auto ${
+                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 mx-auto ${
                       isBlog
                         ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
                         : 'max-w-none'
