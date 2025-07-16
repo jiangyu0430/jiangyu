@@ -44,7 +44,7 @@ export function BlogSnippet({
         <LazyImage
           src={finalImage}
           alt={finalTitle}
-          className="object-cover transition-transform duration-300 ease-out hover:scale-105 w-full h-full"
+          className="object-cover transition-transform duration-200 ease-out hover:scale-105 w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
@@ -70,7 +70,7 @@ export function BlogSnippet({
           {finalTitle}
         </h4>
         {isVertical && finalDescription && (
-          <p className="text-sm text-neutral-500 mt-2 line-clamp-3">
+          <p className="text-sm text-zinc-400 mt-2 line-clamp-3">
             {finalDescription}
           </p>
         )}

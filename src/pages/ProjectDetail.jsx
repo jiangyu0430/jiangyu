@@ -226,7 +226,7 @@ const ProjectDetail = ({
             onClick={(e) => e.stopPropagation()}
           >
             {/* 标题区 */}
-            <div className="sticky top-0 z-50 flex items-center justify-between py-4">
+            <div className="sticky top-0 z-50 flex items-center justify-between py-4 ">
               {/* 左侧标题 */}
               <div>
                 <h1 className="text-2xl font-bold">{project.title}</h1>
@@ -353,7 +353,7 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 mx-auto text-justify ${
+                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 prose-ol:my-2 mx-auto text-justify ${
                       isBlog
                         ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
                         : 'max-w-none'
@@ -468,7 +468,7 @@ const ProjectDetail = ({
                           <h3 className="text-white text-lg font-semibold">
                             {item.title}
                           </h3>
-                          <p className="text-zinc-300 text-sm mt-1 1ine-clamp-2">
+                          <p className="text-zinc-100 text-sm mt-1 1ine-clamp-2">
                             {item.description}
                           </p>
                         </div>

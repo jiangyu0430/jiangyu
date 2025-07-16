@@ -124,15 +124,15 @@ function Home() {
               const featuredSlugs = [
                 'networkRevision',
                 'designSystem',
+                'visualRedesign',
                 'tabbar-motion',
-                'ecommerce-platform',
               ]
               // 保持原有布局：第1和第4卡片col-span-3，其余col-span-5
               const colSpans = [
-                'col-span-1 sm:col-span-3',
-                'col-span-1 sm:col-span-5',
                 'col-span-1 sm:col-span-5',
                 'col-span-1 sm:col-span-3',
+                'col-span-1 sm:col-span-3',
+                'col-span-1 sm:col-span-5',
               ]
               return featuredSlugs.map((slug, index) => {
                 const project = projects.find((p) => p.slug === slug)
@@ -180,7 +180,7 @@ function Home() {
             </InteractiveHoverButton>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.slice(0, 3).map((blog, idx) => (
+            {blogs.slice(1, 4).map((blog, idx) => (
               <FadeInWhenVisible
                 key={blog.slug}
                 delay={0.2 + idx * 0.1}

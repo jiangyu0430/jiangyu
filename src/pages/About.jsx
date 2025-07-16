@@ -41,15 +41,10 @@ export default function About() {
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.2} y={50} amount={0.2} triggerOnce>
             <p className="text-zinc-800 dark:text-zinc-300 mb-2 text-justify leading-relaxed">
-              As a digital product designer, my focus is on creating intuitive
-              user interfaces, seamless interactions, and cohesive brand
-              identities that drive engagement and enhance usability. Whether
-              it’s designing SaaS dashboards, mobile apps, or high-performance
-              websites, my approach combines creativity with a deep
-              understanding of user needs and business goals Over the years,
-              I’ve collaborated with startups, established companies, and
-              entrepreneurs to bring their ideas to life through thoughtful
-              design solutions.
+              1997
+              年出生于山东青岛，从小就热衷于发现问题、奇思妙想，并一直以成为设计师的梦想努力。
+              2020 年毕业参加工作，具有 5 年工作经验 —— 对 B
+              端设计具备一定深度的认知和思考，有责任感和自驱力。
             </p>
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
@@ -59,14 +54,14 @@ export default function About() {
               experiences. From concept to final execution, I ensure every
               project is strategically crafted to leave a lasting impact
             </p>
-          </FadeInWhenVisible>{' '}
+          </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
             <ul className="inline-flex flex-row gap-2 opacity-90">
               <li className={tagClass}>To B</li>
               <li className={tagClass}>用户体验</li>
               <li className={tagClass}>设计系统</li>
               <li className={tagClass}>三维建模</li>
-              <li className={tagClass}>动效设计</li>{' '}
+              <li className={tagClass}>动效设计</li>
             </ul>
           </FadeInWhenVisible>
         </div>
@@ -125,7 +120,7 @@ export default function About() {
                 <p className="text-right">2025/03-now</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-50 dark:bg-zinc-900 px-8 py-4 rounded-lg">
-                <p className="font-medium">XSKY</p>
+                <p className="font-medium">123</p>
                 <p>Product designer</p>
                 <p className="text-right">2023/04-2024-12</p>
               </div>

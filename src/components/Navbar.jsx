@@ -104,7 +104,7 @@ export default function Navbar() {
                   className={`relative px-4 py-2 transition rounded-lg ${
                     item.isActive
                       ? 'bg-gray-100 dark:bg-zinc-700/80 text-black dark:text-white font-medium'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800'
+                      : 'text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800'
                   }`}
                 >
                   <span className="relative z-10">{item.label}</span>
@@ -113,9 +113,9 @@ export default function Navbar() {
             </nav>
 
             {/* 右侧按钮 */}
-            <div className="flex items-center space-x-4 lg:ml-auto">
+            <div className="text-lg flex items-center space-x-4 lg:ml-auto">
               <Around
-                className="text-lg transition select-none"
+                className="transition select-none"
                 duration={750}
                 toggled={isDark}
                 onToggle={() => {

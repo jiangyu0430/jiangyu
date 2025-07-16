@@ -49,9 +49,8 @@ export default {
               fontStyle: 'normal',
               fontWeight: 'normal',
               borderLeftWidth: '2px',
-              borderLeftColor: '#ddd', // 你也可以自定义颜色，比如 Tailwind 的 gray-400
+              //borderLeftColor: '#ddd',
               paddingLeft: '1rem',
-              color: '#52525C',
               marginTop: '1rem',
               marginBottom: '1rem',
             },

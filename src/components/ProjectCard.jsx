@@ -27,14 +27,14 @@ export function ProjectCard({
       {/* 上部分 */}
       <div className="py-6 px-6 space-y-2">
         <div className="flex flex-wrap gap-1 text-[12px]">
-          <span className="text-[#5227FF] dark:text-indigo-400">
+          <span className="text-indigo-500 dark:text-indigo-400">
             {finalType}
           </span>
           <span className="text-zinc-500">·</span>
           <span className="text-zinc-500">{finalDate}</span>
         </div>
         <h3 className="text-[26px] font-semibold">{finalTitle}</h3>
-        <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
+        <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed text-justify">
           {finalDesc}
         </p>
       </div>
@@ -47,13 +47,13 @@ export function ProjectCard({
         <LazyImage
           src={finalImage}
           alt={finalTitle}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
         />
       </div>
 
       {/* 下部分 */}
       <div className="py-4 px-6  flex items-center justify-between">
-        <div className="flex flex-wrap gap-3 text-zinc-400 dark:text-zinc-400 text-[12px]">
+        <div className="flex flex-wrap gap-3 text-zinc-500 dark:text-zinc-400 text-[12px]">
           {finalTags.map((tag, index) => (
             <span key={index}># {tag}</span>
           ))}
