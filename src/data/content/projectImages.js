@@ -62,10 +62,10 @@ export const visualRedesignImages = [
 
 // tabbarMotion 项目的图片文件名列表
 export const tabbarMotionImages = [
-  '1.gif',
   '2.gif',
   '3.gif',
   '4.gif',
+  '1.gif',
   '5.gif',
   '6.gif',
   '7.gif',

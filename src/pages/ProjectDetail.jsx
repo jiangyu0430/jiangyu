@@ -210,7 +210,9 @@ const ProjectDetail = ({
       {(loading || (!isBlog && !minimumDelayPassed)) && !fullscreen ? (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="loader mb-4"></div>
-          <div className="text-white text-lg">Loading...</div>
+          <div className="text-zinc-900 dark:text-white text-lg">
+            Loading...
+          </div>
         </div>
       ) : (
         !fullscreen && (
@@ -353,7 +355,7 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={`prose prose-p:my-2 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 prose-ol:my-2 mx-auto text-justify ${
+                    className={`prose prose-p:my-4 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 prose-ol:my-2 mx-auto text-justify ${
                       isBlog
                         ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
                         : 'max-w-none'
