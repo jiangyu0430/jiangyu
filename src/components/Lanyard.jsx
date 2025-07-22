@@ -40,13 +40,13 @@ export default function Lanyard({
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }
       >
-        <ambientLight intensity={Math.PI} />
+        <ambientLight intensity={2.4} />
         <Physics gravity={gravity} timeStep={1 / 60}>
           <Band />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
-            intensity={2}
+            intensity={3}
             color="white"
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
@@ -67,7 +67,7 @@ export default function Lanyard({
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={10}
+            intensity={4.5}
             color="white"
             position={[-10, 0, 14]}
             rotation={[0, Math.PI / 2, Math.PI / 3]}
@@ -177,7 +177,12 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   })
 
   curve.curveType = 'chordal'
+  // Optimize lanyard texture clarity and filtering
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+  texture.anisotropy = 16
+  texture.generateMipmaps = true
+  texture.minFilter = THREE.LinearMipMapLinearFilter
+  texture.magFilter = THREE.LinearFilter
 
   return (
     <>

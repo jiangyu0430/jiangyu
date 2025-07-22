@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="bg-black border-t border-neutral-700">
       <div className="max-w-[1280px] h-[72px] px-4 mx-auto grid grid-cols-3 items-center text-white">
         {/* 左侧版权信息 */}
-        <span className="text-sm text-white/50">
+        <span className="text-sm text-white/60">
           © {new Date().getFullYear()} Jiangyu. All rights reserved.
         </span>
 

@@ -8,7 +8,7 @@ import LazyImage from '../components/LazyImage'
 
 export default function About() {
   const tagClass =
-    'px-2 py-1 rounded-[4px] dark:bg-zinc-700 bg-zinc-100 text-zinc-800 dark:text-zinc-100 text-sm whitespace-nowrap'
+    'px-3 py-1 rounded-[4px] dark:bg-zinc-700 bg-gray-100 text-zinc-800 dark:text-zinc-100 text-sm whitespace-nowrap'
   const [showAllTestimonials, setShowAllTestimonials] = useState(false)
   const lanyardRef = useRef(null)
   const [showLanyard, setShowLanyard] = useState(false)
@@ -56,12 +56,13 @@ export default function About() {
             </p>
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.3} y={50} amount={0.2} triggerOnce>
-            <ul className="inline-flex flex-row gap-2 opacity-90">
+            <ul className="inline-flex flex-row gap-2">
               <li className={tagClass}>To B</li>
               <li className={tagClass}>用户体验</li>
               <li className={tagClass}>设计系统</li>
               <li className={tagClass}>三维建模</li>
               <li className={tagClass}>动效设计</li>
+              <li className={tagClass}>前端开发</li>
             </ul>
           </FadeInWhenVisible>
         </div>
@@ -114,27 +115,27 @@ export default function About() {
                 width: '100%',
               }}
             >
-              <div className="grid grid-cols-3 gap-2 bg-zinc-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
+              <div className="grid grid-cols-3 gap-2 bg-gray-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>Product designer</p>
-                <p className="text-right">2025/03-now</p>
+                <p className="text-right">2025-03 – now</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-50 dark:bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">123</p>
                 <p>Product designer</p>
-                <p className="text-right">2023/04-2024-12</p>
+                <p className="text-right">2023-04 – 2024-12</p>
               </div>
               <div className="grid grid-cols-3 gap-2 bg-zinc-50 dark:bg-zinc-900 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>UI Designer</p>
-                <p className="text-right">2020/03-2023-03</p>
+                <p className="text-right">2020-03 – 2023-03</p>
               </div>
             </div>
           </FadeInWhenVisible>
         </div>
       </section>
 
-      {/* 他人评价区（新版） */}
+      {/* 他人评价区 */}
       <section className="w-full bg-white dark:bg-black text-black dark:text-white py-20">
         <div className="max-w-[1280px] mx-auto px-4 space-y-12">
           <div>
@@ -322,8 +323,11 @@ export default function About() {
           {/* 左侧吊牌，占 3/5，高度移动端400，网页端撑满父容器 */}
           <div
             ref={lanyardRef}
-            className="w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
+            className="relative w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
           >
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
+              👆 拖拽我～
+            </div>
             {showLanyard && (
               <Lanyard position={[0, 0, 24]} gravity={[0, -42, 0]} />
             )}

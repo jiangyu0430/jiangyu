@@ -118,7 +118,7 @@ function Home() {
               查看全部
             </InteractiveHoverButton>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-8 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-8 gap-5">
             {(() => {
               // 只显示这四个特定项目（请替换为实际slug）
               const featuredSlugs = [
@@ -179,7 +179,7 @@ function Home() {
               查看全部
             </InteractiveHoverButton>
           </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.slice(1, 4).map((blog, idx) => (
               <FadeInWhenVisible
                 key={blog.slug}
@@ -226,8 +226,11 @@ function Home() {
           {/* 左侧吊牌，占 3/5，高度移动端400，网页端撑满父容器 */}
           <div
             ref={lanyardRef}
-            className="w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
+            className="relative w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
           >
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
+              👆 拖拽我～
+            </div>
             {showLanyard && (
               <Lanyard position={[0, 0, 24]} gravity={[0, -42, 0]} />
             )}

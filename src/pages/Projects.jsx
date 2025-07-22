@@ -98,7 +98,7 @@ export default function Projects() {
               <Fragment key={blog.slug}>
                 {index > 0 && (
                   <motion.hr
-                    className="border-t border-zinc-200 dark:border-neutral-700"
+                    className="border-t border-zinc-200 dark:border-zinc-700"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}

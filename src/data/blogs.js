@@ -14,7 +14,7 @@ const blogs = [
     title: '聊聊设计体系（上）— 从混乱中找到秩序',
     description:
       '分析设计在协作中失控的根本原因，梳理设计体系的定义、本质与价值，并结合产品发展阶段，提出体系建设应与组织节奏匹配的动态策略。',
-    date: '2024-12-28',
+    date: '2024-12-26',
     image:
       'https://cdn.dribbble.com/userupload/41824000/file/original-e30c9ae78d0f837c9617bd638e04312c.jpg?resize=800x600&vertical=center',
     contentFile: 'design-system1.md',
@@ -24,7 +24,7 @@ const blogs = [
     title: '聊聊设计体系（中）— 构建之道',
     description:
       '聚焦设计体系的结构搭建，涵盖协作机制、组织原则、系统边界、组件资产与运行模式，逐步构建可协同、可演进的体系基础框架。',
-    date: '2025-01-17',
+    date: '2025-01-19',
     image:
       'https://cdn.dribbble.com/userupload/42568677/file/original-3b40e840edc0cc9223484ba539051590.png?resize=1504x1128&vertical=center',
     contentFile: 'design-system2.md',
@@ -34,7 +34,7 @@ const blogs = [
     title: '聊聊设计体系（下）— 体系也要活着',
     description:
       '探讨体系如何在组织中持续运行，围绕治理机制、行为建构方法与度量反馈模型，建立设计体系的演化能力与组织级协作支撑体系。',
-    date: '2025-01-30',
+    date: '2025-02-05',
     image:
       'https://cdn.dribbble.com/userupload/42568677/file/original-3b40e840edc0cc9223484ba539051590.png?resize=1504x1128&vertical=center',
     contentFile: 'design-system3.md',

@@ -11,8 +11,7 @@ import { ScrollProgress } from '../components/ScrollProgress'
 import LazyImage from '../components/LazyImage'
 
 const markdownFiles = import.meta.glob('../data/content/*.md', {
-  query: '?raw',
-  import: 'default',
+  as: 'raw',
 })
 
 const ProjectDetail = ({
@@ -232,14 +231,14 @@ const ProjectDetail = ({
               {/* 左侧标题 */}
               <div>
                 <h1 className="text-2xl font-bold">{project.title}</h1>
-                <div className="text-sm text-zinc-400 flex space-x-3 mt-1">
+                <div className="text-sm text-zinc-400 flex space-x-2 mt-1 items-center">
                   {project.type && (
                     <span className="text-indigo-500 dark:text-indigo-400">
                       {project.type}
                     </span>
                   )}
                   {project.type && project.date && (
-                    <span className="text-zinc-400">|</span>
+                    <div className="w-1 h-1 rounded-full bg-slate-300 dark:bg-zinc-500 mx-1" />
                   )}
                   <span className="text-zinc-400">{project.date}</span>
                 </div>
@@ -449,14 +448,20 @@ const ProjectDetail = ({
                 >
                   其他作品
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                  className={`grid gap-4 sm:gap-4 lg:gap-6 mx-auto ${
+                    isFullScreenWidth
+                      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-full'
+                      : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[1440px]'
+                  }`}
+                >
                   {(isBlog ? blogs : projects)
                     .filter((p) => p.slug !== slug)
-                    .slice(0, 3)
+                    .slice(0, isFullScreenWidth ? 4 : 3)
                     .map((item) => (
                       <div
                         key={item.slug}
-                        className="relative group cursor-pointer overflow-hidden rounded"
+                        className="relative group cursor-pointer overflow-hidden rounded-xl"
                         onClick={() => {
                           navigate(`/project/${item.slug}`)
                         }}
@@ -470,7 +475,7 @@ const ProjectDetail = ({
                           <h3 className="text-white text-lg font-semibold">
                             {item.title}
                           </h3>
-                          <p className="text-zinc-100 text-sm mt-1 1ine-clamp-2">
+                          <p className="text-zinc-100 text-sm mt-1 line-clamp-2">
                             {item.description}
                           </p>
                         </div>

@@ -1,3 +1,5 @@
+import { data } from 'autoprefixer'
+
 // 腾讯云 COS 各项目图片基础访问路径（请替换为你的真实桶名和区域）
 export const COS_BASE_URLS = {
   designSystem:
@@ -8,9 +10,11 @@ export const COS_BASE_URLS = {
     'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/motion/',
   visualRedesign:
     'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/visual_redesign/',
+  dataVisualization:
+    'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/data_visualization/',
 }
 
-// designSystem 项目的图片文件名列表
+// 设计体系 项目的图片文件名列表
 export const designSystemImages = [
   'part2-01',
   'part2-02',
@@ -28,10 +32,9 @@ export const designSystemImages = [
   'part2-14',
   'part2-15',
   'part2-16',
-  // 依次添加所有图片文件名
 ]
 
-// networkRevision 项目的图片文件名列表
+// 网络安全策略 项目的图片文件名列表
 export const networkRevisionImages = [
   //'part1-01',
   //'part1-02',
@@ -51,16 +54,27 @@ export const networkRevisionImages = [
   //'part1-16',
   //'part1-17',
   //'part1-18',
-  // 继续添加图片文件名
 ]
 
-// visualRedesign 项目的图片文件名列表
+// 视觉语言 项目的图片文件名列表
 export const visualRedesignImages = [
   'part3-1',
-  // 继续添加图片文件名
+  //'part3-2',
+  //'part3-3',
+  //'part3-4',
+  //'part3-5',
+  //'part3-6',
+  //'part3-7',
+  //'part3-8',
+  //'part3-9',
+  //'part3-10',
+  //'part3-11',
+  //'part3-12',
+  //'part3-13',
+  //'part3-14',
 ]
 
-// tabbarMotion 项目的图片文件名列表
+// 图标动效 项目的图片文件名列表
 export const tabbarMotionImages = [
   '2.gif',
   '3.gif',
@@ -82,7 +96,17 @@ export const tabbarMotionImages = [
   '18.gif',
   '19.gif',
   '20.gif',
-  // 继续添加图片文件名
+]
+
+// 数据可视化 项目的图片文件名列表
+export const dataVisualizationImages = [
+  'part3-1',
+  'part3-2',
+  'part3-3',
+  'part3-4',
+  'part3-5',
+  'part3-6',
+  'part3-7',
 ]
 
 // 你可以继续为其他项目添加类似结构的数组和基础路径
@@ -107,5 +131,10 @@ export const PROJECT_IMAGE_MAP = {
     baseUrl: COS_BASE_URLS.tabbarMotion,
     images: tabbarMotionImages,
     spacing: 'mb-6',
+  },
+  dataVisualization: {
+    baseUrl: COS_BASE_URLS.dataVisualization,
+    images: dataVisualizationImages,
+    spacing: 'mb-4',
   },
 }

@@ -26,15 +26,15 @@ export function ProjectCard({
     <div className="bg-slate-50 dark:bg-zinc-900/60 border border-slate-100 dark:border-zinc-800 rounded-xl">
       {/* 上部分 */}
       <div className="py-6 px-6 space-y-2">
-        <div className="flex flex-wrap gap-1 text-[12px]">
+        <div className="flex flex-wrap gap-1 text-[12px] items-center">
           <span className="text-indigo-500 dark:text-indigo-400">
             {finalType}
           </span>
-          <span className="text-zinc-500">·</span>
-          <span className="text-zinc-500">{finalDate}</span>
+          <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-zinc-500 mx-1" />
+          <span className="text-gray-500 dark:text-zinc-400">{finalDate}</span>
         </div>
         <h3 className="text-[26px] font-semibold">{finalTitle}</h3>
-        <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed text-justify">
+        <p className="text-gray-500 dark:text-zinc-400 text-sm leading-relaxed text-justify">
           {finalDesc}
         </p>
       </div>
@@ -53,7 +53,7 @@ export function ProjectCard({
 
       {/* 下部分 */}
       <div className="py-4 px-6  flex items-center justify-between">
-        <div className="flex flex-wrap gap-3 text-zinc-500 dark:text-zinc-400 text-[12px]">
+        <div className="flex flex-wrap gap-3 text-gray-500 dark:text-zinc-400 text-[12px]">
           {finalTags.map((tag, index) => (
             <span key={index}># {tag}</span>
           ))}

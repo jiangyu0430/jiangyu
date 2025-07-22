@@ -56,7 +56,7 @@ export function BlogSnippet({
         }`}
       >
         {!(isVertical && isLarge) && (
-          <p className="text-xs text-neutral-500 dark:text-neutral-400">
+          <p className="text-xs text-gray-500 dark:text-zinc-400">
             {finalDate}
           </p>
         )}
@@ -64,7 +64,7 @@ export function BlogSnippet({
           className={`${
             isVertical
               ? 'text-lg font-semibold mt-2 line-clamp-2'
-              : 'text-base font-medium mt-1 truncate'
+              : 'text-[15px] font-medium mt-1 line-clamp-2'
           }`}
         >
           {finalTitle}

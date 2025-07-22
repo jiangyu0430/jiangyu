@@ -2,7 +2,7 @@ const projects = [
   {
     slug: 'networkRevision',
     title: 'XHRER Security Policy — Product UI UX Design',
-    date: '2024/07-08',
+    date: '2024-07 – 08',
     type: '产品设计',
     description: 'A comprehensive design system for a finance application.',
     image:
@@ -12,7 +12,7 @@ const projects = [
   {
     slug: 'designSystem',
     title: 'Eris UI - Design System',
-    date: '2023/06-24/10',
+    date: '2023-06 – 2024-10',
     type: '设计体系',
     description:
       'Redesigned a brand website with a focus on modern UI and accessibility.',
@@ -23,7 +23,7 @@ const projects = [
   {
     slug: 'visualRedesign',
     title: 'XHRER - Visual Upgrade',
-    date: '2023/05-06',
+    date: '2023-05 – 06',
     type: '产品设计',
     description:
       'Developed a scalable e-commerce platform with seamless payment integration.',
@@ -34,13 +34,24 @@ const projects = [
   {
     slug: 'tabbar-motion',
     title: 'Tabbar Icon - Motion Design',
-    date: '2020/08-09',
+    date: '2020-08 – 09',
     type: '动画动效',
     description:
       'Improved the user experience of a mobile application for better engagement.',
     image:
-      'https://cdn.dribbble.com/userupload/43637841/file/original-4bfcab9de572ebef9ebdfed75a78fd56.jpg?resize=2048x1536&vertical=center',
+      'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/edbb7a221013163.67cd72c24f099.png',
     tags: ['AE', 'Motion'],
+  },
+  {
+    slug: 'dataVisualization',
+    title: 'Data visualization',
+    date: '2022-11 – 12',
+    type: '数据可视化',
+    description:
+      'Improved the user experience of a mobile application for better engagement.',
+    image:
+      'https://cdn.dribbble.com/userupload/43637841/file/original-4bfcab9de572ebef9ebdfed75a78fd56.jpg?resize=2048x1536&vertical=center',
+    tags: ['大屏', 'Motion'],
   },
 ]
 
