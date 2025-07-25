@@ -116,3 +116,14 @@ body,
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+/* 浅色模式选中样式 */
+::selection {
+  background-color: #ffecbe;
+  color: #000;
+}
+
+/* 暗色模式 */
+html.dark ::selection {
+  background-color: #7575f3;
+  color: #fff;
+}

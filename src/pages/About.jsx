@@ -8,7 +8,7 @@ import LazyImage from '../components/LazyImage'
 
 export default function About() {
   const tagClass =
-    'px-3 py-1 rounded-[4px] dark:bg-zinc-700 bg-gray-100 text-zinc-800 dark:text-zinc-100 text-sm whitespace-nowrap'
+    'px-3 py-1 rounded-[4px] dark:bg-zinc-800 bg-gray-100 text-zinc-800 dark:text-zinc-200 text-sm whitespace-nowrap'
   const [showAllTestimonials, setShowAllTestimonials] = useState(false)
   const lanyardRef = useRef(null)
   const [showLanyard, setShowLanyard] = useState(false)
@@ -115,7 +115,7 @@ export default function About() {
                 width: '100%',
               }}
             >
-              <div className="grid grid-cols-3 gap-2 bg-gray-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
+              <div className="grid grid-cols-3 gap-2 bg-zinc-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>Product designer</p>
                 <p className="text-right">2025-03 – now</p>
@@ -184,7 +184,7 @@ export default function About() {
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
                     Jiangyu
-                    领导的设计系统彻底改变了我们的工作流程。他不仅搭建了完整的组件库和文档，还针对团队痛点做了两件关键事：为每个组件补充‘使用场景’和‘常见错误’示例，并定期收集开发反馈优化规范。如今设计稿一致性超过
+                    主导的设计系统彻底改变了我们的工作流程。他不仅搭建了完整的组件库和文档，还针对团队痛点做了两件关键事：为大量组件补充‘使用场景’和‘常见错误’示例，并定期收集开发反馈优化规范。如今设计稿一致性超过
                     90%，连产品经理都能快速用基础组件搭原型。这种提升团队效率的能力，远比单兵作战更有价值。
                   </p>
                 </div>
@@ -205,7 +205,7 @@ export default function About() {
                   </div>
                   <p className="text-[15px] text-justify mt-4 text-zinc-900 dark:text-zinc-200">
                     Jiangyu
-                    的设计文档条理清晰，标注细致，甚至能提前预判开发会遇到的问题。看似基本功，但这份细致在协作中帮我们节省了大量沟通时间。
+                    的交互文档条理清晰，标注细致，甚至能提前预判开发会遇到的问题。看似基本功，但这份细致在协作中帮我们节省了大量沟通时间。
                   </p>
                 </div>
                 <div
@@ -325,7 +325,7 @@ export default function About() {
             ref={lanyardRef}
             className="relative w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
           >
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
+            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
               👆 拖拽我～
             </div>
             {showLanyard && (

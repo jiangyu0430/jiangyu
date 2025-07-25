@@ -54,11 +54,26 @@ export default function Projects() {
                   className={`px-5 py-2 rounded-full border text-sm transition ${
                     activeType === type ||
                     (type === '全部' && activeType === null)
-                      ? 'bg-neutral-900 font-medium border-white/60 text-white '
-                      : 'border-zinc-300 text-zinc-600 hover:border-zinc-500 dark:border-neutral-600 dark:text-zinc-300 dark:hover:border-zinc-400'
+                      ? 'bg-zinc-950 font-medium border-zinc-950 dark:border-white text-white '
+                      : 'border-zinc-300 text-zinc-600 hover:border-zinc-600 dark:border-neutral-600 dark:text-zinc-300 dark:hover:border-zinc-300'
                   }`}
                 >
-                  {type}
+                  {type.split('/').map((part, i, arr) => (
+                    <span key={i}>
+                      {part}
+                      {i !== arr.length - 1 && (
+                        <span
+                          style={{
+                            fontFamily: 'Arial',
+                            color: 'inherit',
+                            margin: '0 0.2em',
+                          }}
+                        >
+                          /
+                        </span>
+                      )}
+                    </span>
+                  ))}
                 </button>
               ))}
             </div>
@@ -76,6 +91,7 @@ export default function Projects() {
                 >
                   <ProjectCard
                     slug={project.slug}
+                    type={project.type}
                     onClick={() => openModal(project.slug)}
                   />
                 </FadeInWhenVisible>

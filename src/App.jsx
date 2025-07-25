@@ -22,7 +22,8 @@ function App() {
   useEffect(() => {
     // 初始化 Lenis 实例，参数可根据需求调整
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1,
+      //easing: (t) => 1 - Math.pow(2, -10 * t),
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smooth: true,
       // 你可以额外加 autoResize: true，但默认即是 true

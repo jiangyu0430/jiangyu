@@ -125,7 +125,7 @@ function Home() {
                 'networkRevision',
                 'designSystem',
                 'visualRedesign',
-                'tabbar-motion',
+                'arcoDesign',
               ]
               // 保持原有布局：第1和第4卡片col-span-3，其余col-span-5
               const colSpans = [
@@ -222,13 +222,13 @@ function Home() {
 
       {/* Lanyard 3D Module with side-by-side layout */}
       <section className="relative w-full bg-black text-white overflow-hidden sm:h-[660px]">
-        <div className="max-w-[1280px] mx-auto gap-2 px-4 flex flex-col sm:flex-row h-full">
+        <div className="max-w-[1280px] mx-auto gap-2 px-4 flex flex-col  sm:flex-row h-full">
           {/* 左侧吊牌，占 3/5，高度移动端400，网页端撑满父容器 */}
           <div
             ref={lanyardRef}
             className="relative w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
           >
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
+            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
               👆 拖拽我～
             </div>
             {showLanyard && (

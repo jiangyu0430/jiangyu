@@ -234,7 +234,22 @@ const ProjectDetail = ({
                 <div className="text-sm text-zinc-400 flex space-x-2 mt-1 items-center">
                   {project.type && (
                     <span className="text-indigo-500 dark:text-indigo-400">
-                      {project.type}
+                      {project.type.split('/').map((part, i, arr) => (
+                        <span key={i}>
+                          {part}
+                          {i !== arr.length - 1 && (
+                            <span
+                              style={{
+                                fontFamily: 'Arial',
+                                margin: '0 0.2em',
+                                color: 'inherit',
+                              }}
+                            >
+                              /
+                            </span>
+                          )}
+                        </span>
+                      ))}
                     </span>
                   )}
                   {project.type && project.date && (
@@ -362,10 +377,15 @@ const ProjectDetail = ({
                   >
                     {PROJECT_IMAGE_MAP[slug] ? (
                       PROJECT_IMAGE_MAP[slug].images.map((img, i) => {
-                        const fullUrl = `${PROJECT_IMAGE_MAP[slug].baseUrl}${img}`
-                        const ext = img.split('.').pop().toLowerCase()
+                        const isObject = typeof img === 'object'
+                        const ext = isObject
+                          ? null
+                          : img.split('.').pop().toLowerCase()
                         const isGif = ext === 'gif'
                         const isVideo = ext === 'mp4'
+                        const fullUrl = isObject
+                          ? img.src
+                          : `${PROJECT_IMAGE_MAP[slug].baseUrl}${img}`
                         return (
                           <section
                             key={i}
@@ -373,7 +393,28 @@ const ProjectDetail = ({
                             style={{ contain: 'layout' }}
                             className={PROJECT_IMAGE_MAP[slug].spacing || ''}
                           >
-                            {isGif ? (
+                            {isObject && img.type === 'iframe' ? (
+                              <div
+                                style={{
+                                  position: 'relative',
+                                  paddingTop: '50%', // 16:9 比例
+                                  width: '100%',
+                                }}
+                              >
+                                <iframe
+                                  src={img.src}
+                                  allowFullScreen
+                                  style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    border: '1px solid rgba(0, 0, 0, 0.1)',
+                                  }}
+                                />
+                              </div>
+                            ) : isGif ? (
                               <img
                                 src={fullUrl}
                                 alt={`image-${i + 1}`}
@@ -458,29 +499,37 @@ const ProjectDetail = ({
                   {(isBlog ? blogs : projects)
                     .filter((p) => p.slug !== slug)
                     .slice(0, isFullScreenWidth ? 4 : 3)
-                    .map((item) => (
-                      <div
-                        key={item.slug}
-                        className="relative group cursor-pointer overflow-hidden rounded-xl"
-                        onClick={() => {
-                          navigate(`/project/${item.slug}`)
-                        }}
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-all duration-300">
-                          <h3 className="text-white text-lg font-semibold">
-                            {item.title}
-                          </h3>
-                          <p className="text-zinc-100 text-sm mt-1 line-clamp-2">
-                            {item.description}
-                          </p>
+                    .map((item) => {
+                      const resolvedImage =
+                        typeof item.image === 'string'
+                          ? item.image
+                          : isDarkMode
+                          ? item.image.dark ?? item.image.light
+                          : item.image.light ?? item.image.dark
+                      return (
+                        <div
+                          key={item.slug}
+                          className="relative group cursor-pointer overflow-hidden rounded-xl"
+                          onClick={() => {
+                            navigate(`/project/${item.slug}`)
+                          }}
+                        >
+                          <img
+                            src={resolvedImage}
+                            alt={item.title}
+                            className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-all duration-300">
+                            <h3 className="text-white text-lg font-semibold">
+                              {item.title}
+                            </h3>
+                            <p className="text-zinc-100 text-sm mt-1 line-clamp-2">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                 </div>
               </div>
             </div>
