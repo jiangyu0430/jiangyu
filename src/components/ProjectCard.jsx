@@ -124,6 +124,7 @@ export function ProjectCard({
             muted
             loop
             playsInline
+            autoPlay
             onMouseEnter={() => videoRef.current?.play()}
             onMouseLeave={() => videoRef.current?.pause()}
           />
