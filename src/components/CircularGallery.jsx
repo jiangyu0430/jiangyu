@@ -229,13 +229,7 @@ class App {
     this.createGeometry()
     // 这里修改：支持传入数组 items ，且为数组元素为图片字符串
     // 处理 items 传入类型，保证内部 mediasImages 是图片字符串数组
-    this.mediasImages = (items && items.length ? items : []).map((item) => {
-      // 如果 item 是对象，尝试取 item.image，否则默认 item 自身（字符串）
-      if (typeof item === 'object' && item !== null && 'image' in item) {
-        return item.image
-      }
-      return item
-    })
+    this.mediasImages = items && items.length ? items : []
 
     this.medias = this.mediasImages.map((image, index) => {
       return new Media({
@@ -382,13 +376,7 @@ export default function CircularGallery({
   const containerRef = useRef(null)
   useEffect(() => {
     const app = new App(containerRef.current, {
-      items: notesImages.filter((item) => {
-        const src =
-          typeof item === 'object' && item !== null && 'image' in item
-            ? item.image
-            : item
-        return /\.(jpe?g|png|webp|gif)$/i.test(src)
-      }),
+      items: notesImages.filter((src) => !src.endsWith('.mp4')),
       bend,
       textColor,
       borderRadius,

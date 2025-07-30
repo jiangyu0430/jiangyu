@@ -1,82 +1,80 @@
 const projects = [
   {
     slug: 'networkRevision',
-    title: 'XHRER —【网络安全策略】体验设计之路',
-    date: '2024-07 – 08',
-    type: 'UI/UX',
-    description: 'A comprehensive design system for a finance application.',
+    title: 'Noire - Homepages Portfolio Website',
+    date: '2024-07',
+    type: 'Product Design',
+    description:
+      'This is a fictional project. Images are sourced from the internet. The concept revolves around crafting a refined homepage template system for designers to quickly launch personal portfolios.',
     image:
       'https://cdn.dribbble.com/userupload/15705820/file/original-cc393b14992148da1bcc771aae926228.jpeg?resize=2048x1536&vertical=center',
-    tags: ['ToB', 'Website'],
+    tags: ['Landing Page', 'Minimal', 'Web UI'],
   },
   {
     slug: 'designSystem',
-    title: 'Eris Design System — 自研',
-    date: '2023-06 – 2024-10',
-    type: '设计系统',
+    title: 'PoP Gala 2024 Website Design',
+    date: '2023-06',
+    type: 'Product Design',
     description:
-      'Redesigned a brand website with a focus on modern UI and accessibility.',
+      'This is a fictional project. Images are sourced from the internet. The site was designed for a fictional global event, emphasizing vibrant visual identity and responsive behavior across devices.',
     image:
       'https://cdn.dribbble.com/userupload/43356644/file/original-a0bb2679aac0ab5e6e964e60ed940a85.jpg?resize=2048x1536&vertical=center',
-    tags: ['Design System', 'Components'],
+    tags: ['Event', 'Responsive', 'Brand'],
   },
   {
     slug: 'visualRedesign',
-    title: 'XHRER — 视觉语言焕新颜',
-    date: '2023-05 – 06',
-    type: 'UI/UX',
+    title: 'Personal Portfolio Website Landing Page',
+    date: '2023-05',
+    type: 'Design System',
     description:
-      'Developed a scalable e-commerce platform with seamless payment integration.',
+      'This is a fictional project. Images are sourced from the internet. Built to experiment with scroll-based animations and 3D transitions, it serves as a prototype for immersive landing experiences.',
     image:
-      'https://cdn.dribbble.com/userupload/43411865/file/original-5afa5ba8e8ce1b3528450ce9451fbdb0.jpg?resize=2048x1536&vertical=center',
-    tags: ['ToB', 'Website', '3D'],
+      'https://cdn.dribbble.com/userupload/43817207/file/original-cafe73677b804fda7e5f5bdf12cfbe83.mp4',
+    tags: ['Scroll Animation', '3D', 'Prototype'],
   },
   {
     slug: 'arcoDesign',
-    title: 'Arco Design System — Figma Library',
-    date: '2021-12 – now',
-    type: '设计系统',
+    title: 'Notalx - Dashboard AI SAAS Writing',
+    date: '2021-12',
+    type: 'Mobile',
     description:
-      '21 年 Arco Design 发布，以更轻量、现代的风格打破传统中后台的设计惯性，展现出明显的探索性。我被其设计语言深深吸引，恰逢 Figma 在国内大热，我主动发起并搭建了覆盖 Web、Mobile、Arco Pro 的 Figma 资源库，目前社区总引用量超过 100k。',
-    image: {
-      light:
-        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_light.png',
-      dark: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_dark.png',
-    },
-    tags: ['Design System', 'ByteDance', 'Components'],
+      'This is a fictional project. Images are sourced from the internet. It demonstrates an AI-assisted content writing tool within a minimalist dashboard framework.',
+    image:
+      'https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/c3e70b206035297.66c5b53bdfafc.png',
+    tags: ['AI', 'Dashboard', 'Content Tool'],
   },
   {
     slug: 'dataVisualization',
-    title: 'Data visualization',
-    date: '2022-11 – 12',
-    type: '数据可视化',
+    title: 'Nexu - Personal Portfolio Landing page',
+    date: '2022-11',
+    type: 'Illustration',
     description:
-      'Improved the user experience of a mobile application for better engagement.',
+      'This is a fictional project. Images are sourced from the internet. This landing page focused on enhancing narrative storytelling using vector illustrations and progressive reveal animations.',
     image:
       'https://cdn.dribbble.com/userupload/43637841/file/original-4bfcab9de572ebef9ebdfed75a78fd56.jpg?resize=2048x1536&vertical=center',
-    tags: ['大屏'],
+    tags: ['Illustration', 'Narrative', 'Creative'],
   },
   {
     slug: 'tabbar-motion',
-    title: 'Tabbar Icon - Motion Design',
-    date: '2020-09 – 10',
-    type: '动画动效',
+    title: 'Duyu Care | Product Website',
+    date: '2020-09',
+    type: 'Animation',
     description:
-      '探索 TabBar 在轻量界面中的动效表现：指示条滑动、颜色过渡、状态切换节奏等，尝试将这些动态反馈融入常见组件的设计中，为界面注入更鲜活的节奏与视觉生命力。',
+      'This is a fictional project. Images are sourced from the internet. Motion design was used to test expressive UI behavior for a wellness brand, focusing on tab interactions and smooth transitions.',
     image:
-      'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/edbb7a221013163.67cd72c24f099.png',
-    tags: ['AE', 'Motion'],
+      'https://cdn.dribbble.com/userupload/43823496/file/original-3b5265fe87da3caca7b841c3060f834a.mp4',
+    tags: ['Motion Design', 'Wellness', 'UI Animation'],
   },
   {
     slug: 'page-motion',
-    title: 'Page - Motion Design',
+    title: 'Educational Website on Space Pollution',
     date: '2020-08',
-    type: '动画动效',
+    type: 'Animation',
     description:
-      '探索 TabBar 在轻量界面中的动效表现：指示条滑动、颜色过渡、状态切换节奏等，尝试将这些动态反馈融入常见组件的设计中，为界面注入更鲜活的节奏与视觉生命力。',
+      'This is a fictional project. Images are sourced from the internet. Designed as an awareness platform, the site combines parallax effects and animated infographics to convey environmental data.',
     image:
-      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/OriginalVideo.mp4',
-    tags: ['AE', 'Motion'],
+      'https://cdn.dribbble.com/userupload/43411865/file/original-5afa5ba8e8ce1b3528450ce9451fbdb0.jpg?resize=2048x1536&vertical=center',
+    tags: ['Education', 'Infographic', 'Parallax'],
   },
 ]
 

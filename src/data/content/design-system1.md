@@ -1,197 +1,191 @@
-### **📌 导读：**
+### **📌 Guide:**
 
-设计体系听起来像个大词，但它的真正价值，从来不是为了“规范”，而是为了解决混乱。它不是设计师的事，而是组织的事。这一篇，我们将从真实协作中的问题切入，理解设计体系为何出现、它解决什么、又该如何因组织而生。
+A design system may sound like a big concept, but its true value has never been about “standards”—it’s about solving chaos. It’s not just a designer’s concern, but an organizational one. In this article, we’ll start from real collaboration issues to understand why design systems emerge, what problems they solve, and how they should be tailored to the organization.
 
-### **📚 目录：**
+### **📚 Contents:**
 
-1. **「现状」揭开设计失控的面纱**
-   - 看不见的问题，最致命
-   - 协作不是“流程问题”，是语言出了问题
-   - 复杂性让失控更具“隐蔽性”
-   - 不缺规范，缺的是“体系”
-2. **「认知」理解设计体系的本质**
-   - 从“统一一下”说起：人人都想好，却总是做不好
-   - 设计系统 vs 设计体系：从工具到协作机制
-   - 为了持续的好体验，而不是一次性的视觉统一
-3. **「路径」设计体系如何随产品共同演进**
-   - 初创期：从 0 到 1，打下体系最小基底
-   - 成长期：混乱开始显现，是体系建设的最佳时机
-   - 成熟期：体系成为效率平台
+1. **"Current Situation" Unveiling the Mask of Design Out of Control**
+   - The most fatal problems are the invisible ones
+   - Collaboration isn’t a “process issue”—it’s a language issue
+   - Complexity makes loss of control more “hidden”
+   - It’s not a lack of standards, but a lack of “system”
+2. **"Cognition" Understanding the Essence of Design Systems**
+   - Starting from “let’s unify”: Everyone wants it, but it’s always hard to achieve
+   - Design System vs. Design Framework: From tools to collaboration mechanisms
+   - For sustainable good experience, not just one-off visual unification
+3. **"Path" How Design Systems Evolve with Products**
+   - Startup phase: Laying the minimal foundation from 0 to 1
+   - Growth phase: Chaos emerges—the best time for system building
+   - Maturity phase: The system becomes an efficiency platform
 
-## **一、「现状」 揭开设计失控的面纱**
+## **I. "Current Situation" Unveiling the Mask of Design Out of Control**
 
-### 1.1 看不见的问题，最致命
+### 1.1 The Most Fatal Problems Are the Invisible Ones
 
-你刚接手一个 B 端项目，第一天打开设计稿，就觉得哪里不对劲。颜色不统一，按钮样式五花八门，甚至同样的弹窗在不同页面长得完全不一样，更诡异的是，这些“奇怪”的设计并不是 bug，而是历史。你去翻设计稿、查文档、问人，得到的答复都是：“之前就是这么做的”“当时赶进度来不及了”“那个是临时加的”。每一处混乱，居然都有出处。
+You take over a B-end project, and on the first day you open the design files, something feels off. Colors are inconsistent, button styles are all over the place, and even the same modal looks completely different on different pages. Strangely, these “weird” designs aren’t bugs—they’re history. You check the files, look up documentation, ask around, and the answers are always: “That’s how it was done before,” “We were in a rush,” “That was added temporarily.” Every bit of chaos has its origin.
 
-这不是一两次设计决策的失误，而是漫长时间里无数小决定没有协调，积累成的系统性缺陷。有人把它看作“没规范”，但根本问题是没人真正负责“体系”这件事，你以为只是样式不统一、组件零散，可当你想升级体验、改功能时，却发现产品像被无形的锁链束缚，动弹不得。你不再是设计师，而是在和过去的历史斗争。
+This isn’t a one-off design mistake, but a systemic defect accumulated over time from countless uncoordinated decisions. Some see it as “no standards,” but the real issue is that no one is truly responsible for the “system.” You think it’s just inconsistent styles or scattered components, but when you try to upgrade the experience or change features, you find the product is shackled by invisible chains. You’re no longer a designer—you’re fighting history.
 
-这就是设计失控的第一层裂痕，表面混乱下潜藏着深层无序。
+This is the first crack of design out of control: beneath surface chaos lies deep disorder.
 
-### 1.2 协作不是“流程问题”，是语言出了问题
+### 1.2 Collaboration Isn’t a “Process Issue”—It’s a Language Issue
 
-设计师讲“统一感”，开发关心“代码结构”，产品要“快点上”，每个人都在做自己的部分，却没人说得清“系统的全貌”。你常常会遇到这样的沟通：
+Designers talk about “consistency,” developers care about “code structure,” and product managers want things “done quickly.” Everyone does their part, but no one can articulate the “system as a whole.” You often encounter conversations like:
 
-> 产品：这个页面能复用之前那个吗？  
-> 设计：不太一样，但也不是完全不一样。  
-> 开发：你们说清楚，到底复不复用？
+> Product: Can we reuse the previous page?  
+> Designer: Not exactly the same, but not totally different either.  
+> Developer: Can you clarify—reuse or not?
 
-这不是谁的错，而是团队没有一套共同的“协作语言”。流程走完了，设计做了，代码写了，但信息链断了，体验碎片化，协作自然难以成形。
+It’s not anyone’s fault—the team lacks a shared “collaboration language.” The process is followed, designs are done, code is written, but the information chain is broken, the experience is fragmented, and collaboration is hard to form.
 
-这道无形的语言墙，让团队成员各说各话，沟通成本陡增，彼此误解频发。流程闭环仅是表面，真正的协作基础，是共识语言的建立。
+This invisible language barrier causes everyone to talk past each other, increasing communication costs and misunderstandings. Process closure is only superficial; true collaboration is built on a shared language.
 
-### 1.3 复杂性让失控更具“隐蔽性”
+### 1.3 Complexity Makes Loss of Control More “Hidden”
 
-B 端产品更容易掉进这种“系统失控”的陷阱。它们天然复杂：
+B-end products are especially prone to “system out of control” traps. They are inherently complex:
 
-- 功能点密集，每一个都牵涉多个业务小组；
-- 用户角色多样，权限、路径全都不同；
-- 多端联动、多语言适配、可配置化需求层出不穷；
-- 而产品节奏，却在“快速上线”“高效交付”的高压下持续滚动。
+- Dense features, each involving multiple business groups;
+- Diverse user roles, with different permissions and paths;
+- Multi-end linkage, multi-language adaptation, and endless configuration needs;
+- Meanwhile, product pace is under constant pressure for “fast launch” and “efficient delivery.”
 
-于是，很多团队不再“建设”，而是“将就”——页面复制粘贴就上，组件能跑就用，风格随手一调，文档无人维护。久而久之，你的系统看上去还能动，但早已失去了自愈能力。每一个早期临时写下的样式，后期都可能成为不可触碰的债务。
+So, many teams stop “building” and start “making do”—copy-paste pages, use whatever component works, tweak styles on the fly, and documentation is neglected. Over time, your system still works, but has lost its self-healing ability. Every early “temporary” style may become untouchable debt later.
 
-设计师越来越像“临时修补工”，产品经理成了“组件调度员”，开发团队疲于在各种不兼容中切换逻辑。看起来大家都在忙，但其实整个系统正在悄悄下沉。
+Designers become “temporary fixers,” product managers become “component schedulers,” and developers are exhausted switching between incompatibilities. Everyone seems busy, but the system is quietly sinking.
 
-### 1.4 不缺规范，缺的是“体系”
+### 1.4 It’s Not a Lack of Standards, But a Lack of “System”
 
-你可能会想，解决这些问题，是不是换一套组件库？是不是再出一版规范文档？但经验告诉我们：这些都不够。真正能让系统“稳下来”的，从来不是更好的文件，而是更清晰的体系，一个能被所有角色理解、使用、维护、反馈的结构性体系。它不是让设计师更轻松，而是让整个团队更有协作语言、更能抵抗变化。
+You might think the solution is a new component library or another set of standards documentation. But experience tells us: that’s not enough. What truly stabilizes a system is not better files, but a clearer system—a structural system that everyone can understand, use, maintain, and give feedback on. It’s not to make designers’ lives easier, but to give the whole team a shared language and resilience to change.
 
-设计体系不是一个 UI 项目，而是一种团队的操作系统。它不止服务当前的设计目标，而是支撑未来的演进可能。你以为你是在“统一一下样式”，但其实你是在为组织补上一层失控防线。
+A design system is not a UI project—it’s an operating system for the team. It doesn’t just serve current design goals, but supports future evolution. You think you’re “unifying styles,” but you’re actually building a defense against chaos for the organization.
 
-如果你曾经历过那种“哪里都别扭”的项目、那种“谁也说不清为什么会这样”的页面结构、那种“用完就忘的组件库”，那么你就已经体会到：
+If you’ve experienced those “everything feels off” projects, those “no one can explain why it’s like this” page structures, or those “use-and-forget” component libraries, then you already know:
 
-**不是我们不努力，而是我们没有体系。**
+**It’s not that we’re not trying—it’s that we lack a system.**
 
-## **二、「认知」 理解设计体系的本质**
+## **II. "Cognition" Understanding the Essence of Design Systems**
 
-### **2.1 从“统一一下”说起：人人都想好，却总是做不好**
+### **2.1 Starting from “Let’s Unify”: Everyone Wants It, But It’s Always Hard to Achieve**
 
-你在项目里一定听过这句话——“咱们是不是统一一下？”它听起来温和，像是一句建议，其实背后往往藏着一种疲惫，一种已经在混乱中挣扎许久、终于下定决心要“补救一下”的微妙情绪。
+You’ve surely heard this in projects—“Should we unify this?” It sounds gentle, like a suggestion, but often hides a sense of fatigue—a subtle feeling of finally deciding to “fix things” after struggling in chaos for a long time.
 
-但“统一”什么？统一色彩规范？统一组件结构？统一交互模式？每个人心里都有答案，却又彼此不一。更残酷的是，每一次“统一”之后，问题似乎总会卷土重来：有人另起组件，有人偷偷改样式，有人根本没注意到有规范这回事。
+But unify what? Colors? Component structure? Interaction patterns? Everyone has their own answer, but they’re not the same. Worse, after every “unification,” the problems always come back: someone creates a new component, someone secretly changes styles, someone doesn’t even know the standards exist.
 
-于是你发现，这不是不用心，而是没有一套被全员理解、使用、维护的**系统性方法**。大家都想统一，却从来统一不了——统一变成了一种“周期性幻觉”：每一轮看似整合，实则只是暂时压下混乱的火焰，风一吹，又燃起来了。
+You realize it’s not about effort, but the lack of a **systematic method** understood, used, and maintained by everyone. Everyone wants unification, but it never happens—unification becomes a “periodic illusion”: each round seems to integrate things, but only temporarily suppresses the chaos, which flares up again at the slightest breeze.
 
-**设计体系**，就是为了解决这个“大家都想统一，但总是失败”的死循环而生。它不是某个设计师拍脑袋画出来的标准，也不是一份永远没人看的文档，它是一套**能被整个团队运作起来的结构性方法**。它让“统一”这件事，第一次脱离了“靠人维稳”的尴尬，变成了“靠机制运行”的常态。它不是在解决“怎么把一个页面做得好看”，而是在回答——**我们要怎么才能持续地、协作地、规模化地做好设计。**
+**A design system** is born to break this cycle of “everyone wants unification, but always fails.” It’s not a standard made up by a designer, nor a document no one reads—it’s a **structural method that the whole team can operate**. It lets “unification” finally move from “manual maintenance” to “mechanism-driven routine.” It’s not about “making a page look good,” but answering—**how can we sustainably, collaboratively, and at scale, do good design.**
 
-### **2.2 设计系统 vs 设计体系：从工具到协作机制**
+### **2.2 Design System vs. Design Framework: From Tools to Collaboration Mechanisms**
 
-“设计体系”和“设计系统”，这两个词很多人分不清，甚至连团队内部都会混用。有人觉得它们只是两个不同的说法；也有人认为，设计系统就是组件库，体系只是一个空壳。但其实，这两者的差异不仅是命名，更是**思维层级的分水岭**。
+“Design system” and “design framework” are often confused, even within teams. Some think they’re just different terms; others think a design system is just a component library, and a framework is an empty shell. But the difference is not just in naming—it’s a **division of thinking levels**.
 
-**设计系统**是偏“资产层”的东西。它是你能看得见、用得上的那一套东西：色彩、字体、间距、图标、基础组件、文档、规范。它解决的是：我们如何保持设计语言一致，让 UI 规范落到代码中，提高复用率和交付效率。我们可以把它比喻是一台发动机，结构紧凑、性能可靠，一旦启动，就能稳定输出动力。但光有这台发动机，车是跑不远的。
+A **design system** is more about “assets.” It’s the visible, usable set: colors, fonts, spacing, icons, base components, documentation, standards. It solves: how do we keep design language consistent, implement UI standards in code, and improve reuse and delivery efficiency. Think of it as an engine—compact, reliable, and once started, it outputs power steadily. But with just an engine, a car won’t go far.
 
-**设计体系**呢？它是一整辆车的逻辑。你需要发动机，也需要方向盘、刹车、仪表盘、传动结构，你还得知道这辆车的驾驶规则、维护制度、年检流程、驾驶员培训体系……这才是“体系”的完整形态。
+A **design framework**? It’s the logic of the whole car. You need the engine, but also the steering wheel, brakes, dashboard, transmission, and you need to know the driving rules, maintenance system, inspection process, driver training... That’s the complete “framework.”
 
-换句话说，设计系统解决的是“我们如何快速造出一致的界面”，而设计体系关注的是“我们作为一个组织，如何长期协作地创造体验价值”。
+In other words, a design system solves “how do we quickly make consistent interfaces,” while a design framework focuses on “how do we, as an organization, create experience value collaboratively and over the long term.”
 
-它不仅关心我们“怎么设计”，还关心为**什么要这么设计，谁来推动，如何治理，如何进化**。它是一种组织能力，一种把“设计这件事”从个体手感变成系统资产的能力。
+It cares not just about “how to design,” but also **why design this way, who drives it, how to govern, how to evolve**. It’s an organizational capability—turning “design” from individual intuition into a system asset.
 
-所以，设计系统是你在用的那套引擎，设计体系，是整个操作系统。
+So, the design system is the engine you use; the framework is the whole operating system.
 
-### **2.3 为了持续的好体验，而不是一次性的视觉统一**
+### **2.3 For Sustainable Good Experience, Not Just One-Off Visual Unification**
 
-很多团队在推设计体系的时候，总会被误解成是为了“让界面更漂亮”，或者“让开发省点事”。但如果一个体系的价值只体现在“看起来整齐”，那它很快就会被替代，被抛弃，或者被遗忘。真正优秀的设计体系，从来不只是为了“好看”，它的目标是——**让“好”这件事，变得可持续。**
+Many teams pushing design systems are misunderstood as just “making the interface prettier” or “making development easier.” But if a system’s value is only in “looking neat,” it will soon be replaced, abandoned, or forgotten. Truly excellent design systems are never just for “looking good”—their goal is to **make ‘good’ sustainable**.
 
-一个页面设计得再完美，意义也只停留在“此时此地”。但如果你想让这种体验**在未来版本里延续、在不同产品里协同、在不同角色之间传递**，你就需要一套体系。
+A perfectly designed page only matters “here and now.” But if you want that experience to **persist in future versions, collaborate across products, and be shared among roles**, you need a system.
 
-- 在**协作维度**上，为团队提供统一语言，让产品、设计、开发不再各说各话；
-- 在**设计维度**上，塑造出一种可以被继承的逻辑，让风格和行为有内在一致性，而不是全靠个人习惯；
-- 在**开发维度**上，它提供对接契约，让每一次落地都清晰高效；
-- 在**产品维度**上，它降低维护成本，减少“补丁式”更新带来的系统风险。
+- On the **collaboration dimension**, it provides a common language so product, design, and development are on the same page;
+- On the **design dimension**, it creates inheritable logic, so style and behavior are consistent, not just personal habit;
+- On the **development dimension**, it provides clear contracts for efficient implementation;
+- On the **product dimension**, it lowers maintenance costs and reduces system risk from “patchwork” updates.
 
-你以为你在建的是一份规范，其实你是在构建一套**组织的用户体验能力**。设计系统是我们眼前看得见的部分，而体系，是支撑这整个体验系统能够持续演进的“操作内核”。
+You think you’re building a standard, but you’re actually building an **organizational user experience capability**. The design system is the visible part; the framework is the “operating core” that enables the whole experience system to evolve.
 
-它不是为了控制创意，而是为了**托住那些真正重要的创意，让它们活得更久。**
+It’s not about controlling creativity, but **supporting what truly matters, so it lasts longer.**
 
-如果你也曾一次次陷入“统一不了”的循环，曾目睹规范文档变成摆设，曾在协作中苦于语言不通，那你就已经体会到了：设计体系不是加了一套设计流程，而是我们终于可以不靠个人英雄主义，也能把体验做好。
+If you’ve been stuck in the “can’t unify” cycle, seen standards become shelfware, or struggled with language barriers in collaboration, you already know: a design system isn’t just adding a process—it’s finally being able to do good experience without relying on individual heroics.
 
-## **三、「路径」 设计体系如何随产品共同演进**
+## **III. "Path" How Design Systems Evolve with Products**
 
-在谈设计体系建设时，我们常常容易陷入一个误区：以为“体系”是一个标准答案，只要照着大厂的模版来一遍，就能搭出一套规范化的系统。但现实是，每个团队的阶段不同、资源不同、目标不同，一套体系是否有效，取决于它是否与组织所处的**产品生命周期**相匹配。
+When discussing design system building, it’s easy to fall into the trap of thinking there’s a standard answer—just copy a big company’s template and you’ll have a system. But in reality, every team’s stage, resources, and goals are different. Whether a system works depends on whether it matches the **product’s lifecycle**.
 
-就像产品本身会经历从 0 到 1、从试错到增长、从局部到平台的演化过程，设计体系也不可能一蹴而就。它需要随着产品的发展节奏，从“轻量规范”走向“机制搭建”，再逐步建立可扩展、可协作、可治理的系统能力。
+Just as products evolve from 0 to 1, from trial and error to growth, from local to platform, design systems can’t be built overnight. They need to grow with the product, from “lightweight standards” to “mechanism building,” and gradually establish scalable, collaborative, and governable system capabilities.
 
-如果脱离了产品节奏谈体系，往往会走入两个极端：一是“一上来就做得太重”，结果体系形同虚设；二是“一直没开始做”，直到设计债堆积得处理不动。真正应该问的问题，从来都不是“我们该不该做体系”，而是：
+If you talk about systems without considering product pace, you’ll fall into two traps: either “doing too much too soon,” making the system useless, or “never starting,” until design debt is unmanageable. The real questions are never “should we build a system,” but:
 
-> “我们现在处在哪个阶段？”  
-> “在这个阶段，怎样的体系才是‘刚刚好’的体系？”
+> “What stage are we at now?”  
+> “At this stage, what kind of system is ‘just right’?”
 
-### **3.1 新生期：从 0 到 1，打下体系最小基底**
+### **3.1 Startup Phase: Laying the Minimal Foundation from 0 to 1**
 
-在产品刚刚起步的阶段，一切都围绕“上线”二字转。此时团队小，职责边界模糊，设计师很可能也承担着部分产品职责；体验一致性并不是首要目标，更多是依赖设计直觉来做出判断，很多组件都是靠“复制粘贴”生出来的。
+At the product’s start, everything is about “launching.” The team is small, roles are blurred, designers may also do product work; consistency isn’t the top priority—design intuition rules, and many components are “copy-pasted.”
 
-这也是一个试错速度极快的阶段：需求可能一周一变，页面结构还未稳定，所有努力都集中在“先让它跑起来”。在这种状态下，体系听起来像个遥远的概念，甚至会被视作“浪费时间”。但如果我们换个视角，不去追求完整规范，而是**埋下一些“秩序的种子”**，这套体系未来就不会难以生根。
+This is also a phase of rapid trial and error: requirements change weekly, page structures aren’t stable, and all effort is on “getting it running.” At this point, a system seems distant, even a “waste of time.” But if we shift perspective—not aiming for full standards, but **planting seeds of order**—the system will take root more easily later.
 
-我们看到一些成熟的体系工作，其实早期都不是通过一次性投入构建的，而是靠一个人、少数几个人，在混乱中做了最小但关键的记录，比如——哪些颜色是共用的？按钮有哪些变体？组件的命名能否统一？
+We see that mature systems often didn’t start with a big investment, but with one or a few people making minimal but key records amid chaos, like—which colors are shared? What button variants exist? Can component naming be unified?
 
-这些都不是“规范”，而是**减少未来重复劳动的锚点**。
+These aren’t “standards,” but **anchors to reduce future repetitive work**.
 
-新生期的体系建设建议：
+Startup phase system building advice:
 
-- 不必搭建完整系统，但可以定义一套基础色彩、按钮样式，并以 Figma Variables、样式命名等形式保留；
-- 组件命名保持一致，即使是复制粘贴出来的内容，也别让它在命名结构上完全散掉；
-- 明确一个“谁说了算”的机制，即便是你自己，也要清楚某个组件的决定逻辑由谁来负责；
-- 保持沉淀意识，即使没有文档平台，也要把改动原因写在设计稿旁边。
+- No need for a full system, but define basic colors and button styles, and keep them in Figma Variables or naming conventions;
+- Keep component naming consistent—even if copy-pasted, don’t let naming structure fall apart;
+- Clarify a “decision maker” mechanism—even if it’s just you, know who decides on a component;
+- Maintain a habit of documentation—even if there’s no platform, write change reasons next to the design.
 
-新生期的体系不是为了控制协作，而是**帮未来的你，少花一点时间踩坑补漏**。
+The startup phase system isn’t to control collaboration, but to **save your future self time fixing things**.
 
-### **3.2 成长期：混乱开始显现，是体系建设的最佳时机**
+### **3.2 Growth Phase: Chaos Emerges—The Best Time for System Building**
 
-当产品进入成长期，最大的变化不是功能变多了，而是**参与的人变多了**。设计师不再是孤军奋战，产品线开始拉长，多个设计模块开始互相复用；而与此同时，体验的割裂感也逐渐浮出水面。
+As the product enters the growth phase, the biggest change isn’t more features, but **more people involved**. Designers are no longer solo, product lines expand, modules are reused; meanwhile, experience fragmentation surfaces.
 
-你会开始听到这些声音：
+You’ll start hearing:
 
-> “为什么这两个卡片长得不一样？”  
-> “这个按钮跟那个模块的不一样，是不是漏更新了？”  
-> “你们这个组件，是我能随便改的吗？”
+> “Why do these two cards look different?”  
+> “This button isn’t the same as that module’s—was it missed?”  
+> “Can I just change this component?”
 
-很多团队正是在这个阶段，第一次真正意识到——**体系不是为了美观一致，而是为了避免协作浪费**。它的本质，是构建一个可持续复用与维护的结构系统。
+Many teams first realize at this stage—**systems aren’t for aesthetics, but to avoid collaboration waste**. The essence is to build a structure for sustainable reuse and maintenance.
 
-这个阶段的设计体系建设，重点不再是“有没有规范”，而是“组件能不能被多人高效地共用”。而所谓“共用”，背后依赖的是统一的命名规则、状态定义、版本概念，以及最重要的：一个**能对资产做“最小约束”的结构机制**。
+At this stage, the focus shifts from “are there standards” to “can components be efficiently reused by many.” “Reuse” depends on unified naming, state definitions, versioning, and most importantly: a **structure with minimal constraints on assets**.
 
-成长期的体系建设建议：
+Growth phase system building advice:
 
-- 搭建可被复用的组件资产库，以及各组件的使用说明文档；
-- 建立统一的组件命名、分类、状态标识规则，避免资产随个人理解变形；
-- 开始引入“组件版本”概念，让组件可以逐步演进而不影响已上线内容；
-- 明确“设计责任人”制度，组件更新要有评审流程或共识机制；
-- 不以追求“100% 统一”为目标，但要让设计差异背后是有“意识与理由”的，而非偶然。
+- Build a reusable component asset library and usage documentation;
+- Establish unified component naming, categorization, and state rules to avoid personal interpretation;
+- Introduce “component versioning” so components can evolve without affecting what’s live;
+- Clarify “design owner” roles—component updates need review or consensus;
+- Don’t aim for “100% unification,” but ensure design differences are “intentional and reasoned,” not accidental.
 
-成长期是体系最容易“长起来”的窗口期。混乱已经显现，团队也具备共建意愿，只要搭好第一层结构，体系就能逐渐承接更高密度的协作压力。
+The growth phase is the best window for systems to “grow.” Chaos is visible, the team is willing to co-build, and with the first layer of structure, the system can handle more collaboration pressure.
 
-### **3.3 成熟期：体系成为效率平台**
+### **3.3 Maturity Phase: The System Becomes an Efficiency Platform**
 
-成熟期的产品，往往已经形成了相对稳定的商业模式，设计团队也不再是孤岛，而是成为产品链路中不可或缺的一环。这个阶段，设计体系的挑战也从“组件长得一样”，转变为“协作能不能跑通”、“体系能不能自我演进”。
+In mature products, the business model is stable, and the design team is integral to the product chain. Now, the challenge shifts from “components look the same” to “can collaboration run smoothly” and “can the system evolve itself.”
 
-你会开始遇到这些问题：
+You’ll face questions like:
 
-- 跨端组件差异化实现，谁来管理、怎么统一？
-- 多个设计师在维护同一套体系，怎么知道哪些是共识、哪些是个例？
-- 页面样式很多是照着规范做的，但最后效果还是不一致，问题到底出在哪？
+- Who manages and unifies cross-end component differences?
+- With multiple designers maintaining the system, how do you know what’s consensus and what’s an exception?
+- Many page styles follow standards, but results are still inconsistent—where’s the problem?
 
-这个阶段的设计体系，不再是单点标准的罗列，而是**一整套结构 + 工具 + 机制的有机系统**。设计语言、组件库、Design Token、版本控制、协作流程都需要协同运作。体系开始脱离“文档化管理”，转向平台化、结构化的支撑系统。
+At this stage, the system is no longer just a list of standards, but an **organic system of structure + tools + mechanisms**. Design language, component library, design tokens, version control, and collaboration processes all work together. The system moves from “document management” to platformized, structured support.
 
-成熟期的体系建设建议：
+Maturity phase system building advice:
 
-- 建立“组件系统 + Token 系统 + 多端适配机制”的多层结构，支撑复杂模块的灵活复用；
-- 打通 Figma Library、组件平台、代码平台等设计交付链路，实现资产统一托管；
-- 引入设计版本管理机制，做到每一次改动都可回溯、可审查、可预警；
-- 抽离设计模式，沉淀跨场景通用的交互与结构解决方案，支撑复杂业务任务的稳定复用；
-- 配合平台分析能力，建立组件使用率、冗余率等度量指标，为治理与演进提供依据。
+- Build a multi-layer structure of “component system + token system + multi-end adaptation” to support flexible reuse of complex modules;
+- Integrate Figma Library, component platform, code platform, etc., for unified asset management;
+- Introduce design version management—every change is traceable, reviewable, and alertable;
+- Abstract design patterns, distill cross-scenario interaction and structure solutions for stable reuse in complex tasks;
+- Use platform analytics to track component usage, redundancy, etc., to inform governance and evolution.
 
-成熟期的体系，本质是一种**组织级协作基础设施**。它不仅提升设计效率，更承载了跨职能协作、质量评估与版本演进等关键职能，是产品从“稳定输出”走向“系统提效”的基础设施能力。
+The mature system is essentially **organizational-level collaboration infrastructure**. It not only boosts design efficiency, but also supports cross-functional collaboration, quality assessment, and version evolution—foundational for moving from “stable output” to “systematic efficiency.”
 
-设计体系不是一次性搭建完成的资产，而是一种**随着产品节奏持续演进的系统能力**。每个阶段都不需要“最完美的体系”，只需要“最合适的体系”：
+A design system is not a one-off asset, but a **system capability that evolves with the product**. Each stage doesn’t need the “perfect system,” just the “most suitable system”:
 
-- 在**新生期**，体系是对混乱最小的克制，是一颗秩序的种子；
-- 在**成长期**，体系是复用与协作的骨架，是多人共建的支撑结构；
-- 在**成熟期**，体系成为组织效率的放大器，是跨职能协作的基础平台。
+- In the **startup phase**, the system is minimal restraint on chaos—a seed of order;
+- In the **growth phase**, the system is the skeleton for reuse and collaboration—a support structure for co-building;
+- In the **maturity phase**, the system is an efficiency amplifier—a foundation for cross-functional collaboration.
 
-理解自己身处哪个阶段，做“恰到好处”的体系建设，才是真正聪明且长效的路径选择。
-
----
-
-真正有效的体系，绝不只是规范或库，更是一种支撑组织协作的结构性能力。
-
-下一篇，我们将从构建方式出发，展开讲述：如何从“组件资产”走向“体系能力”。
+Understand your stage, build the “just right”

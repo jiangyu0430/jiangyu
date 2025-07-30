@@ -56,9 +56,8 @@ export default function Notes() {
   const openDialog = (src) => {
     const isVideo = src.endsWith('.mp4')
     const isGif = src.endsWith('.gif')
-    const isStaticJpg = src.endsWith('.jpg')
-
-    const fullSrc = isStaticJpg ? src.replace('.jpg', '-full.jpg') : src
+    // Directly use the src from data as-is, no filename modification
+    const fullSrc = src
     const type = isVideo || isGif ? 'video' : 'image'
 
     setCurrentSrc(fullSrc)

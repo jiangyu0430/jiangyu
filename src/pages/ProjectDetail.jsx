@@ -383,9 +383,7 @@ const ProjectDetail = ({
                           : img.split('.').pop().toLowerCase()
                         const isGif = ext === 'gif'
                         const isVideo = ext === 'mp4'
-                        const fullUrl = isObject
-                          ? img.src
-                          : `${PROJECT_IMAGE_MAP[slug].baseUrl}${img}`
+                        const fullUrl = isObject ? img.src : img
                         return (
                           <section
                             key={i}
@@ -434,13 +432,7 @@ const ProjectDetail = ({
                               />
                             ) : (
                               <LazyImage
-                                src={`${fullUrl}-1440.webp`}
-                                srcSet={`
-            ${fullUrl}-600.webp 600w,
-            ${fullUrl}-1440.webp 1440w,
-            ${fullUrl}-1920.webp 1920w,
-            ${fullUrl}-2880.webp 2880w
-          `}
+                                src={fullUrl}
                                 sizes={smartSizes}
                                 alt={`image-${i + 1}`}
                                 style={lazyImageStyle}

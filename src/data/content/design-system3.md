@@ -1,227 +1,43 @@
-### **📌 导读：**
+Next Thursday marks the 12th Global Accessibility Awareness Day, so what better topic to dive into for our third part of this series on the future of design systems. Previously, we covered complexity and automation.
 
-体系建设真正难的，不是启动，而是“活着”。要让它在组织中持久运作，需要的不只是组件与规范，而是治理机制,以及反馈闭环的系统能力。最终，设计体系将不再只是设计团队的工具，而成为组织的一部分。
+fods-accessibility-header
 
-### **📚 目录：**
+As of 2022, only 3% of the internet was accessible to people with disabilities—design systems are ostensibly the best solution to move the needle upward. If everyone is using the same kit of parts and following the same set of rules, surely it should be easy enough to weave in accessibility guidance as well, right? (Right?)
 
-1. **「运行」让体系在协作中活起来**
-   - 协作不是配合，而是职责结构
-   - 体系能不能动起来，取决于协作闭不闭环
-   - 没有机制支撑，工具不过是“假体”
-   - 别想一蹴而就，先从最小闭环起步
-2. **「治理」不是管住变化，而是承接变化**
-   - 体系的第二曲线，不是资产更多，而是秩序更强
-   - 治理是体系的“自我调节系统”
-   - 治理的本质，是让体系成为“组织能力”
-3. **「进化」有感知的体系，才有生命力**
-   - 没有观测，就没有演进
-   - 四维度体系健康度量模型
-   - 度量不是控制，而是组织的感知接口
-   - 真正的闭环，不是流程，而是感知 + 反馈 + 调整
-   - 有反馈，才有方向；能进化，体系才有生命
+There’s reason to believe that this long-sought future is now closer than ever. More companies are investing in in-house design systems—up 22% in 2020 as reported in Material Design’s State of Design survey, and likely higher now three years later. One of the main motivations for this uptick is their ability to power accessibility efforts at scale. In that same survey, 47% of respondents said that their design system included accessibility guidelines—again, a substantial increase from the previous year, when accessibility was grouped under ‘Other’ (8.4%). Now that there are more tools, well-established standards such as the Web Content Accessibility Guidelines (WCAG) and ever-compelling legal ramifications, we may finally move that needle.
 
-## **十、「运行」让体系在协作中活起来**
+Design systems and accessibility: the perfect pair
+With one billion people globally living with disabilities and holding $1.2 trillion in annual disposable income, accessibility is becoming increasingly hard for companies to ignore. Many organizations are starting to understand the importance of making their products accessible to all, what Forrester calls the “digital accessibility opportunity.” Creating accessible products is more than just a box to check—it's a chance to pave the way for growth, establish credibility, and build trust with consumers.
 
-设计体系的真正难题，从来不是“规范做得够不够多”，而是“做了的东西，有没有真的被用起来”。很多体系搭得光鲜，文档齐全、组件成册，但半年之后，没人知道哪些组件还能用，变更没人通知，问题没人反馈，业务甚至开始绕开体系自建一套。
+“Design systems are a perfect pair to accessibility,” says Anna Zaremba, Senior Design Lead at eBay. “Accessibility can be baked into every part of a design system, from carefully tested foreground and background colors to individual components.” By promoting consistency, thorough documentation, and ongoing feedback, design systems provide the perfect scaffolding for implementing accessibility best practices across an entire product ecosystem. They also make it easier to roll out changes at scale by propagating adjustments made at the system-level across all instances.
 
-这不是态度问题，也不是执行问题，而是协作机制没跑通。你会发现，每个人都在用自己的方式“尽力配合”，但体系依然跑不动，因为整个系统缺少结构定义：**谁负责构建？谁可以修改？变更了要通知谁？反馈怎么回流？**
+inline-image-annotations
 
-协作不是靠“自觉”维系的，而是要靠机制驱动、结构承接。体系要活起来，必须从“大家能一起维护”，变成“系统自然协作”。
+Responsible AI in accessibility
+With the increasing ubiquity of artificial intelligence (AI), many design systems teams are turning to the technology to improve accessibility for users. The result is a new crop of AI-driven tools that claim to detect and fix web accessibility issues with a single line of code: automatically describe images, label unlabeled buttons, and introduce semantic structure with headings.
 
-### **10.1 协作不是配合，而是职责结构**
+AI can be a useful tool for automating certain aspects, but as we’ve seen with other use cases, it often falls short when it comes to tasks requiring human understanding and judgment. Many “plug and play” accessibility widgets and overlays negatively impact accessibility, leading to lawsuits for more than 400 companies who used them. In many of these cases, simply implementing a clear navigation structure and semantic code would have created a more inclusive product than the havoc wrought by these solutions.
 
-很多团队以为只要大家愿意配合，体系就能正常运转。但实际情况恰恰相反：协作无法靠态度驱动，它只能靠结构来保障。最基本的结构，是三类职责角色要明确：
+Chancey Fleet, a blind library-based tech educator in New York, says there are some responsible implementations of the technology. She cites Apple's Screen Recognition which works in tandem with VoiceOver to detect the layout of elements in the user interface, including apps that haven't been optimized for the tool. “Apple really wants developers to engage in more accessible design and development practices. Screen recognition is something under the control of the user's discretion. They can enable it and see if it'll solve a problem,” Fleet explains. “It is not an attempt to siphon market dollars away from genuine accessibility efforts. It is a way to furnish the users with an extra tool.”
 
-- **建设者**负责设计资产的建立与演进，比如组件、Token、命名规范等；
-- **使用者**在业务场景中调用体系资产，通常是业务设计师和前端；
-- **治理者**关注体系是否健康运行，推动机制落实、处理变更反馈。
+With image recognition continuing to improve, Fleet is optimistic about AI’s potential for tackling unlabeled images and generating descriptions for people who are blind or visually impaired. “I don't think that AI is going to be able to deal with subjectivity or emotional valence anytime soon, but I do think it will be able to help interpret elements with a fairly controlled visual vocabulary, like infographics and bar charts,” Fleet says. “Accessibility tools have the power to make life easier and reduce friction, but can also foster new dependencies and new limitations. I am very hopeful that in the near future, AI and machine learning will continue to handle more things that right now require human intervention to ensure that a product is inclusive.”
 
-这些角色未必明确分工，但职责和接口必须清晰。比如，一个新组件上线，谁来定？影响谁？用旧版本的业务线是否要通知？如果没人负责回答这些问题，协作就只能靠猜和重复沟通。
+inline-image-hazard
 
-体系协作的第一步，不是建规范库，而是理清“谁该做什么”，并把这些职责内嵌进体系的运行路径里。真正有生命力的体系，从来不是“谁做得多”，而是“结构是否闭环”。
+The best products are born accessible
+Building in accessibility from day one means beginning with a design system that’s accessible by default. By making sure that every design component and code element is aligned to accessibility standards at the outset, companies can prevent access issues further down the road. Lucy Greco, accessible technology evangelist for UC Berkeley and lead for University of California’s accessibility initiative, says teams must consider all aspects of accessibility when making inclusivity foundational to a design system. “Can a person with a disability use your design system without a mouse? Are components drag and drop?” she asks. “If they're drag and drop, can they use a mouse emulation keyboard to complete that action?”
 
-### **10.2 体系能不能动起来，取决于协作闭不闭环**
+That concept is what led eBay’s Anna Zaremba and several teammates to create Include, a plugin that makes it easy to integrate accessibility from the start. The tool takes aim at accessibility annotations, making them easier for designers to spec and for developers to understand requirements. “We wanted to figure out how to ensure that inclusive design is part of our design process,” says Zaremba. “We found that accessibility can be overwhelming, especially for newer designers who are just joining eBay and may not be familiar with industry-wide best practices.”
 
-一个真正活着的设计体系，最基础的能力不是视觉统一，而是能跑通最小的**协作闭环**。不一定复杂，但必须完整。
+The team prioritized efficiency, choosing to build a plugin that could integrate into existing design and developer workflows. Using the tool, individuals can select a top-level frame within Figma and run the checker. From there, the tool returns a list of action items, including reasoning for each—such as a recommendation to add alt text to an image marked as informative. These recommendations were informed by commonly seen issues and bugs as well as accessibility priorities from different disciplines across eBay. “Everyone has to start somewhere, and I hope the plugin helps with making it easier,” says Zaremba.
 
-- **需求能提出**：谁都可以发现问题、提诉求，有地方能记录，能提供上下文；
-- **有机制判断**：需不需要做？已有变体能否满足？是否值得进入体系？有共识可依；
-- **有人负责做**：谁设计、谁开发、谁发版本，有节奏、有责任归属；
-- **业务能使用**：在哪找到、怎么使用、是否同步更新，有渠道、有说明；
-- **反馈能回流**：出问题能找人、能记录、能被响应，有后续、有跟进。
+Zaremba and her team decided to open-source the plugin, making it free for anyone via the Figma Community, as well as releasing the code on GitHub. “eBay has a strong culture of sharing our tools as a way to give back to the community,” says Zaremba. “We knew that making this tool open source could have a wider impact in helping others improve their products and create better digital experiences.” Open sourcing has other benefits, too: Not only does the team receive helpful feedback, it also opens the door for future contributions. Anyone can fork the code, build on top of it, and release it back into the community. “I'm really grateful to everyone who has spent time, tried it out, and took the time to write to us already,” says Zaremba. “The more people who engage with it, the better it will get.”
 
-这五步看起来像流程，其实是体系内部的“血液循环”。很多团队搭建了一堆资产，但因为反馈回不来、更新没人做、责任没人扛，体系最后只剩一副空壳。
+Accessibility is a top priority
+So how can companies prioritize accessibility? Just as eBay’s plugin educates teammates, it’s important to create a culture where everyone has a working understanding of accessibility. To do that, people with disabilities need to be in the development and design pipeline, both as workers and as testers. “When you have a person with a disability on your team, you’re less likely to have an inaccessible product,” says Greco. She adds that these teammates should be involved in all aspects of the creation process, beyond end testing, citing a well-known saying within the disability community: “Nothing for us without us.” Fleet recommends that, in addition to a robust program of compensated user testing, internal teams need authority to impose accessible practices, and block releases that make accessibility worse.
 
-协作闭环不是一定要配套系统平台，哪怕是一套表格、一份提案文档、一个周会提交流程，只要链路通了，它就能跑起来。**最怕的，是大家以为体系“已经建好了”，却没有一条能落地的流程闭环。**
+inline-puzzle
 
-### **10.3 没有机制支撑，工具不过是“假体”**
+While these are moves in the right direction, there’s still a long way to go towards making tech more inclusive. Greco says, “My hope for the future is that more design systems ensure that their component libraries are built to be accessible from day one, and that they’re tested by people and not just machines.”
 
-你有没有遇到过这样的尴尬：团队花大力气搭建了组件平台、设计系统和 Token 库，表面看起来很完整，文档齐全、页面漂亮，但业务线和设计师根本不去用；或者用了发现版本对不上，组件更新了却没人通知，导致产品上线了“老版本”的界面。
-
-这其实不是“没人配合”，而是体系背后的**机制没有落地**。机制缺失，就像一栋大楼没有地基，平台再美也只是“虚有其表”的橱窗。
-
-比如：
-
-- 组件库里写明了最新版本号，但没人告诉你哪个版本是稳定可用的，大家只能靠私下沟通确认。
-- 设计师做了变更，开发没有收到任何提醒，结果业务继续用旧的组件代码，造成线上体验断层。
-- Token 改了个颜色，却没人跟踪变动影响，多个产品线出现视觉混乱。
-
-一个健康的体系工具，必须能让你清楚知道：谁能改，什么时候改，改了影响多大，怎么通知大家，问题反馈去哪儿。如果这些问题没有答案，平台就成了死库房，没人敢用、没人敢改。
-
-机制不需要复杂，但要能覆盖几个关键环节：变更审批、版本管理、通知机制和反馈通路。否则，所有工具都是摆设，体系永远跑不动。
-
-### **10.4. 别想一蹴而就，先从最小闭环起步**
-
-搭建完美的设计平台听上去很诱人，但现实往往是预算有限、时间紧张、技术力量不足，或者团队对工具还不熟悉。于是，很多体系建设项目卡在“怎么搭建整个平台”的问题上，迟迟不能落地。
-
-真正有价值的工具建设，不是“一口气做全套”，而是**先跑通一个小而真实的闭环**。从“能被用起来、能被反馈、能被维护”的最小可行体系开始，逐步演进。
-
-举个例子：
-
-- 一个小团队先做了个 Excel 组件清单，标注了组件名称、状态、负责人和设计稿链接，供大家查阅，解决“组件到底用哪个”的疑惑。
-- 设计师在 Figma 里建立了最基础的 Team Library，收纳几个最常用的按钮、输入框，保证新设计都能快速调用同样的样式。
-- 团队每周固定讨论组件使用反馈和更新需求，让体系变成一个活的“工作习惯”，而不是死板的文档。
-- Token 最初可能只是简单的变量文件，设计和开发手动同步，但已经能统一颜色、字号的命名和调用。
-
-从这个起点开始，随着体系的成熟，逐渐引入自动化工具、更新提醒和版本管理。这样不仅降低门槛，也避免“一开始就想做太多，结果一事无成”的尴尬。
-
-行动胜于完美，**边用边建，边反馈边优化**，才是设计体系工具建设的正确姿势。
-
-## **十一、「治理」不是管住变化，而是承接变化**
-
-设计体系一旦迈入多平台、多品牌、多团队协同的阶段，它就不再只是设计产出方式的问题，而变成了一个**系统能否持续演化的能力命题**。治理，就是为这个复杂系统提供“秩序的保持力”——它不是要限制变化，而是要接得住变化，并让它们“演化有道”。
-
-### **11.1 体系的第二曲线，不是资产更多，而是秩序更强**
-
-体系在早期往往靠资产积累驱动增长：组件越来越多，文档越来越全，设计与开发对齐得越来越顺畅。但当体系进入到更高阶的发展阶段，仅靠“增加”已经不足以支撑复杂性。
-
-你会发现，问题开始从“有没有规范”转向“规范是否一致”“资产是否冲突”“不同团队是否在讲同一种语言”。这时，治理的意义不是再多建一点资源，而是**建立一种“跨变化承载”的系统能力**。
-
-举个例子：
-
-- 当多个业务线提出不同版本的「穿梭框」组件，是要都接入体系，还是做差异隔离？谁来判断标准？
-- 当 Token 命名规则需要调整，会影响多少业务？要不要同步？怎么同步？是否需要版本化迁移？
-- 当有团队开始搭建子品牌的独立设计语言，它应否归属于母体系？边界怎么划分？
-
-这类问题无法用流程工具解决，而要依赖体系的“治理观”。治理的底层目标，是**让体系能持续生长，同时不失控。**
-
-### **11.2 治理是体系的“自我调节系统”**
-
-体系不是静止的资源库，它应该像一个活体，能够察觉自己的不适、适时进行调整。治理，就是这个“自我调节系统”的构建者。
-
-它不是靠人力“盯”，而是需要设计出一套 **机制+共识+结构性的判断力**：
-
-- **识别机制**：系统如何察觉老旧资产、重复资产、被误用的资产；
-- **判断机制**：哪些变化要被接纳？影响多大？是否引发连锁反应？
-- **协调机制**：哪些人有权处理？变更需要跨哪些角色参与？
-- **同步机制**：如何更新到所有平台和触点？文档、Figma、代码、Token 是否都统一？
-- **反馈机制**：上线后效果是否如预期？有没有反哺体系结构？
-
-当这些机制运行起来，体系就具备了“动态演进”的能力。这不只是让体系不被打破，更重要的是，**它能在变化中找到新的结构稳定性。**
-
-### **11.3 治理的本质，是让体系成为“组织能力”**
-
-治理的最高维度，不是体系变得更强，而是组织因为有了体系，变得更稳。
-
-这意味着治理的责任，不能只落在设计师头上。治理要成为**产品团队、研发团队、品牌团队的共同语言**，体系本身也要成为组织能力的一部分。
-
-- 研发知道哪些组件在实验中、哪些已稳定；
-- 产品知道什么样的体验变化可以走组件化流程，什么不该动；
-- 品牌知道在哪条主线上管理多品牌视觉风格，哪些是共享模块；
-
-治理不是在“规范”，是在“赋能”：让整个组织在面对多端、多变、多人参与时，**仍然可以用体系作为协作底盘来推进产品发展**。
-
-## **十二、「进化」有感知的体系，才有生命力**
-
-设计体系的建设，从不是一场“上线即完成”的工程，而是一场持续多年的组织演化。而绝大多数体系最终走向沉寂，不是因为能力不够、工具不好，而是它在漫长的协作中失去了“被看见”的能力。
-
-它依然在线上——组件平台还能访问，Figma 库还挂在文件里，规范文档甚至还在被偶尔提及。但没人知道它最近一次更新是什么时候，也没人知道这些资产是否仍然有效。**最致命的是，没有人能回答一句话：这个体系，现在到底还“活着”吗？**
-
-### **12.1 没有观测，就没有演进**
-
-体系的终点，从来不是“跑通流程”，而是“形成反馈”。但反馈这件事，无法靠口头转述、会议讨论或临时问卷来维系。它必须成为一套“结构内建”的能力，就像神经系统对外界刺激的感知机制一样。
-
-而很多团队在初期建设中，会掉进一个典型陷阱：过度关注资产“做完没有”，却忽视了体系“被怎么使用”、是否“还在发挥作用”。于是：
-
-- 组件上线之后没人维护，问题堆积成山；
-- 设计规范挂在 Wiki，没人知道是不是最新版；
-- Token 改了一轮，开发没同步，线上全是旧样式；
-- 工具平台持续维护，但访问量寥寥，反馈无人响应。
-- 体系不怕不完美，但怕没人反馈。真正能持续演化的体系，必须具备可感知、可诊断、可追踪的能力。而这背后依赖的，不只是态度，而是一套清晰的度量系统。
-
-### **12.2 四维度体系健康度量模型**
-
-如果说系统规范是设计体系的骨骼、工具平台是肌肉，那**度量系统就是它的“血液循环”**。它让组织知道这个体系是否有效运转，也支撑体系自我修复与进化。
-
-一个结构化的设计体系度量模型，通常围绕以下四个维度展开：
-
-#### **1. 资产健康度**
-
-- 组件是否具备清晰的版本控制与发布记录？
-- 是否存在“死组件”（无人维护）、“僵尸组件”（使用却未被认领）、“影子组件”（业务自建无同步）？
-- Token 是否有命名规范、变更记录与影响范围说明？
-
-这一维度反映的是：**体系资产是否可维护、可更新、可追踪**。
-
-#### **2. 使用覆盖度**
-
-- 体系内资产在项目中的实际使用率是多少？
-- 覆盖了多少业务线、平台、产品类型？
-- 不同端（Web、App、小程序）是否同步使用？
-
-这一维度衡量：**体系是否真的“被用起来了”**。
-
-#### **3. 协作效率提升度**
-
-- 设计开发的协同周期是否缩短？
-- 返工次数是否减少？规范对齐是否更快？
-- 新人上手体系的学习曲线是否更平滑？
-
-这反映的是：**体系是否为组织节省了时间与沟通成本**。
-
-#### **4. 反馈响应度**
-
-- 问题提交后，多久能被响应、修复、发布？
-- 是否有明确的反馈通路与责任归属？
-- 使用者是否能感知“我提的问题被看到、被解决了”？
-
-这是判断：**体系是否具备“自我修复机制”的核心维度。**
-
-这套模型不是一次性填写的 KPI 表，而是一种持续的系统观测机制。**它的意义不是为了“好看”，而是为了“发现问题、推动演进”。**
-
-### **12.3 度量不是控制，而是组织的感知接口**
-
-很多人一听“度量”就皱眉，觉得它是为了“绩效考核”或“流程约束”。但在体系建设里，度量的核心不是控制，而是**连接**。它连接着体系与组织：
-
-- 当产品问“这个组件为什么不能改”时，我们能说清楚它影响多少业务；
-- 当前端说“你们的规范总是改来改去”时，我们能拿出数据证明哪些变更避免了多少返工；
-- 当管理者质疑“这个体系还值得投人吗”时，我们能展示它如何支撑了多少项目的高效交付。
-
-没有度量，体系就像一套孤立系统，活在设计师的世界里。但有了度量，它才真正成为**组织语言的一部分**，被理解、被讨论、被演化。
-
-### **12.4 真正的闭环，不是流程，而是感知 + 反馈 +调整**
-
-很多团队误以为流程闭环就等于体系闭环。其实流程再完整，如果没有感知能力，问题还是会沉积；反馈再畅通，如果不能推动演进，体系也会停滞。
-
-一个真正闭环的设计体系，应该具备：
-
-- **结构感知能力**：系统知道哪里在用、哪里出错、哪里老化；
-- **多维反馈机制**：人人可提、反馈可见、路径通畅；
-- **快速调整机制**：谁维护、怎么修复、影响谁、如何通知，有明确机制与责任人；
-- **阶段性健康审查**：定期“查体”，用量化与质化方式评估体系是否仍在健康运行。
-
-闭环不是一次性“搭好”就完事，它是一种持续运行的能力。就像操作系统的监控与更新机制，不是为了美观，而是为了**让它始终运行在组织的节奏之中**。
-
-### **12.5 有反馈，才有方向；能进化，体系才有生命**
-
-体系的未来，不在文件，不在工具，也不在组件本身，而在于——**它是否能持续被组织感知、被使用者反馈、被建设者调整。**
-
-真正优秀的设计体系，最后往往不是“最好用”，而是“最能适应变化”。它可能不是最漂亮的，也不一定最前沿，但它**活着，且每一次反馈都会成为下一轮进化的燃料。**
-
-这不是一个项目，而是一种机制；
-
-这不是一套规范，而是一种组织共识；
-
-这不是一锤子买卖，而是一条长期共生的协作路径。
-
-当你能清晰看见：什么正在运行、哪里需要修复、谁可以推动、价值如何体现——那么，恭喜你，你正在建设的，不再只是一个设计体系，而是**一个可以和组织一起生长的有机体。**
+Let us know what you think and your predictions for the future of design systems on Twitter!

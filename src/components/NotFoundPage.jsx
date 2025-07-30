@@ -14,7 +14,9 @@ const NotFoundPage = () => {
           404
         </FuzzyText>
       </h1>
-      <p className="mb-10 text-m">您寻找的内容暂时隐身了，请尝试返回首页</p>
+      <p className="mb-10 text-m">
+        The content you're looking for is temporarily unavailable
+      </p>
       <div
         style={{
           display: 'inline-flex',
@@ -22,7 +24,7 @@ const NotFoundPage = () => {
           margin: '0 auto',
         }}
       >
-        <InteractiveHoverButton href="/">返回首页</InteractiveHoverButton>
+        <InteractiveHoverButton href="/">Back to Home</InteractiveHoverButton>
       </div>
     </div>
   )

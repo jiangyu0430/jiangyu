@@ -124,8 +124,8 @@ function Home() {
               const featuredSlugs = [
                 'networkRevision',
                 'designSystem',
-                'visualRedesign',
                 'arcoDesign',
+                'page-motion',
               ]
               // 保持原有布局：第1和第4卡片col-span-3，其余col-span-5
               const colSpans = [
@@ -180,7 +180,7 @@ function Home() {
             </InteractiveHoverButton>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.slice(1, 4).map((blog, idx) => (
+            {blogs.slice(0, 3).map((blog, idx) => (
               <FadeInWhenVisible
                 key={blog.slug}
                 delay={0.2 + idx * 0.1}
