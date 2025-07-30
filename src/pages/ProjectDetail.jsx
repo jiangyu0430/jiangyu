@@ -369,7 +369,7 @@ const ProjectDetail = ({
                 const isBlog = blogs.some((b) => b.slug === slug)
                 return (
                   <article
-                    className={`prose prose-p:my-4 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-ul:my-2 prose-ol:my-2 mx-auto text-justify ${
+                    className={`prose prose-p:my-4 prose-h2:mt-10 prose-h2:mb-6 prose-h3:mt-6 prose-h3:mb-2 prose-h4:mt-6 prose-h4:mb-0 prose-ul:my-2 prose-ol:my-2 mx-auto text-justify ${
                       isBlog
                         ? 'max-w-[800px] prose-img:mx-0 prose-img:w-full'
                         : 'max-w-none'
@@ -455,7 +455,13 @@ const ProjectDetail = ({
                         components={{
                           img: (props) =>
                             isBlog ? (
-                              <LazyImage {...props} style={lazyImageStyle} />
+                              <LazyImage
+                                {...props}
+                                style={{
+                                  ...lazyImageStyle,
+                                  borderRadius: '0.4rem',
+                                }} // 添加圆角
+                              />
                             ) : (
                               <ImageWithId {...props} />
                             ),

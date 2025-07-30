@@ -27,6 +27,7 @@ export function ProjectCard({
 
   const containerRef = useRef(null)
   const [entered, setEntered] = useState(false)
+  const videoRef = useRef(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -108,18 +109,33 @@ export function ProjectCard({
         </p>
       </div>
 
-      {/* 中部分：支持本地/网络图，带 hover 动效 */}
+      {/* 中部分：支持本地/网络图、gif、mp4，带 hover 动效 */}
       <div
         onClick={onClick}
         className="block w-full aspect-video overflow-hidden group cursor-pointer"
       >
-        <LazyImage
-          src={resolvedImage}
-          alt={finalTitle}
-          className={`w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${
-            entered ? 'scale-100 translate-y-0' : 'scale-[1.04] translate-y-4'
-          }`}
-        />
+        {resolvedImage && resolvedImage.endsWith('.mp4') ? (
+          <video
+            ref={videoRef}
+            src={resolvedImage}
+            className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
+              entered ? 'scale-100 translate-y-0' : 'scale-[1.04] translate-y-4'
+            }`}
+            muted
+            loop
+            playsInline
+            onMouseEnter={() => videoRef.current?.play()}
+            onMouseLeave={() => videoRef.current?.pause()}
+          />
+        ) : (
+          <LazyImage
+            src={resolvedImage}
+            alt={finalTitle}
+            className={`w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${
+              entered ? 'scale-100 translate-y-0' : 'scale-[1.04] translate-y-4'
+            }`}
+          />
+        )}
       </div>
 
       {/* 下部分 */}

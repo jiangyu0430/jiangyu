@@ -1,10 +1,10 @@
 const blogs = [
   {
     slug: 'my-first-personal-website',
-    title: '关于这个网站',
+    title: 'AI 时代，设计师也能独立建站',
     description:
       '记录我和 ChatGPT 一起完成个人网站搭建的全过程，适合有一定前端基础的朋友参考。',
-    date: '2024-12-10',
+    date: '2025-04-16',
     image:
       'https://cdn.dribbble.com/userupload/11212092/file/original-454bb68503451a83392b00bef064d789.jpg?resize=1504x1128&vertical=center',
     contentFile: 'my-first-personal-website.md',
@@ -45,7 +45,7 @@ const blogs = [
     title: 'Figma 搭建组件库的一些经验',
     description:
       'Optimize your232132 JS code for better performance and faster load times.',
-    date: '2025-03-02',
+    date: '2024-10-28',
     image:
       'https://cdn.dribbble.com/userupload/43827531/file/original-b6d0c4d918e4b4d2c403c59358b0731b.jpg?resize=2048x1536&vertical=center',
     contentFile: 'figma-component-library.md',
