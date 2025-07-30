@@ -146,7 +146,7 @@ export function ProjectCard({
           ))}
         </div>
         <InteractiveHoverButton onClick={onClick}>
-          了解更多
+          View All
         </InteractiveHoverButton>
       </div>
     </div>

@@ -39,9 +39,9 @@ export default function Navbar() {
 
   // navItems now contains isActive field
   const navItems = [
-    { to: '/projects', label: '项目集', isActive: !!matchProjects },
-    { to: '/notes', label: '随手记', isActive: !!matchNotes },
-    { to: '/about', label: '关于我', isActive: !!matchAbout },
+    { to: '/projects', label: 'Portfolio', isActive: !!matchProjects },
+    { to: '/notes', label: 'Record', isActive: !!matchNotes },
+    { to: '/about', label: 'About', isActive: !!matchAbout },
   ]
 
   return (
@@ -129,7 +129,7 @@ export default function Navbar() {
                 onMouseEnter={() => setIsPopoverOpen(true)}
                 onMouseLeave={() => setIsPopoverOpen(false)}
               >
-                <RainbowButton>🔥 联系我</RainbowButton>
+                <RainbowButton>🔥 Contact me</RainbowButton>
                 <AnimatePresence>
                   {isPopoverOpen && (
                     <motion.div

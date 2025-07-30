@@ -31,7 +31,7 @@ const Footer = () => {
             onClick={scrollToTop}
             className="text-sm text-white hover:text-gray-300 transition flex items-center gap-1"
           >
-            返回顶部
+            BackTop
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width={16}

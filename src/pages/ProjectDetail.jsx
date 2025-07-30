@@ -493,7 +493,7 @@ const ProjectDetail = ({
                     isDarkMode ? 'text-white' : 'text-black'
                   }`}
                 >
-                  其他作品
+                  Other Works
                 </h2>
                 <div
                   className={`grid gap-4 sm:gap-4 lg:gap-6 mx-auto ${

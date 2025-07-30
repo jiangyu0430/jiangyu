@@ -17,7 +17,7 @@ export default function Projects() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const allTypes = ['全部', ...Array.from(new Set(projects.map((p) => p.type)))]
+  const allTypes = ['All', ...Array.from(new Set(projects.map((p) => p.type)))]
 
   // 右侧动画variants不变
   const containerVariants = {
@@ -41,7 +41,7 @@ export default function Projects() {
         <div className="w-full lg:w-[72%] order-1 lg:order-1">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
-              项目精选
+              Portfolio
             </h2>
           </FadeInWhenVisible>
 
@@ -50,10 +50,10 @@ export default function Projects() {
               {allTypes.map((type) => (
                 <button
                   key={type}
-                  onClick={() => setActiveType(type === '全部' ? null : type)}
+                  onClick={() => setActiveType(type === 'All' ? null : type)}
                   className={`px-5 py-2 rounded-full border text-sm transition ${
                     activeType === type ||
-                    (type === '全部' && activeType === null)
+                    (type === 'All' && activeType === null)
                       ? 'bg-zinc-950 font-medium border-zinc-950 dark:border-white text-white '
                       : 'border-zinc-300 text-zinc-600 hover:border-zinc-600 dark:border-neutral-600 dark:text-zinc-300 dark:hover:border-zinc-300'
                   }`}
@@ -106,7 +106,7 @@ export default function Projects() {
           variants={containerVariants}
         >
           <h3 className="text-xl font-semibold text-black dark:text-white mb-6">
-            最近写下
+            Recommended Blog
           </h3>
 
           <div className="space-y-4">
