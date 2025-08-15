@@ -15,7 +15,7 @@ export const COS_BASE_URLS = {
   dataVisualization:
     'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/data_visualization/',
   arcoDesign:
-    'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/arco_design/',
+    'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/arco/',
 }
 
 // 🆕 添加项目模板（复制以下结构到 PROJECTS 中）：
@@ -175,7 +175,7 @@ export const PROJECTS = [
     key: 'arcoDesign',
     baseUrl: COS_BASE_URLS.arcoDesign,
     images: [
-      'part3-1',
+      'arco',
       {
         type: 'iframe',
         src: 'https://embed.figma.com/design/xcwQO53J0OGZ0nKDs5Swrh/Arco-Design-System?node-id=8253-44145&embed-host=share',

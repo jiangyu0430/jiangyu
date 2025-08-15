@@ -46,7 +46,7 @@ const ProjectDetail = ({
 
   const smartSizes = isFullScreenWidth
     ? '100vw'
-    : '(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px'
+    : '(max-width: 768px) 100vw, (max-width: 1440px) 100vw, 1440px'
 
   useEffect(() => {
     const html = document.documentElement
@@ -506,12 +506,21 @@ const ProjectDetail = ({
                     .filter((p) => p.slug !== slug)
                     .slice(0, isFullScreenWidth ? 4 : 3)
                     .map((item) => {
-                      const resolvedImage =
-                        typeof item.image === 'string'
-                          ? item.image
-                          : isDarkMode
-                          ? item.image.dark ?? item.image.light
-                          : item.image.light ?? item.image.dark
+                      let resolvedImage
+                      if (
+                        typeof item.image === 'object' &&
+                        item.image &&
+                        'wide' in item.image
+                      ) {
+                        resolvedImage = item.image.wide
+                      } else {
+                        resolvedImage =
+                          typeof item.image === 'string'
+                            ? item.image
+                            : isDarkMode
+                            ? item.image.dark ?? item.image.light
+                            : item.image.light ?? item.image.dark
+                      }
                       return (
                         <div
                           key={item.slug}

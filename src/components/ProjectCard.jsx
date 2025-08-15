@@ -69,9 +69,14 @@ export function ProjectCard({
   if (typeof finalImage === 'string') {
     resolvedImage = finalImage
   } else if (finalImage && typeof finalImage === 'object') {
-    resolvedImage = isDark
-      ? finalImage.dark ?? finalImage.light
-      : finalImage.light ?? finalImage.dark
+    // 优先使用 wide，如果没有 wide 则走原有 dark/light 逻辑
+    if (finalImage.wide) {
+      resolvedImage = finalImage.wide
+    } else {
+      resolvedImage = isDark
+        ? finalImage.dark ?? finalImage.light
+        : finalImage.light ?? finalImage.dark
+    }
   }
 
   return (

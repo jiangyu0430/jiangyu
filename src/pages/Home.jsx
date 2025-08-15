@@ -179,23 +179,36 @@ function Home() {
               查看全部
             </InteractiveHoverButton>
           </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.slice(1, 4).map((blog, idx) => (
-              <FadeInWhenVisible
-                key={blog.slug}
-                delay={0.2 + idx * 0.1}
-                y={50}
-                amount={0.2}
-              >
-                <BlogSnippet
-                  slug={blog.slug}
-                  layout="vertical"
-                  size="large"
-                  onClick={() => openModal(blog.slug)}
-                />
-              </FadeInWhenVisible>
-            ))}
-          </div>
+          {(() => {
+            // Manual featured blog selection by slug
+            const featuredBlogSlugs = [
+              'my-first-personal-website',
+              'design-system1',
+              'figma-component-library',
+            ]
+            const featuredBlogs = featuredBlogSlugs
+              .map((slug) => blogs.find((b) => b.slug === slug))
+              .filter(Boolean)
+            return (
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {featuredBlogs.map((blog, idx) => (
+                  <FadeInWhenVisible
+                    key={blog.slug}
+                    delay={0.2 + idx * 0.1}
+                    y={50}
+                    amount={0.2}
+                  >
+                    <BlogSnippet
+                      slug={blog.slug}
+                      layout="vertical"
+                      size="large"
+                      onClick={() => openModal(blog.slug)}
+                    />
+                  </FadeInWhenVisible>
+                ))}
+              </div>
+            )
+          })()}
         </div>
       </section>
 

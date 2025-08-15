@@ -28,9 +28,26 @@ const WorkCard = ({ slug, image, title, subtitle, onClick }) => {
     return () => observer.disconnect()
   }, [])
 
+  // 响应式图片选择逻辑
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const hasSquare = typeof finalImage === 'object' && finalImage.square
+  const hasWide = typeof finalImage === 'object' && finalImage.wide
+
   const resolvedImage =
     typeof finalImage === 'string'
       ? finalImage
+      : hasSquare && !isMobile
+      ? finalImage.square
+      : hasWide
+      ? finalImage.wide
       : isDark
       ? finalImage?.dark ?? finalImage?.light
       : finalImage?.light ?? finalImage?.dark

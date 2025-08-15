@@ -1,12 +1,13 @@
 const projects = [
   {
     slug: 'networkRevision',
-    title: 'XHRER —【网络安全策略】体验设计之路',
+    title: 'XHRER —【网络安全策略】体验升级之路',
     date: '2024-07 – 08',
     type: 'UI/UX',
-    description: 'A comprehensive design system for a finance application.',
+    description:
+      '网络完全策略最初划分为两个阶段上线，第一阶段仅实现基础功能，但现在来看体验欠佳。在二阶段能力升级之际，我主动发起体验重构，从策略配置流程到可视化呈现全面优化，让安全管理更直观易用，显著提升了用户信任与操作效率。',
     image:
-      'https://cdn.dribbble.com/userupload/15705820/file/original-cc393b14992148da1bcc771aae926228.jpeg?resize=2048x1536&vertical=center',
+      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/securityPolicy5.jpg',
     tags: ['ToB', 'Website'],
   },
   {
@@ -16,8 +17,11 @@ const projects = [
     type: '设计系统',
     description:
       'Redesigned a brand website with a focus on modern UI and accessibility.',
-    image:
-      'https://cdn.dribbble.com/userupload/43356644/file/original-a0bb2679aac0ab5e6e964e60ed940a85.jpg?resize=2048x1536&vertical=center',
+    image: {
+      wide: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/eris3.webp',
+      square:
+        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/eris_square.webp',
+    },
     tags: ['Design System', 'Components'],
   },
   {
@@ -26,9 +30,12 @@ const projects = [
     date: '2023-05 – 06',
     type: 'UI/UX',
     description:
-      'Developed a scalable e-commerce platform with seamless payment integration.',
-    image:
-      'https://cdn.dribbble.com/userupload/43411865/file/original-5afa5ba8e8ce1b3528450ce9451fbdb0.jpg?resize=2048x1536&vertical=center',
+      '随着业务融合与扩展，原有视觉已难支撑战略发展。项目围绕 “形、色、字、质、构” 全面升级设计语言，重构视觉体系，让品牌统一性与信任感全面提升。焕新后的界面更具辨识度，也为多业务协同注入了全新活力。',
+    image: {
+      wide: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/xhereVisionUpgrade.webp',
+      square:
+        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/xhereVisionUpgrade_square.webp',
+    },
     tags: ['ToB', 'Website', '3D'],
   },
   {
@@ -40,42 +47,42 @@ const projects = [
       '21 年 Arco Design 发布，以更轻量、现代的风格打破传统中后台的设计惯性，展现出明显的探索性。我被其设计语言深深吸引，恰逢 Figma 在国内大热，我主动发起并搭建了覆盖 Web、Mobile、Arco Pro 的 Figma 资源库，目前社区总引用量超过 100k。',
     image: {
       light:
-        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_light.png',
-      dark: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_dark.png',
+        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_light.webp',
+      dark: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_dark.webp',
     },
     tags: ['Design System', 'ByteDance', 'Components'],
   },
   {
     slug: 'dataVisualization',
-    title: 'Data visualization',
+    title: '智慧工厂 — 车间生产线数字孪生系统',
     date: '2022-11 – 12',
     type: '数据可视化',
     description:
-      'Improved the user experience of a mobile application for better engagement.',
+      '智慧工厂车间产线通过先进的信息与自动化技术，实现高度智能化、自动化与数字化生产。个人参与主导的数据可视化界面设计与交互优化，让复杂生产数据在多维分析中更直观、高效地呈现，助力企业快速响应市场、实现个性化制造。',
     image:
-      'https://cdn.dribbble.com/userupload/43637841/file/original-4bfcab9de572ebef9ebdfed75a78fd56.jpg?resize=2048x1536&vertical=center',
-    tags: ['大屏'],
+      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/dataVisualization.webp',
+    tags: ['大屏', '数字孪生'],
   },
   {
     slug: 'tabbar-motion',
-    title: 'Tabbar Icon - Motion Design',
-    date: '2020-09 – 10',
+    title: 'Tabbar Icon - 20 组动效设计',
+    date: '2020-10',
     type: '动画动效',
     description:
       '探索 TabBar 在轻量界面中的动效表现：指示条滑动、颜色过渡、状态切换节奏等，尝试将这些动态反馈融入常见组件的设计中，为界面注入更鲜活的节奏与视觉生命力。',
     image:
-      'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/edbb7a221013163.67cd72c24f099.png',
+      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/tabbar_animation.png',
     tags: ['AE', 'Motion'],
   },
   {
     slug: 'page-motion',
-    title: 'Page - Motion Design',
+    title: '移动端界面 - 10 组动效设计',
     date: '2020-08',
     type: '动画动效',
     description:
       '探索 TabBar 在轻量界面中的动效表现：指示条滑动、颜色过渡、状态切换节奏等，尝试将这些动态反馈融入常见组件的设计中，为界面注入更鲜活的节奏与视觉生命力。',
     image:
-      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/OriginalVideo.mp4',
+      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/page_animation.webp',
     tags: ['AE', 'Motion'],
   },
 ]
