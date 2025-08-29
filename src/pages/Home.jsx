@@ -11,9 +11,11 @@ import { PlaceholdersAndVanishInput } from '../components/PlaceholdersAndVanishI
 import { lazy, Suspense } from 'react'
 const ProjectDetail = lazy(() => import('./ProjectDetail'))
 import projects from '../data/projects'
-import RotatingText from '../components/RotatingText'
-import Particles from '../components/Particles'
 import blogs from '../data/blogs'
+import SectionTitle from '../components/SectionTitle'
+import ScrollRevealTitle from '../components/ScrollRevealTitle'
+import Galaxy from '../components/Galaxy'
+import { RainbowButton } from '../components/RainbowButton'
 
 function Home() {
   const lanyardRef = useRef(null)
@@ -55,70 +57,53 @@ function Home() {
   }
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
+    <div className="bg-black text-black dark:text-white">
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-64px)] flex items-center px-4 text-left overflow-hidden relative">
-        <div className="absolute inset-0 z-0">
-          <Particles
-            lightColors={['#C6D2FF', '#9999FF']}
-            darkColors={['#ffffff', '#9999FF']}
-            particleCount={1000}
-            particleSpread={8}
-            speed={0.2}
-            particleBaseSize={100}
-            moveParticlesOnHover={true}
-            alphaParticles={false}
-            disableRotation={false}
-          />
-        </div>
-        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4">
-          <FadeInWhenVisible delay={0} y={50} amount={0.1}>
-            <h1 className="sm:text-8xl text-[68px] font-bold mb-8 text-left">
-              Hi, I’m Jiang Yu
-            </h1>
-          </FadeInWhenVisible>
-
-          <FadeInWhenVisible delay={0.1} y={50} amount={0.1}>
-            <div className="flex items-center gap-4 text-left mb-4 flex-wrap">
-              <span className="sm:text-7xl text-5xl font-bold">
-                Make better
-              </span>
-              <RotatingText
-                texts={['Products', 'Realities', 'Experiences']}
-                mainClassName="inline-flex w-auto px-6 sm:text-7xl text-5xl font-bold bg-[#5227FF] text-white overflow-hidden py-1 justify-center rounded-lg"
-                staggerFrom="last"
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                exit={{ y: '-120%' }}
-                staggerDuration={0.025}
-                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                transition={{ type: 'spring', damping: 30, stiffness: 400 }}
-                rotationInterval={2000}
-              />
-            </div>
-          </FadeInWhenVisible>
-
-          <FadeInWhenVisible delay={0.2} y={50} amount={0.1}>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-xl">
-              - 将复杂化繁为简，转化为清晰而愉悦的设计成果
-            </p>
-          </FadeInWhenVisible>
+      <section className="h-screen w-full flex items-center px-4 text-left overflow-hidden relative">
+        <div
+          className="absolute inset-0 z-0"
+          style={{ willChange: 'transform' }}
+        >
+          <div
+            style={{
+              opacity: 1,
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+            }}
+          >
+            <img
+              src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/a3ee27229291501.6881ff8db1812.png"
+              alt="Hero"
+              style={{
+                cursor: 'auto',
+                width: '100%',
+                height: '100%',
+                borderRadius: '0px',
+                display: 'block',
+                objectFit: 'cover',
+                objectPosition: '50% 50%',
+                backgroundColor: 'transparent',
+                transform: 'translate3d(0, 0, 0)',
+              }}
+            />
+            <div className="absolute inset-0 z-10"></div>
+          </div>
         </div>
       </section>
+      <section className="h-[1000px] bg-zinc-50 py-20 rounded-3xl"></section>
 
       {/* Featured Works */}
-      <section className="py-20 bg-white dark:bg-black text-black dark:text-white">
-        <div className="max-w-[1280px] mx-auto px-4 space-y-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">项目精选</h2>
-            <InteractiveHoverButton
-              href="/Projects"
-              className="hidden sm:inline-flex"
-            >
-              查看全部
-            </InteractiveHoverButton>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-8 gap-5">
+      <section className="pt-20 lg:pt-40 pb-20 bg-white rounded-3xl overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto px-4 space-y-20">
+          <ScrollRevealTitle>
+            <SectionTitle
+              title="Projects"
+              description="This is the story behind the story. "
+            />
+          </ScrollRevealTitle>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 lg:gap-y-8 gap-y-4">
             {(() => {
               // 只显示这四个特定项目（请替换为实际slug）
               const featuredSlugs = [
@@ -127,19 +112,12 @@ function Home() {
                 'visualRedesign',
                 'arcoDesign',
               ]
-              // 保持原有布局：第1和第4卡片col-span-3，其余col-span-5
-              const colSpans = [
-                'col-span-1 sm:col-span-5',
-                'col-span-1 sm:col-span-3',
-                'col-span-1 sm:col-span-3',
-                'col-span-1 sm:col-span-5',
-              ]
               return featuredSlugs.map((slug, index) => {
                 const project = projects.find((p) => p.slug === slug)
                 if (!project) return null
                 return (
-                  <div className={colSpans[index]} key={slug}>
-                    <FadeInWhenVisible delay={index * 0.1} y={50} amount={0.3}>
+                  <div key={slug}>
+                    <FadeInWhenVisible delay={index * 0.15} y={50} amount={0.3}>
                       <WorkCard slug={slug} onClick={() => openModal(slug)} />
                     </FadeInWhenVisible>
                   </div>
@@ -147,8 +125,20 @@ function Home() {
               })
             })()}
           </div>
-          <div className="mt-6 flex justify-center sm:hidden">
-            <InteractiveHoverButton href="/Projects">
+          <div className="hidden sm:flex items-center gap-10">
+            {/* 左侧文本 */}
+            <span className="text-2xl text-zinc-400">⊹</span>
+
+            {/* 中间自适应分割线 */}
+            <div className="flex-1 h-[1px] bg-zinc-200"></div>
+
+            {/* 右侧按钮 */}
+            <InteractiveHoverButton href="/Projects" lightTheme>
+              查看全部
+            </InteractiveHoverButton>
+          </div>
+          <div className="flex sm:hidden justify-center mt-4">
+            <InteractiveHoverButton href="/Projects" lightTheme>
               查看全部
             </InteractiveHoverButton>
           </div>
@@ -166,64 +156,16 @@ function Home() {
         </Suspense>
       )}
 
-      {/* Blog Summary */}
-      <section className="py-20 bg-black text-white text-center">
-        <div className="max-w-[1280px] mx-auto px-4 space-y-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">最近写下</h2>
-            <InteractiveHoverButton
-              href="/Projects"
-              fixedTheme
-              className="hidden sm:inline-flex"
-            >
-              查看全部
-            </InteractiveHoverButton>
-          </div>
-          {(() => {
-            // Manual featured blog selection by slug
-            const featuredBlogSlugs = [
-              'my-first-personal-website',
-              'design-system1',
-              'figma-component-library',
-            ]
-            const featuredBlogs = featuredBlogSlugs
-              .map((slug) => blogs.find((b) => b.slug === slug))
-              .filter(Boolean)
-            return (
-              <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featuredBlogs.map((blog, idx) => (
-                  <FadeInWhenVisible
-                    key={blog.slug}
-                    delay={0.2 + idx * 0.1}
-                    y={50}
-                    amount={0.2}
-                  >
-                    <BlogSnippet
-                      slug={blog.slug}
-                      layout="vertical"
-                      size="large"
-                      onClick={() => openModal(blog.slug)}
-                    />
-                  </FadeInWhenVisible>
-                ))}
-              </div>
-            )
-          })()}
-        </div>
-      </section>
-
       {/* Handwritten notes */}
-      <section className="py-20 bg-white dark:bg-black text-black dark:text-white">
-        <div className="max-w-[1280px] mx-auto px-4 space-y-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold">生活片段</h2>
-            <InteractiveHoverButton
-              href="/Notes"
-              className="hidden sm:inline-flex"
-            >
-              查看全部
-            </InteractiveHoverButton>
-          </div>
+      <section className="py-20 lg:py-40 bg-black rounded-3xl overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto px-4 space-y-20">
+          <ScrollRevealTitle>
+            <SectionTitle
+              theme="dark"
+              title="Projects"
+              description="This is the story behind the story. "
+            />
+          </ScrollRevealTitle>
           <div
             style={{ height: '550px', position: 'relative' }}
             className="mt-4"
@@ -233,112 +175,149 @@ function Home() {
         </div>
       </section>
 
-      {/* Lanyard 3D Module with side-by-side layout */}
-      <section className="relative w-full bg-black text-white overflow-hidden sm:h-[660px]">
-        <div className="max-w-[1280px] mx-auto gap-2 px-4 flex flex-col  sm:flex-row h-full">
+      {/* Blog Summary */}
+      <section className="pt-20 lg:pt-40 pb-20 bg-zinc-50 rounded-3xl text-white overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto px-4 space-y-20">
+          <ScrollRevealTitle>
+            <SectionTitle
+              title="Blogs"
+              description="Fresh reads, sharp takes. Stories, ideas, and updates from our world."
+            />
+          </ScrollRevealTitle>
+          {(() => {
+            // Manual featured blog selection by slug
+            const featuredBlogSlugs = [
+              'design-system1',
+              'my-first-personal-website',
+              'figma-component-library',
+            ]
+            const featuredBlogs = featuredBlogSlugs
+              .map((slug) => blogs.find((b) => b.slug === slug))
+              .filter(Boolean)
+            return (
+              <div className="mt-12 flex flex-col gap-4 lg:flex-row lg:gap-4">
+                <div className="w-full lg:w-1/2">
+                  <FadeInWhenVisible
+                    key={featuredBlogs[0].slug}
+                    delay={0.2}
+                    y={50}
+                    amount={0.2}
+                  >
+                    <BlogSnippet
+                      slug={featuredBlogs[0].slug}
+                      layout="vertical"
+                      size="large"
+                      imgHeight="h-[240px] sm:h-[320px] lg:h-[480px]"
+                      onClick={() => openModal(featuredBlogs[0].slug)}
+                    />
+                  </FadeInWhenVisible>
+                </div>
+                <div className="w-full lg:w-1/2 flex flex-col lg:flex-row gap-4">
+                  {featuredBlogs.slice(1).map((blog, idx) => (
+                    <div className="w-full lg:w-1/2" key={blog.slug}>
+                      <FadeInWhenVisible
+                        delay={0.3 + idx * 0.1}
+                        y={50}
+                        amount={0.2}
+                      >
+                        <BlogSnippet
+                          slug={blog.slug}
+                          layout="vertical"
+                          size="large"
+                          imgHeight="h-[240px] sm:h-[320px] lg:h-[320px]"
+                          onClick={() => openModal(blog.slug)}
+                        />
+                      </FadeInWhenVisible>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
+          <div className="hidden sm:flex items-center gap-10">
+            {/* 左侧文本 */}
+            <span className="text-2xl text-zinc-400">⊹</span>
+
+            {/* 中间自适应分割线 */}
+            <div className="flex-1 h-[1px] bg-zinc-200"></div>
+
+            {/* 右侧按钮 */}
+            <InteractiveHoverButton href="/Projects" lightTheme>
+              查看全部
+            </InteractiveHoverButton>
+          </div>
+          <div className="flex sm:hidden justify-center mt-4">
+            <InteractiveHoverButton href="/Projects" lightTheme>
+              查看全部
+            </InteractiveHoverButton>
+          </div>
+        </div>
+      </section>
+
+      {/* 联系我 */}
+      <section className="relative w-full bg-white text-white sm:h-[580px]">
+        <div className="absolute bg-black rounded-b-3xl overflow-hidden inset-0 z-0 ">
+          <Galaxy
+            mouseRepulsion={false}
+            mouseInteraction={true}
+            density={1.5}
+            glowIntensity={0.2}
+            twinkleIntensity={1}
+            rotationSpeed={0.1}
+            saturation={0}
+            hueShift={140}
+          />
+        </div>
+        <div className="max-w-screen-2xl mx-auto gap-2 px-4 flex flex-col  sm:flex-row h-full relative z-10">
           {/* 左侧吊牌，占 3/5，高度移动端400，网页端撑满父容器 */}
           <div
             ref={lanyardRef}
-            className="relative w-full sm:w-3/5 h-[500px] sm:h-full flex items-center justify-center"
+            className="relative w-full sm:w-3/5 overflow-hidden sm:h-full flex items-center justify-center"
           >
-            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
+            <div className="absolute hidden sm:flex bottom-14 left-1/2 -translate-x-1/2 text-sm text-zinc-500 pointer-events-none select-none">
               👆 拖拽我～
             </div>
             {showLanyard && (
-              <Lanyard position={[0, 0, 24]} gravity={[0, -42, 0]} />
+              <div style={{ transform: 'translateY(-50px)', width: '100%' }}>
+                <Lanyard position={[0, 0, 24]} gravity={[0, -42, 0]} />
+              </div>
             )}
           </div>
           {/* 右侧文字，占 2/5，高度移动端自适应，网页端撑满父容器，内边距优化 */}
-          <div className="w-full sm:w-2/5 min-h-[620px] sm:h-full flex flex-col sm:px-0 overflow-visible items-center justify-center">
+          <div className="w-full sm:w-2/5 min-h-[620px] sm:h-full flex flex-col  items-start py-20 space-y-10">
             <FadeInWhenVisible delay={0.1} y={80} amount={0.6} triggerOnce>
-              <p className="w-full text-6xl font-poppins leading-tight font-bold">
+              <p className="w-full mb-8 text-6xl font-poppins leading-tight font-bold">
                 <span className="text-zinc-500">Design,</span> is thinking made
                 visual
               </p>
+              <PlaceholdersAndVanishInput
+                placeholders={[
+                  '请在这里写下你的留言 …',
+                  '想收到回复？记得留下联系方式～',
+                ]}
+                onChange={(e) => console.log(e.target.value)}
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  console.log('submitted')
+                }}
+                autoComplete="off"
+              />
             </FadeInWhenVisible>
 
-            <div className="space-y-16 pt-16 w-full">
-              <FadeInWhenVisible delay={0.2} y={80} amount={0.6} triggerOnce>
-                <section className="flex sm:flex-row gap-24 sm:gap-40">
-                  {/* Follow me */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">跟随</h4>
-                    <ul className="space-y-2 text-zinc-400">
-                      <li>
-                        <a
-                          href="https://www.figma.com/@wittyu"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 group"
-                        >
-                          Figma
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-[18px] h-[18px] transform transition-transform duration-0 group-hover:animate-spin-once"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.zcool.com.cn/u/20138657"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 group"
-                        >
-                          Zcool
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-[18px] h-[18px] transform transition-transform duration-0 group-hover:animate-spin-once"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Current */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">位置</h4>
-                    <ul className="space-y-2 text-zinc-400">
-                      <li>Shenzhen, China</li>
-                      <li>
-                        <a
-                          href="mailto:shijiangyua@gmail.com"
-                          className="text-zinc-400 hover:underline"
-                        >
-                          shijiangyua@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-              </FadeInWhenVisible>
-
-              <FadeInWhenVisible delay={0.3} y={80} amount={0.6} triggerOnce>
-                <div className="space-y-3">
-                  <p className="text-white text-lg font-medium">联系我</p>
-                  <PlaceholdersAndVanishInput
-                    placeholders={[
-                      '请在这里写下你的想法 …',
-                      '想收到回复？记得留下联系方式～',
-                    ]}
-                    onChange={(e) => console.log(e.target.value)}
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      console.log('submitted')
-                    }}
-                    autoComplete="off"
-                  />
-                </div>
-              </FadeInWhenVisible>
-            </div>
+            <FadeInWhenVisible delay={0.3} y={80} amount={0.6} triggerOnce>
+              <div className="space-y-3 w-full">
+                <p className="text-white/60 text-base ">
+                  有其他想法？也可以添加我的微信
+                </p>
+                <RainbowButton
+                  //popoverDirection="up"
+                  popoverText="记得注明来意～"
+                  popoverContent={<img src="/QRCode.svg" alt="QR code" />}
+                >
+                  👉 获取联系方式 👈
+                </RainbowButton>
+              </div>
+            </FadeInWhenVisible>
           </div>
         </div>
       </section>

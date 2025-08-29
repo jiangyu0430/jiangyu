@@ -34,11 +34,10 @@ export default function Projects() {
     setSelectedProjectSlug(null)
     setModalOpen(false)
   }
-
   return (
-    <div className="py-12 px-4 w-full max-w-[1280px] mx-auto text-left">
-      <div className="flex flex-col lg:flex-row gap-8">
-        <div className="w-full lg:w-[72%] order-1 lg:order-1">
+    <div className="py-12 px-4 w-full max-w-screen-2xl mx-auto text-left">
+      <div className="flex flex-col lg:flex-row gap-16">
+        <div className="w-full lg:w-[70%] order-1 lg:order-1">
           <FadeInWhenVisible delay={0.1} once>
             <h2 className="text-5xl font-bold text-black dark:text-white mb-10">
               项目精选
@@ -100,7 +99,7 @@ export default function Projects() {
         </div>
 
         <motion.aside
-          className="w-full lg:w-[28%] order-2 lg:order-2"
+          className="w-full lg:w-[30%] order-2 lg:order-2"
           initial="hiddenRight"
           animate="visibleRight"
           variants={containerVariants}

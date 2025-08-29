@@ -1,5 +1,4 @@
 import { useEffect, useRef, useCallback } from 'react'
-import { ScrollProgress } from './components/ScrollProgress'
 import Lenis from 'lenis' // 新版 lenis 包名
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -76,7 +75,6 @@ function App() {
       data-lenis
       className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-gray-900 dark:bg-black dark:text-white font-sans"
     >
-      <ScrollProgress className="top-16 z-60" />
       <Navbar />
       <div className="relative z-20 flex flex-1 flex-col">
         <ScrollToTop />
@@ -88,7 +86,7 @@ function App() {
           }`}
         >
           <Routes location={backgroundLocation || location}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home key="home" />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/about" element={<About />} />

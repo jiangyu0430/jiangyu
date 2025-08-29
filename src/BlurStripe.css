@@ -1,0 +1,134 @@
+.blur-stripe-container {
+  position: relative;
+  height: 160px; /* 固定高度 */
+  width: 100%;
+  overflow: hidden;
+}
+
+.blur-layer {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* 分层 mask + blur 对应 Framer 导出的效果 */
+.layer-1 {
+  z-index: 1;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    black 12.5%,
+    black 25%,
+    rgba(0, 0, 0, 0) 37.5%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    black 12.5%,
+    black 25%,
+    rgba(0, 0, 0, 0) 37.5%
+  );
+  backdrop-filter: blur(0.117188px);
+}
+
+.layer-2 {
+  z-index: 2;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 12.5%,
+    black 25%,
+    black 37.5%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 12.5%,
+    black 25%,
+    black 37.5%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  backdrop-filter: blur(0.234375px);
+}
+
+.layer-3 {
+  z-index: 3;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 25%,
+    black 37.5%,
+    black 50%,
+    rgba(0, 0, 0, 0) 62.5%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 25%,
+    black 37.5%,
+    black 50%,
+    rgba(0, 0, 0, 0) 62.5%
+  );
+  backdrop-filter: blur(0.46875px);
+}
+
+.layer-4 {
+  z-index: 4;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 37.5%,
+    black 50%,
+    black 62.5%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 37.5%,
+    black 50%,
+    black 62.5%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  backdrop-filter: blur(0.9375px);
+}
+
+.layer-5 {
+  z-index: 5;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 50%,
+    black 62.5%,
+    black 75%,
+    rgba(0, 0, 0, 0) 87.5%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 50%,
+    black 62.5%,
+    black 75%,
+    rgba(0, 0, 0, 0) 87.5%
+  );
+  backdrop-filter: blur(1.875px);
+}
+
+.layer-6 {
+  z-index: 6;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 62.5%,
+    black 75%,
+    black 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 62.5%,
+    black 75%,
+    black 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  backdrop-filter: blur(3.75px);
+}
+
+.layer-7 {
+  z-index: 7;
+  mask-image: linear-gradient(rgba(0, 0, 0, 0) 75%, black 87.5%, black 100%);
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0) 75%,
+    black 87.5%,
+    black 100%
+  );
+  backdrop-filter: blur(7.5px);
+}
+
+.layer-8 {
+  z-index: 8;
+  mask-image: linear-gradient(rgba(0, 0, 0, 0) 87.5%, black 100%);
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0) 87.5%, black 100%);
+  backdrop-filter: blur(15px);
+}

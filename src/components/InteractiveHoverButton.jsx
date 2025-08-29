@@ -9,7 +9,18 @@ function cn(...classes) {
 }
 
 export const InteractiveHoverButton = React.forwardRef(
-  ({ children, className, fixedTheme, href, onClick, ...restProps }, ref) => {
+  (
+    {
+      children,
+      className,
+      fixedTheme,
+      lightTheme,
+      href,
+      onClick,
+      ...restProps
+    },
+    ref
+  ) => {
     return (
       <Link
         ref={ref}
@@ -18,6 +29,8 @@ export const InteractiveHoverButton = React.forwardRef(
         className={cn(
           fixedTheme
             ? 'group relative w-auto h-10 cursor-pointer overflow-hidden whitespace-nowrap text-center font-medium flex-shrink-0 rounded-lg bg-neutral-900 border border-neutral-600 text-white hover:bg-neutral-700 transition-colors p-2 px-6'
+            : lightTheme
+            ? 'group relative w-auto h-10 cursor-pointer overflow-hidden whitespace-nowrap flex-shrink-0 rounded-lg bg-gray-100 border p-2 px-6 text-center font-medium text-black transition-colors hover:text-white hover:bg-black'
             : 'group relative w-auto h-10 cursor-pointer overflow-hidden whitespace-nowrap flex-shrink-0 rounded-lg bg-gray-100 border p-2 px-6 text-center font-medium text-primary-foreground transition-colors dark:bg-transparent dark:border dark:border-neutral-600 dark:text-white',
           className
         )}
@@ -29,6 +42,8 @@ export const InteractiveHoverButton = React.forwardRef(
             className={
               fixedTheme
                 ? 'h-[6px] w-[6px] rounded-full bg-white transition-all duration-300 group-hover:scale-[100.8]'
+                : lightTheme
+                ? 'h-[6px] w-[6px] rounded-full bg-black transition-all duration-300 group-hover:scale-[100.8]'
                 : 'h-[6px] w-[6px] rounded-full bg-black dark:bg-white transition-all duration-300 group-hover:scale-[100.8]'
             }
           ></div>
@@ -42,6 +57,8 @@ export const InteractiveHoverButton = React.forwardRef(
           className={
             fixedTheme
               ? 'absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-1 group-hover:text-black opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100'
+              : lightTheme
+              ? 'absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-1 text-primary-foreground group-hover:text-white opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100'
               : 'absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-1 text-primary-foreground group-hover:text-white dark:group-hover:text-black opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100'
           }
         >

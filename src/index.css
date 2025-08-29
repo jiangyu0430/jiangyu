@@ -62,30 +62,6 @@ body.lock-scroll {
   overflow: hidden;
   touch-action: none;
 }
-/* 统一页面与弹窗的滚动条样式：模仿 mac 风格 */
-body::-webkit-scrollbar,
-.modal-scroll::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-body::-webkit-scrollbar-thumb,
-.modal-scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3); /* 滚动块颜色 */
-  border-radius: 4px;
-}
-
-body::-webkit-scrollbar-track,
-.modal-scroll::-webkit-scrollbar-track {
-  background: transparent; /* 滚动轨道透明 */
-}
-
-/* Firefox 支持 */
-body,
-.modal-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-}
 /* 纯色渐变拖尾效果 Loader */
 .loader {
   width: 40px;
@@ -126,4 +102,29 @@ body,
 html.dark ::selection {
   background-color: #7575f3;
   color: #fff;
+}
+
+/*导航下滑*/
+.nav-item {
+  position: relative;
+  display: inline-block; /* 确保宽度和定位正确 */
+  color: currentColor;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left; /* 左边开始扩展和收缩 */
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  transform: scaleX(1);
 }

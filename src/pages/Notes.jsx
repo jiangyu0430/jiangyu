@@ -105,10 +105,10 @@ export default function Notes() {
 
   return (
     <div className="min-h-screen w-full">
-      <div className="max-w-screen-xl mx-auto px-4 py-12">
+      <div className="max-w-screen-2xl mx-auto px-4 py-12">
         <FadeInWhenVisible delay={0.1} once>
           <div className="flex justify-between items-center mb-10">
-            <div className="max-[1280px] text-5xl font-bold text-gray-900 dark:text-white">
+            <div className="max-[1440px] text-5xl font-bold text-gray-900 dark:text-white">
               生活片段
             </div>
             <div className="hidden sm:block">

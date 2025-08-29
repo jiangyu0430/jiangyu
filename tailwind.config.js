@@ -59,6 +59,9 @@ export default {
           },
         },
       },
+      maxWidth: {
+        'screen-2xl': '1440px',
+      },
     },
     animation: {
       ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',

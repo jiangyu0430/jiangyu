@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import LazyImage from './LazyImage'
+import { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import { Link, useLocation, useMatch } from 'react-router-dom'
 import {
   motion,
@@ -7,38 +6,93 @@ import {
   useScroll,
   useMotionValueEvent,
 } from 'framer-motion'
-import '@theme-toggles/react/css/Around.css'
 import { Around } from '@theme-toggles/react'
-import { RainbowButton } from '../components/RainbowButton'
 import HamburgerMenu from './HamburgerMenu'
 
 export default function Navbar() {
   const location = useLocation()
+  const isHome = location.pathname === '/'
   const navRef = useRef(null)
   const { scrollY } = useScroll({ target: navRef })
-  const [visible, setVisible] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    const storedTheme = localStorage.getItem('theme')
-    return storedTheme !== 'light' // 默认为 dark
+
+  const gridRef = useRef(null)
+  const logoRef = useRef(null)
+  const TRAVEL = 600 // 像素滚动距离对应完整过渡，用于控制 logo 状态切换动画触发阈值
+  const HOME_NAV_HIDE_THRESHOLD = 2000 // 首页导航隐藏的滚动阈值
+  const OTHER_NAV_HIDE_THRESHOLD = 40 // 其他页面导航隐藏的滚动阈值
+
+  const [logoState, setLogoState] = useState(isHome ? 'centered' : 'scrolled') // 'centered' 或 'scrolled'
+
+  // 新增：首页进入时为 false，其他页面为 true
+  const [logoMotionDone, setLogoMotionDone] = useState(!isHome)
+  useEffect(() => {
+    setLogoMotionDone(!isHome)
+  }, [isHome])
+
+  // 动态占位符高度
+  const [placeholderHeight, setPlaceholderHeight] = useState(64)
+  useLayoutEffect(() => {
+    // 如果不是首页或 navRef 不存在，直接设置为 64
+    if (!isHome || !navRef.current) {
+      setPlaceholderHeight(64)
+      return
+    }
+    // 使用 ResizeObserver 监听 navRef.current
+    const node = navRef.current
+    const observer = new window.ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.target === node) {
+          setPlaceholderHeight(entry.target.offsetHeight)
+        }
+      }
+    })
+    // 先手动设置一次
+    setPlaceholderHeight(node.offsetHeight)
+    observer.observe(node)
+    return () => {
+      observer.disconnect()
+    }
+  }, [isHome, logoState])
+
+  // 监听 pathname 初始化 logoState
+  useEffect(() => {
+    if (isHome) {
+      setLogoState('centered') // 首页初始化动画前状态
+    } else {
+      setLogoState('scrolled') // 其他页面直接显示动画后状态
+    }
+  }, [location.pathname, isHome])
+
+  // 滚动监听切换 logo 状态（仅首页）
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (isHome) {
+      setLogoState(latest > TRAVEL ? 'scrolled' : 'centered')
+    }
   })
+
+  const [visible, setVisible] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem('theme') !== 'light'
+  )
   const [isPopoverOpen, setIsPopoverOpen] = useState(false)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark)
   }, [isDark])
 
+  const lastScrollY = useRef(0)
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setVisible(latest > 100)
+    setVisible(true)
+    lastScrollY.current = latest
   })
 
-  // Add match hooks for each route
   const matchProjects = useMatch('/projects')
   const matchNotes = useMatch('/notes')
   const matchAbout = useMatch('/about')
 
-  // navItems now contains isActive field
   const navItems = [
+    { to: '/', label: '首页', isActive: location.pathname === '/' },
     { to: '/projects', label: '项目集', isActive: !!matchProjects },
     { to: '/notes', label: '随手记', isActive: !!matchNotes },
     { to: '/about', label: '关于我', isActive: !!matchAbout },
@@ -49,73 +103,131 @@ export default function Navbar() {
       <motion.header
         ref={navRef}
         className="fixed top-0 z-50 w-full"
-        initial={false}
         style={{
-          // 移除 backdropFilter/WebkitBackdropFilter，避免新的层叠上下文
-          backgroundColor: visible
-            ? isDark
-              ? 'rgba(3, 7, 18, 0.7)'
-              : 'rgba(255, 255, 255, 0.8)'
-            : isDark
-            ? 'rgba(3, 7, 18, 1)'
-            : 'rgba(255, 255, 255, 1)',
+          mixBlendMode: isDark ? 'difference' : 'normal',
         }}
+        animate={{ y: visible ? 0 : -100 }}
         transition={{ type: 'spring', stiffness: 200, damping: 30 }}
       >
         <div className="relative">
-          {/* 半透明模糊层 */}
-          {visible && (
-            <div className="absolute inset-0  backdrop-blur-lg pointer-events-none" />
-          )}
           {/* 导航内容 */}
-          <div className="mx-auto max-w-7xl flex justify-between px-4 items-center py-3 dark:bg-transparent dark:text-white relative">
-            <div className="flex items-center space-x-2 lg:space-x-0">
-              {/* 移动端菜单按钮 */}
-              <div className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-                <HamburgerMenu isOpen={menuOpen} />
-              </div>
+          <div
+            ref={gridRef}
+            className={`w-full relative transition-all duration-300 grid gap-6 ${
+              visible
+                ? 'grid-cols-[auto_1fr_auto] grid-rows-1 items-center py-4 px-8'
+                : 'grid-cols-[1fr] grid-rows-[auto_auto] items-center py-4 px-8'
+            }`}
+          >
+            {/* 区块 A: Logo（状态驱动动画） */}
+            <motion.div
+              key={location.pathname}
+              layout
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 50,
+                mass: 1,
+              }}
+              ref={logoRef}
+              onLayoutAnimationComplete={() => setLogoMotionDone(true)}
+              className={`flex items-center ${
+                logoState === 'scrolled' || !isHome
+                  ? 'col-[1] row-[1] justify-self-start'
+                  : 'col-span-1 row-[2] justify-self-center justify-center'
+              }`}
+            >
+              {/* 文本 SVG */}
+              {logoState === 'scrolled' || !isHome ? (
+                <Link to="/" className="block">
+                  <svg
+                    className="w-auto transition-all ease-in-out"
+                    style={{
+                      width:
+                        !isHome || logoState === 'scrolled' ? 'auto' : '95vw',
+                      height:
+                        !isHome || logoState === 'scrolled' ? '2rem' : 'auto',
+                      //transition: 'width 10s ease, height 10s ease',
+                    }}
+                    viewBox="0 0 92 24"
+                    fill={isDark ? 'white' : 'black'}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5.18772 19.6382C4.18246 19.6382 3.29926 19.451 2.53813 19.0766C1.777 18.6878 1.18102 18.119 0.750192 17.3702C0.333722 16.6214 0.125488 15.707 0.125488 14.627H3.33517C3.33517 15.0734 3.39979 15.455 3.52904 15.7718C3.67265 16.0886 3.8737 16.3334 4.1322 16.5062C4.3907 16.6646 4.7138 16.7438 5.10155 16.7438C5.47493 16.7438 5.7837 16.6718 6.02783 16.5278C6.27197 16.3694 6.45148 16.1462 6.56637 15.8582C6.68126 15.5702 6.7387 15.2246 6.7387 14.8214V4.25903H9.96992V14.8214C9.96992 16.391 9.53191 17.5862 8.65589 18.407C7.79423 19.2278 6.63817 19.6382 5.18772 19.6382Z" />
+                    <path d="M12.6357 19.379V4.25903H15.867V19.379H12.6357Z" />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M32.2207 19.3791H28.7957L27.6597 16.0744H22.0473L20.9114 19.3791H17.5293L23.0225 4.25928H26.7275L32.2207 19.3791ZM22.9085 13.5687H26.7985L24.8535 7.90938L22.9085 13.5687Z"
+                    />
+                    <path d="M33.8726 19.379V4.25903H37.1038L43.717 14.195V4.25903H46.948V19.379H43.717L37.1038 9.48623V19.379H33.8726Z" />
+                    <path d="M56.2801 19.6384C54.844 19.6384 53.5874 19.3216 52.5104 18.688C51.4477 18.04 50.6219 17.14 50.0331 15.988C49.4443 14.836 49.1499 13.4896 49.1499 11.9488C49.1499 10.3936 49.4515 9.0184 50.0546 7.8232C50.6722 6.628 51.5554 5.692 52.7042 5.0152C53.8531 4.3384 55.2246 4 56.8187 4C58.6138 4 60.1001 4.432 61.2777 5.296C62.4697 6.16 63.238 7.3552 63.5827 8.8816H59.9853C59.7698 8.2768 59.3893 7.8088 58.8436 7.4776C58.3122 7.1464 57.6301 6.9808 56.7971 6.9808C55.8493 6.9808 55.0523 7.1896 54.406 7.6072C53.7598 8.0104 53.2715 8.5864 52.9412 9.3352C52.6109 10.0696 52.4457 10.9408 52.4457 11.9488C52.4457 12.9856 52.6109 13.864 52.9412 14.584C53.2715 15.304 53.7526 15.8512 54.3845 16.2256C55.0164 16.5856 55.7631 16.7656 56.6248 16.7656C57.8598 16.7656 58.7933 16.4416 59.4252 15.7936C60.0714 15.1456 60.4664 14.332 60.61 13.3528H57.0987V10.9336H63.8412V19.3792H60.8685L60.61 17.6296C60.3084 18.0616 59.9494 18.4288 59.5329 18.7312C59.1308 19.0336 58.6569 19.2568 58.1112 19.4008C57.5798 19.5592 56.9695 19.6384 56.2801 19.6384Z" />
+                    <path d="M71.0162 10.8757L74.1196 4.25928H77.7383L72.6115 14.1953V19.3791H69.3802V14.1953L64.2319 4.25928H67.8941L71.0162 10.8757Z" />
+                    <path d="M85.2002 19.6382C84.0657 19.6382 83.0317 19.415 82.0983 18.9686C81.1792 18.5078 80.4467 17.8238 79.901 16.9166C79.3697 16.0094 79.104 14.8646 79.104 13.4822V4.25903H82.3352V13.5038C82.3352 14.1806 82.4429 14.7566 82.6583 15.2318C82.8881 15.707 83.2184 16.067 83.6492 16.3118C84.0944 16.5422 84.6258 16.6574 85.2433 16.6574C85.8752 16.6574 86.4066 16.5422 86.8374 16.3118C87.2826 16.067 87.6201 15.707 87.8498 15.2318C88.0796 14.7566 88.1945 14.1806 88.1945 13.5038V4.25903H91.4257V13.4822C91.4257 14.8646 91.1385 16.0094 90.5641 16.9166C90.004 17.8238 89.25 18.5078 88.3022 18.9686C87.3687 19.415 86.3348 19.6382 85.2002 19.6382Z" />
+                  </svg>
+                </Link>
+              ) : (
+                <div className="pointer-events-none">
+                  <svg
+                    className="w-auto transition-all ease-in-out"
+                    style={{
+                      width:
+                        !isHome || logoState === 'scrolled' ? 'auto' : '95vw',
+                      height:
+                        !isHome || logoState === 'scrolled' ? '2rem' : 'auto',
+                      //transition: 'width 10s ease, height 10s ease',
+                    }}
+                    viewBox="0 0 92 24"
+                    fill={isDark ? 'white' : 'black'}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5.18772 19.6382C4.18246 19.6382 3.29926 19.451 2.53813 19.0766C1.777 18.6878 1.18102 18.119 0.750192 17.3702C0.333722 16.6214 0.125488 15.707 0.125488 14.627H3.33517C3.33517 15.0734 3.39979 15.455 3.52904 15.7718C3.67265 16.0886 3.8737 16.3334 4.1322 16.5062C4.3907 16.6646 4.7138 16.7438 5.10155 16.7438C5.47493 16.7438 5.7837 16.6718 6.02783 16.5278C6.27197 16.3694 6.45148 16.1462 6.56637 15.8582C6.68126 15.5702 6.7387 15.2246 6.7387 14.8214V4.25903H9.96992V14.8214C9.96992 16.391 9.53191 17.5862 8.65589 18.407C7.79423 19.2278 6.63817 19.6382 5.18772 19.6382Z" />
+                    <path d="M12.6357 19.379V4.25903H15.867V19.379H12.6357Z" />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M32.2207 19.3791H28.7957L27.6597 16.0744H22.0473L20.9114 19.3791H17.5293L23.0225 4.25928H26.7275L32.2207 19.3791ZM22.9085 13.5687H26.7985L24.8535 7.90938L22.9085 13.5687Z"
+                    />
+                    <path d="M33.8726 19.379V4.25903H37.1038L43.717 14.195V4.25903H46.948V19.379H43.717L37.1038 9.48623V19.379H33.8726Z" />
+                    <path d="M56.2801 19.6384C54.844 19.6384 53.5874 19.3216 52.5104 18.688C51.4477 18.04 50.6219 17.14 50.0331 15.988C49.4443 14.836 49.1499 13.4896 49.1499 11.9488C49.1499 10.3936 49.4515 9.0184 50.0546 7.8232C50.6722 6.628 51.5554 5.692 52.7042 5.0152C53.8531 4.3384 55.2246 4 56.8187 4C58.6138 4 60.1001 4.432 61.2777 5.296C62.4697 6.16 63.238 7.3552 63.5827 8.8816H59.9853C59.7698 8.2768 59.3893 7.8088 58.8436 7.4776C58.3122 7.1464 57.6301 6.9808 56.7971 6.9808C55.8493 6.9808 55.0523 7.1896 54.406 7.6072C53.7598 8.0104 53.2715 8.5864 52.9412 9.3352C52.6109 10.0696 52.4457 10.9408 52.4457 11.9488C52.4457 12.9856 52.6109 13.864 52.9412 14.584C53.2715 15.304 53.7526 15.8512 54.3845 16.2256C55.0164 16.5856 55.7631 16.7656 56.6248 16.7656C57.8598 16.7656 58.7933 16.4416 59.4252 15.7936C60.0714 15.1456 60.4664 14.332 60.61 13.3528H57.0987V10.9336H63.8412V19.3792H60.8685L60.61 17.6296C60.3084 18.0616 59.9494 18.4288 59.5329 18.7312C59.1308 19.0336 58.6569 19.2568 58.1112 19.4008C57.5798 19.5592 56.9695 19.6384 56.2801 19.6384Z" />
+                    <path d="M71.0162 10.8757L74.1196 4.25928H77.7383L72.6115 14.1953V19.3791H69.3802V14.1953L64.2319 4.25928H67.8941L71.0162 10.8757Z" />
+                    <path d="M85.2002 19.6382C84.0657 19.6382 83.0317 19.415 82.0983 18.9686C81.1792 18.5078 80.4467 17.8238 79.901 16.9166C79.3697 16.0094 79.104 14.8646 79.104 13.4822V4.25903H82.3352V13.5038C82.3352 14.1806 82.4429 14.7566 82.6583 15.2318C82.8881 15.707 83.2184 16.067 83.6492 16.3118C84.0944 16.5422 84.6258 16.6574 85.2433 16.6574C85.8752 16.6574 86.4066 16.5422 86.8374 16.3118C87.2826 16.067 87.6201 15.707 87.8498 15.2318C88.0796 14.7566 88.1945 14.1806 88.1945 13.5038V4.25903H91.4257V13.4822C91.4257 14.8646 91.1385 16.0094 90.5641 16.9166C90.004 17.8238 89.25 18.5078 88.3022 18.9686C87.3687 19.415 86.3348 19.6382 85.2002 19.6382Z" />
+                  </svg>
+                </div>
+              )}
+            </motion.div>
 
-              {/* 左侧 Logo */}
-              <Link
-                to="/"
-                className="flex items-center space-x-2 text-lg font-semibold text-black dark:text-white"
-              >
-                <svg
-                  className="w-8 h-8 text-black dark:text-white"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M75.552 22.9172C82.7623 29.872 87.2522 39.638 87.2522 50.4504C87.252 71.575 70.1267 88.7002 49.0022 88.7004C31.4757 88.7004 16.7064 76.9135 12.1799 60.8381L12.1848 60.8362L12.1702 60.8215L22.4524 50.4075V50.4055H22.4553L23.2161 49.635L23.7444 49.0999H37.7512V50.9006L37.7659 51.4563C38.0269 56.6006 41.8877 60.7933 46.8792 61.5696C47.3746 60.3602 47.6516 59.0374 47.6516 57.6497V24.3499H47.6614L47.6575 24.3459C48.1079 23.8955 56.2901 15.7161 60.3538 11.803L60.8762 11.3H75.552V22.9172ZM75.552 50.4504C75.5518 65.1132 63.665 77 49.0022 77.0002C35.9413 77.0002 25.0881 67.5354 22.8674 55.1116L16.2551 61.8079C20.9573 75.3674 33.8457 85.1008 49.0022 85.1008C68.1385 85.1006 83.6514 69.5867 83.6516 50.4504C83.6516 41.9736 80.6075 34.2102 75.552 28.1877V50.4504ZM62.9514 50.9006C62.9511 58.8532 56.5037 65.3 48.551 65.3C41.2079 65.2997 35.1494 59.8028 34.2639 52.6995H26.1653C27.3164 64.3056 37.1053 73.4006 49.0022 73.4006C61.6768 73.4004 71.9522 63.125 71.9524 50.4504V14.8997H62.9514V50.9006ZM48.5129 61.6995C48.5256 61.6995 48.5383 61.7004 48.551 61.7004C48.5644 61.7004 48.5777 61.6995 48.5911 61.6995H48.5129ZM59.3518 17.8137C56.345 20.7711 52.9416 24.1602 51.2522 25.845V57.6497C51.2522 58.9792 51.0626 60.2646 50.7151 61.4827C55.6426 60.4803 59.3515 56.1238 59.3518 50.9006V17.8137Z"
-                  />
-                </svg>
-                <span className="text-black dark:text-white">Jiangyu</span>
-              </Link>
-            </div>
-
-            {/* 中间导航链接 */}
-            <nav className="hidden lg:flex items-center space-x-6 text-sm absolute left-1/2 transform -translate-x-1/2">
+            {/* 中间导航（大屏） 和 主题切换合并 */}
+            <motion.nav
+              className="absolute top-4 hidden lg:flex items-center text-sm right-8"
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                gap: '0',
+              }}
+              initial={false}
+              animate={{
+                width: isHome
+                  ? logoState === 'centered'
+                    ? '95%'
+                    : '360px'
+                  : '360px',
+              }}
+              transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+            >
               {navItems.map((item, idx) => (
                 <Link
                   key={idx}
                   to={item.to}
-                  className={`relative px-4 py-2 transition rounded-lg ${
-                    item.isActive
-                      ? 'bg-gray-100 dark:bg-zinc-700/80 text-black dark:text-white font-medium'
-                      : 'text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800'
+                  className={`nav-item px-1 py-[6px] ${
+                    item.isActive ? 'active' : ''
                   }`}
                 >
-                  <span className="relative z-10">{item.label}</span>
+                  {item.label}
                 </Link>
               ))}
-            </nav>
-
-            {/* 右侧按钮 */}
-            <div className="text-lg flex items-center space-x-4 lg:ml-auto">
               <Around
-                className="transition select-none"
+                className="select-none p-1"
                 duration={750}
                 toggled={isDark}
                 onToggle={() => {
@@ -124,40 +236,38 @@ export default function Navbar() {
                   localStorage.setItem('theme', newTheme ? 'dark' : 'light')
                 }}
               />
-              <div
-                className="relative"
-                onMouseEnter={() => setIsPopoverOpen(true)}
-                onMouseLeave={() => setIsPopoverOpen(false)}
-              >
-                <RainbowButton>🔥 联系我</RainbowButton>
-                <AnimatePresence>
-                  {isPopoverOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full mt-2 right-0 w-[200px] bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-400 shadow-lg rounded-md overflow-hidden z-50"
-                    >
-                      <img
-                        src="QRCode.svg"
-                        alt="popover"
-                        className="w-full h-auto"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+            </motion.nav>
+
+            {/* 移动端菜单按钮 */}
+            <motion.div
+              className={`flex items-center space-x-4 ${
+                visible
+                  ? 'col-[3] row-[1] justify-self-end'
+                  : 'col-[1] row-[1] justify-self-end'
+              }`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={
+                visible
+                  ? { opacity: 1, y: 0, transition: { delay: 0.6 } }
+                  : { opacity: 0, y: 20 }
+              }
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+              <div className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+                <HamburgerMenu isOpen={menuOpen} />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.header>
-      <div className="h-12 lg:h-16" aria-hidden="true" />
 
+      {/* 占位符防止遮挡内容 */}
+      <div style={{ height: placeholderHeight }} aria-hidden="true" />
+
+      {/* 移动端菜单 */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* 点击菜单外区域关闭 */}
             <motion.div
               className="fixed inset-0 z-40"
               onClick={() => setMenuOpen(false)}
@@ -165,7 +275,6 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-            {/* 菜单内容本体 */}
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

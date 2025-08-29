@@ -32,7 +32,7 @@ export default function About() {
   return (
     <div className="w-full pt-12">
       {/* 简介区 */}
-      <section className="max-w-[1280px] mx-auto px-4 flex flex-col md:flex-row gap-10 mb-20">
+      <section className="max-w-screen-2xl mx-auto px-4 flex flex-col md:flex-row gap-10 mb-20">
         <div className="w-full md:w-[60%]">
           <FadeInWhenVisible delay={0.1} y={50} amount={0.2} triggerOnce>
             <h2 className="text-5xl font-bold mb-10 text-center md:text-left">
@@ -98,7 +98,7 @@ export default function About() {
 
       {/* 工作经历区 */}
       <section className="w-full bg-white dark:bg-black text-black dark:text-white">
-        <div className="max-w-[1280px] mx-auto px-4 py-20 space-y-12">
+        <div className="max-w-screen-2xl mx-auto px-4 py-20 space-y-12">
           <div>
             <FadeInWhenVisible delay={0.4} y={50} amount={0.2} triggerOnce>
               <h2 className="text-4xl font-semibold text-center md:text-left">
@@ -108,13 +108,7 @@ export default function About() {
           </div>
 
           <FadeInWhenVisible delay={0.6} y={50} amount={0.2} triggerOnce>
-            <div
-              className="space-y-4 mt-8"
-              style={{
-                maxWidth: '1248px',
-                width: '100%',
-              }}
-            >
+            <div className="space-y-4 mt-8">
               <div className="grid grid-cols-3 gap-2 bg-zinc-100 dark:bg-zinc-800 px-8 py-4 rounded-lg">
                 <p className="font-medium">Present</p>
                 <p>Product designer</p>
@@ -137,7 +131,7 @@ export default function About() {
 
       {/* 他人评价区 */}
       <section className="w-full bg-white dark:bg-black text-black dark:text-white py-20">
-        <div className="max-w-[1280px] mx-auto px-4 space-y-12">
+        <div className="max-w-screen-2xl mx-auto px-4 space-y-12">
           <div>
             <FadeInWhenVisible delay={0.1} y={50} amount={0.2} triggerOnce>
               <h2 className="text-4xl font-semibold text-center md:text-left">
